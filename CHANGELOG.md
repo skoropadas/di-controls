@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/skoropadas/flex-controls/compare/v1.0.0...v1.0.1) (2022-07-03)
+
+
+### Bug Fixes
+
+* **project:** downgrade rxjs version ([a10ec7a](https://github.com/skoropadas/flex-controls/commit/a10ec7a8c71f12d19087bea9b54f77f9a8588e94))
+
 # 1.0.0 (2022-07-03)
 
 
