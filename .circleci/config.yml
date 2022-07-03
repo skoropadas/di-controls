@@ -1,7 +1,6 @@
 version: 2.1
 jobs:
   build:
-    context: Environments
     docker:
       - image: circleci/node:16.13.0
     steps:
@@ -16,7 +15,6 @@ jobs:
           paths:
             - ./node_modules
   test:
-    context: Environments
     docker:
       - image: circleci/node:16.13.0
     steps:
@@ -29,7 +27,6 @@ jobs:
             npm run lint
             npm run test
   deploy:
-    context: Environments
     docker:
       - image: circleci/node:16.13.0
     steps:
@@ -48,6 +45,7 @@ workflows:
           requires:
             - build
       - deploy:
+          context: Environments
           requires:
             - test
           filters:
