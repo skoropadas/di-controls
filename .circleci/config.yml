@@ -19,7 +19,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - 'lib'
+            - 'dist'
   test:
     docker:
       - image: circleci/node:16.13.0
