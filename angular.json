@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "docs": "apps/docs",
-    "docs-e2e": "apps/docs-e2e"
+    "docs-e2e": "apps/docs-e2e",
+    "flex-controls": "libs/flex-controls"
   }
 }

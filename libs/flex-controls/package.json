@@ -1,0 +1,29 @@
+{
+  "name": "flex-controls",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skoropadas/flex-controls.git"
+  },
+  "keywords": [
+    "angular",
+    "controls",
+    "ng-control",
+    "flex",
+    "flex-controls",
+    "abstract-value-accessor"
+  ],
+  "author": "Skoropad Aleksandr <alex@skoropad.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skoropadas/flex-controls/issues"
+  },
+  "homepage": "https://github.com/skoropadas/flex-controls#readme",
+  "peerDependencies": {
+    "@angular/common": "^14.0.0",
+    "@angular/core": "^14.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
