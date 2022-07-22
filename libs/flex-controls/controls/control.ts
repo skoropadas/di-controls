@@ -1,5 +1,4 @@
-import {ChangeDetectorRef, Directive, OnDestroy, OnInit} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {FlBaseControl, FlBaseControlHost} from 'flex-controls/interfaces';
 import {FlControlValueAccessor} from './control-value-accessor';
@@ -12,12 +11,8 @@ export abstract class FlControl<T> extends FlControlValueAccessor<T> implements 
     private onControlChange: (value: T | null) => void = EMPTY_FUNCTION;
     private valueChange$: Subject<T | null> = new Subject<T | null>();
 
-    protected constructor(
-        protected override changeDetectorRef: ChangeDetectorRef,
-        protected host?: FlBaseControlHost<T>,
-        protected override ngControl?: NgControl,
-    ) {
-        super(changeDetectorRef, ngControl);
+    protected constructor(protected host?: FlBaseControlHost<T>) {
+        super();
     }
 
     ngOnInit(): void {

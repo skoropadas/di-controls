@@ -1,5 +1,4 @@
-import {ChangeDetectorRef, Directive} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {Directive} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 import {FlBaseControl, FlBaseControlHost} from 'flex-controls/interfaces';
@@ -13,12 +12,8 @@ export abstract class FlControlHost<T> extends FlControl<T> implements FlBaseCon
     private updatesFrom: FlControl<T> | null = null;
     private controlChange$: Subject<[FlBaseControl<T>, T | null]> = new Subject<[FlBaseControl<T>, T | null]>();
 
-    protected constructor(
-        protected override changeDetectorRef: ChangeDetectorRef,
-        protected override host?: FlBaseControlHost<T>,
-        protected override ngControl?: NgControl,
-    ) {
-        super(changeDetectorRef, host, ngControl);
+    protected constructor(protected override host?: FlBaseControlHost<T>) {
+        super(host);
     }
 
     registerControl(control: FlControl<T>): void {
