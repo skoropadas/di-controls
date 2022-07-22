@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/skoropadas/flex-controls/compare/v1.0.3...v1.0.4) (2022-07-22)
+
+
+### Bug Fixes
+
+* **project:** upgrade usage ([a803808](https://github.com/skoropadas/flex-controls/commit/a803808d6155e603127895c4ea60b715f48c1b3f))
+
 ## [1.0.3](https://github.com/skoropadas/flex-controls/compare/v1.0.2...v1.0.3) (2022-07-22)
 
 
