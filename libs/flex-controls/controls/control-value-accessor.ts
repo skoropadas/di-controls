@@ -6,26 +6,25 @@ import {hasValue} from 'flex-controls/helpers';
 /** Class implements basic ControlValueAccessor things */
 @Directive()
 export abstract class FlControlValueAccessor<T> implements ControlValueAccessor {
-  model: T | null = null;
-  protected isDisabled: boolean = false;
-  protected ngControl: NgControl | null = inject(NgControl, { optional: true, self: true });
-  protected changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+    model: T | null = null;
+    protected isDisabled: boolean = false;
 
-  onTouched: () => void = EMPTY_FUNCTION;
-  private onChange: (value: T | null) => void = EMPTY_FUNCTION;
+    onTouched: () => void = EMPTY_FUNCTION;
+    private onChange: (value: T | null) => void = EMPTY_FUNCTION;
+    private ngControl: NgControl | null = inject(NgControl, {optional: true, self: true});
+    private changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
-
-  protected constructor() {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
+    protected constructor() {
+        if (this.ngControl) {
+            this.ngControl.valueAccessor = this;
+        }
     }
-  }
 
-  get hasValue(): boolean {
-    return hasValue(this.model);
-  }
+    get hasValue(): boolean {
+        return hasValue(this.model);
+    }
 
-  @Input()
+    @Input()
     @HostBinding('attr.data-disabled')
     get disabled(): boolean {
         return this.computeDisabled();

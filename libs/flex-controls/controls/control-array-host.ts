@@ -25,7 +25,7 @@ export abstract class FlControlArrayHost<T>
         [FlBaseControl<T | T[]>, T | T[] | null]
     >();
 
-    protected constructor(protected override host?: FlBaseControlHost<T[]>) {
+    constructor(protected override host?: FlBaseControlHost<T[]>) {
         super(host);
     }
 
