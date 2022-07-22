@@ -1,5 +1,4 @@
-import {ChangeDetectorRef, Directive, Input} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {Directive, Input} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 import {FlCompareHost, FlSetCompare} from 'flex-controls/classes';
@@ -26,12 +25,8 @@ export abstract class FlControlArrayHost<T>
         [FlBaseControl<T | T[]>, T | T[] | null]
     >();
 
-    protected constructor(
-        protected override changeDetectorRef: ChangeDetectorRef,
-        protected override host?: FlBaseControlHost<T[]>,
-        protected override ngControl?: NgControl,
-    ) {
-        super(changeDetectorRef, host, ngControl);
+    protected constructor(protected override host?: FlBaseControlHost<T[]>) {
+        super(host);
     }
 
     registerControl(control: FlControl<T | T[]>): void {

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Directive, HostBinding, Input} from '@angular/core';
+import {ChangeDetectorRef, Directive, HostBinding, inject, Input} from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION} from 'flex-controls/constants';
 import {hasValue} from 'flex-controls/helpers';
@@ -6,23 +6,26 @@ import {hasValue} from 'flex-controls/helpers';
 /** Class implements basic ControlValueAccessor things */
 @Directive()
 export abstract class FlControlValueAccessor<T> implements ControlValueAccessor {
-    model: T | null = null;
-    protected isDisabled: boolean = false;
+  model: T | null = null;
+  protected isDisabled: boolean = false;
+  protected ngControl: NgControl | null = inject(NgControl, { optional: true, self: true });
+  protected changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
-    onTouched: () => void = EMPTY_FUNCTION;
-    private onChange: (value: T | null) => void = EMPTY_FUNCTION;
+  onTouched: () => void = EMPTY_FUNCTION;
+  private onChange: (value: T | null) => void = EMPTY_FUNCTION;
 
-    protected constructor(protected changeDetectorRef: ChangeDetectorRef, protected ngControl?: NgControl) {
-        if (this.ngControl) {
-            this.ngControl.valueAccessor = this;
-        }
+
+  protected constructor() {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
     }
+  }
 
-    get hasValue(): boolean {
-        return hasValue(this.model);
-    }
+  get hasValue(): boolean {
+    return hasValue(this.model);
+  }
 
-    @Input()
+  @Input()
     @HostBinding('attr.data-disabled')
     get disabled(): boolean {
         return this.computeDisabled();

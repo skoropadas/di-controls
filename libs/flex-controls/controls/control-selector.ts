@@ -1,5 +1,4 @@
-import {ChangeDetectorRef, Directive, HostBinding, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {Directive, HostBinding, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FlCompareHost} from 'flex-controls/classes';
 import {FL_DEFAULT_COMPARE} from 'flex-controls/constants';
 import {flMakePure} from 'flex-controls/decorators';
@@ -13,13 +12,11 @@ export abstract class FlControlSelector<T> extends FlControl<T | boolean> implem
     value: T | true = true;
 
     protected constructor(
-        protected override changeDetectorRef: ChangeDetectorRef,
         protected compareHost?: FlCompareHost<T | boolean | null>,
         protected override host?: FlBaseControlHost<T>,
-        protected override ngControl?: NgControl,
         protected hasIntermediate?: boolean,
     ) {
-        super(changeDetectorRef, host, ngControl);
+        super(host);
     }
 
     ngOnChanges({value}: SimpleChanges): void {
