@@ -11,7 +11,7 @@ export abstract class FlControlSelector<T> extends FlControl<T | boolean> implem
     @Input()
     value: T | true = true;
 
-    protected constructor(
+    constructor(
         protected compareHost?: FlCompareHost<T | boolean | null>,
         protected override host?: FlBaseControlHost<T>,
         protected hasIntermediate?: boolean,

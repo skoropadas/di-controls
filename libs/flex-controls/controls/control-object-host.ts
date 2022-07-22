@@ -12,7 +12,7 @@ export abstract class FlControlObjectHost<T, C> extends FlControl<T> implements 
     private updatesFrom: FlControl<C> | null = null;
     private controlChange$: Subject<[FlBaseControl<C>, C | null]> = new Subject<[FlBaseControl<C>, C | null]>();
 
-    protected constructor(
+    constructor(
         private getValue: FlControlObjectHostGetValue<T, C>,
         private setValue: FlControlObjectHostSetValue<T, C>,
         protected override host?: FlBaseControlHost<T>,

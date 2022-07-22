@@ -11,7 +11,7 @@ export abstract class FlControl<T> extends FlControlValueAccessor<T> implements 
     private onControlChange: (value: T | null) => void = EMPTY_FUNCTION;
     private valueChange$: Subject<T | null> = new Subject<T | null>();
 
-    protected constructor(protected host?: FlBaseControlHost<T>) {
+    constructor(protected host?: FlBaseControlHost<T>) {
         super();
     }
 
