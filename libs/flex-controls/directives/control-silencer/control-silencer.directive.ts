@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import {FlControlHost} from 'flex-controls/controls';
-import {provideControlHost} from 'flex-controls/helpers';
+import {provideControlHost} from 'flex-controls/tokens';
 
 @Directive({
     selector: '[flControlSilencer]',
