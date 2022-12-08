@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/skoropadas/flex-controls/compare/v1.1.0...v1.1.1) (2022-12-08)
+
+
+### Bug Fixes
+
+* **project:** unbound angular dependencies ([42ad908](https://github.com/skoropadas/flex-controls/commit/42ad90800f7312b4ab08dd9b4963b1b60ef78ca4))
+
 # [1.1.0](https://github.com/skoropadas/flex-controls/compare/v1.0.4...v1.1.0) (2022-07-25)
 
 
