@@ -1,3 +1,13 @@
+# [1.1.0](https://github.com/skoropadas/flex-controls/compare/v1.0.4...v1.1.0) (2022-07-25)
+
+
+### Features
+
+* **providers:** add `provideControlHost` function that helps to provide hosts ([b843364](https://github.com/skoropadas/flex-controls/commit/b84336490c78fbe38d8a53059ad7375454d55a2a))
+* **providers:** add `provideControlHost` function that helps to provide hosts ([2ad605e](https://github.com/skoropadas/flex-controls/commit/2ad605ef0addea0a952b67594e44d443ae024309))
+* **providers:** add ControlSilencer directive that helps you to disable comunication between control and host ([8632d85](https://github.com/skoropadas/flex-controls/commit/8632d8522c28377f22f40a3cec31aa3857e3c6a9))
+* **providers:** add ControlSilencer directive that helps you to disable comunication between control and host ([4ebb6ee](https://github.com/skoropadas/flex-controls/commit/4ebb6eeef9bc059a35ebe0f7e34cfad00fb79284))
+
 ## [1.0.4](https://github.com/skoropadas/flex-controls/compare/v1.0.3...v1.0.4) (2022-07-22)
 
 
