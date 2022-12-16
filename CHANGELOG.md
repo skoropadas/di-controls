@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/skoropadas/flex-controls/compare/v1.1.1...v1.1.2) (2022-12-16)
+
+
+### Bug Fixes
+
+* **project:** extend rxjs dependencies ([ee47d10](https://github.com/skoropadas/flex-controls/commit/ee47d10d0bbbf61cdee0691d39567c9ecc742925))
+
 ## [1.1.1](https://github.com/skoropadas/flex-controls/compare/v1.1.0...v1.1.1) (2022-12-08)
 
 
