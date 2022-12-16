@@ -20,9 +20,10 @@
   },
   "homepage": "https://github.com/skoropadas/flex-controls#readme",
   "peerDependencies": {
-    "@angular/common": ">= 14.0.0",
-    "@angular/core": ">= 14.0.0",
-    "@angular/forms": ">= 14.0.0"
+    "@angular/common": ">=14.0.0",
+    "@angular/core": ">=14.0.0",
+    "@angular/forms": ">=14.0.0",
+    "rxjs": ">=6.6.7"
   },
   "dependencies": {
     "tslib": "^2.3.0"
