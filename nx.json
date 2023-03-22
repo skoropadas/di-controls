@@ -21,8 +21,7 @@
         "cacheableOperations": [
           "build",
           "lint",
-          "test",
-          "e2e"
+          "test"
         ],
         "accessToken": "NmUxNDU5ZjAtOTY3OS00ZmZiLTk4YWQtY2U3NTc3OTVhNjQ4fHJlYWQtd3JpdGU="
       }

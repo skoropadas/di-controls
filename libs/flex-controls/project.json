@@ -1,45 +1,40 @@
 {
-  "projectType": "library",
-  "sourceRoot": "libs/flex-controls",
-  "prefix": "fl",
-  "targets": {
-    "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/flex-controls"
-      ],
-      "options": {
-        "project": "libs/flex-controls/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/flex-controls/tsconfig.lib.prod.json"
+    "name": "flex-controls",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/flex-controls",
+    "prefix": "fl",
+    "targets": {
+        "build": {
+            "executor": "@nrwl/angular:package",
+            "outputs": ["dist/libs/flex-controls"],
+            "options": {
+                "project": "libs/flex-controls/ng-package.json"
+            },
+            "configurations": {
+                "production": {
+                    "tsConfig": "libs/flex-controls/tsconfig.lib.prod.json"
+                },
+                "development": {
+                    "tsConfig": "libs/flex-controls/tsconfig.lib.json"
+                }
+            },
+            "defaultConfiguration": "production"
         },
-        "development": {
-          "tsConfig": "libs/flex-controls/tsconfig.lib.json"
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/flex-controls"],
+            "options": {
+                "jestConfig": "libs/flex-controls/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["libs/flex-controls/**/*.ts", "libs/flex-controls/**/*.html"]
+            }
         }
-      },
-      "defaultConfiguration": "production"
     },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/flex-controls"
-      ],
-      "options": {
-        "jestConfig": "libs/flex-controls/jest.config.ts",
-        "passWithNoTests": true
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/flex-controls/**/*.ts",
-          "libs/flex-controls/**/*.html"
-        ]
-      }
-    }
-  },
-  "tags": []
+    "tags": []
 }
