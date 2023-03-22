@@ -21,6 +21,10 @@
     "@angular/platform-browser": "15.2.3",
     "@angular/platform-browser-dynamic": "15.2.3",
     "@angular/router": "15.2.3",
+    "@ng-doc/app": "15.7.12",
+    "@ng-doc/builder": "15.7.12",
+    "@ng-doc/core": "15.7.12",
+    "@ng-doc/ui-kit": "15.7.12",
     "@nrwl/angular": "15.8.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.0.0",
@@ -68,4 +72,3 @@
     "typescript": "4.9.5"
   }
 }
-

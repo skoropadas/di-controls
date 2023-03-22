@@ -15,6 +15,12 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+          "@ng-doc/generated": [
+            ".ng-doc/docs/index.ts"
+          ],
+          "@ng-doc/generated/*": [
+            ".ng-doc/docs/*"
+          ],
             "flex-controls": ["libs/flex-controls/index.ts"],
             "flex-controls/*": ["libs/flex-controls/*"]
         }
