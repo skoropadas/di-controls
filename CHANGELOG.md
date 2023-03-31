@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/skoropadas/flex-controls/compare/v1.1.2...v1.1.3) (2023-03-31)
+
+
+### Bug Fixes
+
+* **project:** update version of target compiler ([81cdbaa](https://github.com/skoropadas/flex-controls/commit/81cdbaa5250ff4b4e3ad6672e3bdd29bc519a6f6))
+
 ## [1.1.2](https://github.com/skoropadas/flex-controls/compare/v1.1.1...v1.1.2) (2022-12-16)
 
 
