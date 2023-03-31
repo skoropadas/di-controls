@@ -1,3 +1,12 @@
+## [1.1.4](https://github.com/skoropadas/flex-controls/compare/v1.1.3...v1.1.4) (2023-03-31)
+
+
+### Bug Fixes
+
+* **project:** extend rxjs dependencies ([f5d9f32](https://github.com/skoropadas/flex-controls/commit/f5d9f32ac73b250aff1e65cbda22f2d0323d31e8))
+* **project:** injecting control error ([0960da0](https://github.com/skoropadas/flex-controls/commit/0960da087f9de7587a1289ccf0355d0ff55a5c69))
+* **project:** update version of target compiler ([c2b99a2](https://github.com/skoropadas/flex-controls/commit/c2b99a24129fe2289ded50328b812e4be06731dd))
+
 ## [1.1.3](https://github.com/skoropadas/flex-controls/compare/v1.1.2...v1.1.3) (2023-03-31)
 
 
