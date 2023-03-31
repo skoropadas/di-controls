@@ -11,10 +11,12 @@ export abstract class FlControlValueAccessor<T> implements ControlValueAccessor 
 
     onTouched: () => void = EMPTY_FUNCTION;
     private onChange: (value: T | null) => void = EMPTY_FUNCTION;
-    protected readonly ngControl: NgControl | null = inject(NgControl, {optional: true, self: true});
-    protected readonly changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+    protected readonly ngControl: NgControl | null
+    protected readonly changeDetectorRef: ChangeDetectorRef;
 
     protected constructor() {
+      this.ngControl = inject(NgControl, {optional: true, self: true});;
+      this.changeDetectorRef = inject(ChangeDetectorRef);
         if (this.ngControl) {
             this.ngControl.valueAccessor = this;
         }
