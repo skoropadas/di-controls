@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/skoropadas/flex-controls/compare/v1.1.5...v2.0.0) (2023-05-09)
+
+
+### Features
+
+* **project:** angular 16 ([b369663](https://github.com/skoropadas/flex-controls/commit/b369663ee344401fd54f80e7350832246b2cdf93))
+
+
+### BREAKING CHANGES
+
+* **project:** Angular 16
+
 ## [1.1.5](https://github.com/skoropadas/flex-controls/compare/v1.1.4...v1.1.5) (2023-03-31)
 
 
