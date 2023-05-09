@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/skoropadas/flex-controls/compare/v2.0.0...v2.0.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* **project:** remove `forwardRef` for `provideControlHost` ([6bf3b44](https://github.com/skoropadas/flex-controls/commit/6bf3b444873e95d52f152acb463e0a0ccfa5644b))
+
 # [2.0.0](https://github.com/skoropadas/flex-controls/compare/v1.1.5...v2.0.0) (2023-05-09)
 
 
