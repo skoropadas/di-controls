@@ -1,72 +1,64 @@
 {
-  "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
-      "extends": [
-        "plugin:@nrwl/nx/typescript"
-      ],
-      "rules": {
-        "@typescript-eslint/typedef": [
-          "error",
-          {
-            "parameter": true,
-            "arrowParameter": true,
-            "propertyDeclaration": true,
-            "variableDeclaration": true,
-            "memberVariableDeclaration": true
-          }
-        ],
-        "@typescript-eslint/consistent-type-definitions": [
-          "error",
-          "interface"
-        ],
-        "@typescript-eslint/array-type": [
-          "error",
-          {
-            "default": "array-simple"
-          }
-        ],
-        "@typescript-eslint/explicit-member-accessibility": [
-          "error",
-          {
-            "accessibility": "no-public",
-            "overrides": {
-              "constructors": "off"
+    "root": true,
+    "ignorePatterns": ["**/*"],
+    "plugins": ["@nx"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "rules": {
+                "@nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        "enforceBuildableLibDependency": true,
+                        "allow": [],
+                        "depConstraints": [
+                            {
+                                "sourceTag": "*",
+                                "onlyDependOnLibsWithTags": ["*"]
+                            }
+                        ]
+                    }
+                ]
             }
-          }
-        ],
-        "@typescript-eslint/no-inferrable-types": "off",
-        "@nrwl/nx/enforce-module-boundaries": "off"
-      }
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
-      "rules": {}
-    }
-  ]
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "extends": ["plugin:@nx/typescript"],
+            "rules": {
+                "@typescript-eslint/typedef": [
+                    "error",
+                    {
+                        "parameter": true,
+                        "arrowParameter": true,
+                        "propertyDeclaration": true,
+                        "variableDeclaration": true,
+                        "memberVariableDeclaration": true
+                    }
+                ],
+                "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+                "@typescript-eslint/array-type": [
+                    "error",
+                    {
+                        "default": "array-simple"
+                    }
+                ],
+                "@typescript-eslint/explicit-member-accessibility": [
+                    "error",
+                    {
+                        "accessibility": "no-public",
+                        "overrides": {
+                            "constructors": "off"
+                        }
+                    }
+                ],
+                "@typescript-eslint/no-inferrable-types": "off",
+                "@nx/enforce-module-boundaries": "off"
+            }
+        },
+        {
+            "files": ["*.js", "*.jsx"],
+            "extends": ["plugin:@nx/javascript"],
+            "rules": {}
+        }
+    ]
 }
