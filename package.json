@@ -5,10 +5,10 @@
     "scripts": {
         "ng": "nx",
         "postinstall": "node ./decorate-angular-cli.js",
-        "start": "nx serve",
-        "lint": "nx lint flex-controls --fix",
-        "build": "nx build flex-controls",
-        "test": "nx test flex-controls",
+        "start": "npx nx serve",
+        "lint": "npx nx lint flex-controls --fix",
+        "build": "npx nx build flex-controls",
+        "test": "npx nx test flex-controls",
         "semantic-release": "semantic-release"
     },
     "private": true,
