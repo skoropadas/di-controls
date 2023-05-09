@@ -10,7 +10,7 @@ jobs:
       - run:
           name: install
           command: |
-            npm install
+            npm ci
             npm run build
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
