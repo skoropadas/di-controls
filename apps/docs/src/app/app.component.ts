@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'flex-controls-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+	selector: 'di-controls-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'docs';
+	title = 'docs';
 }

@@ -15,9 +15,19 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "flex-controls": ["libs/flex-controls/index.ts"],
-            "flex-controls/*": ["libs/flex-controls/*"]
-        }
+			"@ng-doc/generated": [
+				".ng-doc/docs/index.ts"
+			],
+			"@ng-doc/generated/*": [
+				".ng-doc/docs/*"
+			],
+			"di-controls": [
+				"libs/di-controls/index.ts"
+			],
+			"di-controls/*": [
+				"libs/di-controls/*"
+			]
+		}
     },
     "exclude": ["node_modules", "tmp"]
 }

@@ -1,50 +1,67 @@
 {
-    "$schema": "./node_modules/nx/schemas/nx-schema.json",
-    "npmScope": "flex-controls",
-    "affected": {
-        "defaultBase": "main"
-    },
-    "cli": {
-        "packageManager": "npm"
-    },
-    "implicitDependencies": {
-        "package.json": {
-            "dependencies": "*",
-            "devDependencies": "*"
-        },
-        ".eslintrc.json": "*"
-    },
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "nx-cloud",
-            "options": {
-                "cacheableOperations": ["build", "lint", "test", "e2e"],
-                "accessToken": "NmUxNDU5ZjAtOTY3OS00ZmZiLTk4YWQtY2U3NTc3OTVhNjQ4fHJlYWQtd3JpdGU="
-            }
-        }
-    },
-    "targetDefaults": {
-        "build": {
-            "dependsOn": ["^build"]
-        },
-        "lint": {
-            "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
-        }
-    },
-    "generators": {
-        "@nx/angular:application": {
-            "style": "scss",
-            "linter": "eslint",
-            "unitTestRunner": "jest",
-            "e2eTestRunner": "cypress"
-        },
-        "@nx/angular:library": {
-            "linter": "eslint",
-            "unitTestRunner": "jest"
-        },
-        "@nx/angular:component": {
-            "style": "scss"
-        }
-    },
-    "defaultProject": "docs"
+	"$schema": "./node_modules/nx/schemas/nx-schema.json",
+	"npmScope": "di-controls",
+	"affected": {
+		"defaultBase": "main"
+	},
+	"cli": {
+		"packageManager": "npm"
+	},
+	"tasksRunnerOptions": {
+		"default": {
+			"runner": "nx-cloud",
+			"options": {
+				"cacheableOperations": [
+					"build",
+					"lint",
+					"test",
+					"e2e"
+				],
+				"accessToken": "NmUxNDU5ZjAtOTY3OS00ZmZiLTk4YWQtY2U3NTc3OTVhNjQ4fHJlYWQtd3JpdGU="
+			}
+		}
+	},
+	"targetDefaults": {
+		"build": {
+			"dependsOn": [
+				"^build"
+			],
+			"inputs": [
+				"production",
+				"^production"
+			]
+		},
+		"lint": {
+			"inputs": [
+				"default",
+				"{workspaceRoot}/.eslintrc.json"
+			]
+		}
+	},
+	"generators": {
+		"@nx/angular:application": {
+			"style": "scss",
+			"linter": "eslint",
+			"unitTestRunner": "jest",
+			"e2eTestRunner": "cypress"
+		},
+		"@nx/angular:library": {
+			"linter": "eslint",
+			"unitTestRunner": "jest"
+		},
+		"@nx/angular:component": {
+			"style": "scss"
+		}
+	},
+	"defaultProject": "docs",
+	"namedInputs": {
+		"default": [
+			"{projectRoot}/**/*",
+			"sharedGlobals"
+		],
+		"sharedGlobals": [],
+		"production": [
+			"default"
+		]
+	}
 }

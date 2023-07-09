@@ -9,18 +9,18 @@
                 "@angular-eslint/directive-selector": [
                     "error",
                     {
-                        "type": "attribute",
-                        "prefix": "flexControls",
-                        "style": "camelCase"
-                    }
+						"type": "attribute",
+						"prefix": "di",
+						"style": "camelCase"
+					}
                 ],
                 "@angular-eslint/component-selector": [
                     "error",
-                    {
-                        "type": "element",
-                        "prefix": "flex-controls",
-                        "style": "kebab-case"
-                    }
+					{
+						"type": "element",
+						"prefix": "di",
+						"style": "kebab-case"
+					}
                 ]
             }
         },

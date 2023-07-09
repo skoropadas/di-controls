@@ -25,16 +25,6 @@
             "files": ["*.ts", "*.tsx"],
             "extends": ["plugin:@nx/typescript"],
             "rules": {
-                "@typescript-eslint/typedef": [
-                    "error",
-                    {
-                        "parameter": true,
-                        "arrowParameter": true,
-                        "propertyDeclaration": true,
-                        "variableDeclaration": true,
-                        "memberVariableDeclaration": true
-                    }
-                ],
                 "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
                 "@typescript-eslint/array-type": [
                     "error",

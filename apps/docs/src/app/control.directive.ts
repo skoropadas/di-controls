@@ -1,11 +1,11 @@
 import {Directive} from '@angular/core';
-import {FlControl} from 'flex-controls';
+import {DIControl} from 'libs/di-controls';
 
 @Directive({
-    selector: '[flexControlsControl]',
+	selector: '[flexControlsControl]',
 })
-export class ControlDirective<T> extends FlControl<T> {
-    constructor() {
-        super();
-    }
+export class ControlDirective<T> extends DIControl<T> {
+	constructor() {
+		super();
+	}
 }

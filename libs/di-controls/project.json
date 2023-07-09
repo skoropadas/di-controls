@@ -1,0 +1,47 @@
+{
+	"name": "di-controls",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"projectType": "library",
+	"sourceRoot": "",
+	"prefix": "di",
+	"targets": {
+		"build": {
+			"executor": "@nx/angular:package",
+			"outputs": [
+				"{workspaceRoot}/dist/libs/di-controls"
+			],
+			"options": {
+				"project": "libs/di-controls/ng-package.json"
+			},
+			"configurations": {
+				"production": {
+					"tsConfig": "libs/di-controls/tsconfig.lib.prod.json"
+				},
+				"development": {
+					"tsConfig": "libs/di-controls/tsconfig.lib.json"
+				}
+            },
+            "defaultConfiguration": "production"
+        },
+        "test": {
+			"executor": "@nx/jest:jest",
+			"outputs": [
+				"{workspaceRoot}/coverage/libs/di-controls"
+			],
+			"options": {
+				"jestConfig": "libs/di-controls/jest.config.ts",
+				"passWithNoTests": true
+			}
+		},
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "options": {
+				"lintFilePatterns": [
+					"libs/di-controls/**/*.ts",
+					"libs/di-controls/**/*.html"
+				]
+            }
+        }
+    },
+    "tags": []
+}

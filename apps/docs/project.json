@@ -1,24 +1,50 @@
 {
-    "name": "docs",
-    "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "projectType": "application",
-    "sourceRoot": "apps/docs/src",
-    "prefix": "flex-controls",
-    "targets": {
-        "build": {
-            "executor": "@angular-devkit/build-angular:browser",
-            "outputs": ["{options.outputPath}"],
-            "options": {
-                "outputPath": "dist/apps/docs",
-                "index": "apps/docs/src/index.html",
-                "main": "apps/docs/src/main.ts",
-                "polyfills": "apps/docs/src/polyfills.ts",
-                "tsConfig": "apps/docs/tsconfig.app.json",
-                "inlineStyleLanguage": "scss",
-                "assets": ["apps/docs/src/favicon.ico", "apps/docs/src/assets"],
-                "styles": ["apps/docs/src/styles.scss"],
-                "scripts": []
-            },
+	"name": "docs",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"projectType": "application",
+	"sourceRoot": "apps/docs/src",
+	"prefix": "di",
+	"targets": {
+		"build": {
+			"executor": "@ng-doc/builder:browser",
+			"outputs": [
+				"{options.outputPath}"
+			],
+			"options": {
+				"outputPath": "dist/apps/docs",
+				"index": "apps/docs/src/index.html",
+				"main": "apps/docs/src/main.ts",
+				"polyfills": "apps/docs/src/polyfills.ts",
+				"tsConfig": "apps/docs/tsconfig.app.json",
+				"inlineStyleLanguage": "scss",
+				"assets": [
+					{
+						"glob": "**/*",
+						"input": "node_modules/@ng-doc/app/assets",
+						"output": "assets/ng-doc/app"
+					},
+					{
+						"glob": "**/*",
+						"input": "node_modules/@ng-doc/ui-kit/assets",
+						"output": "assets/ng-doc/ui-kit"
+					},
+					{
+						"glob": "**/*",
+						"input": ".ng-doc/docs/assets",
+						"output": "assets/ng-doc"
+					},
+					"apps/docs/src/favicon.ico",
+					"apps/docs/src/assets"
+				],
+				"styles": [
+					"node_modules/@ng-doc/app/styles/global.css",
+					"apps/docs/src/styles.scss"
+				],
+				"scripts": [],
+				"allowedCommonJsDependencies": [
+					"@ng-doc/core"
+				]
+			},
             "configurations": {
                 "production": {
                     "budgets": [
@@ -53,17 +79,17 @@
             "defaultConfiguration": "production"
         },
         "serve": {
-            "executor": "@angular-devkit/build-angular:dev-server",
-            "configurations": {
-                "production": {
-                    "browserTarget": "docs:build:production"
-                },
-                "development": {
-                    "browserTarget": "docs:build:development"
-                }
-            },
-            "defaultConfiguration": "development"
-        },
+			"executor": "@ng-doc/builder:dev-server",
+			"configurations": {
+				"production": {
+					"browserTarget": "docs:build:production"
+				},
+				"development": {
+					"browserTarget": "docs:build:development"
+				}
+			},
+			"defaultConfiguration": "development"
+		},
         "extract-i18n": {
             "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
@@ -77,13 +103,15 @@
             }
         },
         "test": {
-            "executor": "@nx/jest:jest",
-            "outputs": ["coverage/apps/docs"],
-            "options": {
-                "jestConfig": "apps/docs/jest.config.ts",
-                "passWithNoTests": true
-            }
-        }
+			"executor": "@nx/jest:jest",
+			"outputs": [
+				"{workspaceRoot}/coverage/apps/docs"
+			],
+			"options": {
+				"jestConfig": "apps/docs/jest.config.ts",
+				"passWithNoTests": true
+			}
+		}
     },
     "tags": []
 }
