@@ -57,7 +57,7 @@ describe('DIControl', () => {
 		it('should make formControl touched', async () => {
 			const {formControl, control} = await createFixture({
 				hostControlFn,
-				defaultValue: '1,
+				defaultValue: '1',
 			});
 
 			control.touchControl();
@@ -68,7 +68,7 @@ describe('DIControl', () => {
 		it('should disabled control', async () => {
 			const {formControl, control} = await createFixture({
 				hostControlFn,
-				defaultValue: '1,
+				defaultValue: '1',
 			});
 
 			formControl.disable();
@@ -76,12 +76,12 @@ describe('DIControl', () => {
 			expect(control.disabled).toBe(true);
 			expect(control.element.getAttribute('disabled')).toBe('true');
 			expect(control.element.getAttribute('aria-disabled')).toBe('true');
-		};);
+		});
 
 		it('should remove disabled attribute if control was enabled', async () => {
 			const {formControl, control} = await createFixture({
 				hostControlFn,
-				defaultValue: '',
+				defaultValue: ''
 			});
 
 			formControl.disable();
@@ -90,7 +90,7 @@ describe('DIControl', () => {
 			expect(control.disabled).toBe(false);
 			expect(control.element.getAttribute('disabled')).toBe(null);
 			expect(control.element.getAttribute('aria-disabled')).toBe('false');
-		;});
+		});
 	});
 
 	describe('host', () => {
