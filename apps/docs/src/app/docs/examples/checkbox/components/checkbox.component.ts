@@ -11,7 +11,7 @@ import {FormsModule} from '@angular/forms';
 		<label>
 			<input
 				type="checkbox"
-				[ngModel]="checked"
+				[ngModel]="checked()"
 				(ngModelChange)="toggle(); touch()"
 				[indeterminate]="isIntermediate"
 			/>

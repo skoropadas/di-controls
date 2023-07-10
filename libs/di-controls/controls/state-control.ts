@@ -25,7 +25,7 @@ export abstract class DIStateControl<T> extends DIControl<T | boolean> implement
 
 		// Setting aria attributes
 		effect(() => {
-			const ariaChecked = this.checked === null ? 'mixed' : this.checked;
+			const ariaChecked = this.checked() === null ? 'mixed' : this.checked();
 
 			this.renderer.setAttribute(this.elementRef.nativeElement, 'aria-checked', `${ariaChecked}`);
 		});
