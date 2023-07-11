@@ -24,7 +24,7 @@ export abstract class DIObjectControl<TModel, TChildModel> extends DIControl<TMo
 		Promise.resolve().then(() => control.writeValueFromHost(this.getValue(this.model())));
 
 		control.registerOnControlChange((value: TChildModel | null) => {
-			this.updateFrom.set(control);
+			this.updateFrom = control;
 			this.updateModel(this.setValue(this.model(), value));
 		});
 

@@ -42,7 +42,7 @@ export abstract class DIArrayControl<TModel>
 	}
 
 	protected override childControlChange(control: DIControl<TModel | TModel[]>, value: TModel[] | null) {
-		this.updateFrom.set(control);
+		this.updateFrom = control;
 		this.updateModel(this.getNewModel(control, value));
 		this.incomingUpdate(this.model());
 	}

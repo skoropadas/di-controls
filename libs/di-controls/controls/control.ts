@@ -1,22 +1,57 @@
-import {Directive, OnDestroy, OnInit, signal, WritableSignal} from '@angular/core';
+import {DestroyRef, Directive, inject, OnInit} from '@angular/core';
 import {DIControlValueAccessor} from './control-value-accessor';
 import {EMPTY_FUNCTION} from '../constants';
 
-/** Uses to implement any control that you want */
+/**
+ * DIControl can be used to implement any control that you want. It can work with any model type.
+ * All updates from children will be accepted as is. And updates from outside (FormControl, NgModel, Another Host Control)
+ * will be accepted as is too.
+ *
+ * ## Creating a control
+ * To create a control you need to extend your `@Component` or `@Directive` from `DIControl` class.
+ * After that your control will be able to work with `NgModel`, `FormControl`.
+ *
+ * ```ts name="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIControl<string> {
+ * 	constructor() {
+ *  	super();
+ *  }
+ * }
+ *  ```
+ *
+ * ## Registering as a host
+ * By default your control can work only with `NgModel` and `FormControl`. But you can register your control as a host
+ * for another controls, then your control will be able to accept updates from them. To do that you need to
+ * use `provideHostControl` function.
+ *
+ * ```ts name="custom-control.component.ts" {2}
+ * @Component({
+ * 	providers: [provideHostControl(CustomControlComponent)],
+ * })
+ * export class CustomControlComponent extends DIControl<string> {
+ * 	constructor() {
+ * 		super();
+ * 	}
+ * }
+ *
+ */
 @Directive()
 export abstract class DIControl<TModel, TChildModel = TModel>
 	extends DIControlValueAccessor<TModel>
-	implements OnInit, OnDestroy
-{
+	implements OnInit {
 	protected children: Set<DIControl<TChildModel>> = new Set<DIControl<TChildModel>>();
-	protected updateFrom: WritableSignal<DIControl<TChildModel> | null> = signal(null);
-
+	protected updateFrom: DIControl<TChildModel> | null = null;
 	protected requestForUpdate: () => void = EMPTY_FUNCTION;
 	protected override touch: () => void = () => this.host?.touch();
+
 	private onControlChangeFn: (value: TModel | null) => void = EMPTY_FUNCTION;
+	private destroyRef: DestroyRef = inject(DestroyRef);
 
 	protected constructor(protected host?: DIControl<unknown, TModel> | null) {
 		super();
+
+		this.destroyRef.onDestroy(() => this.host?.unregisterControl(this))
 	}
 
 	ngOnInit(): void {
@@ -27,6 +62,12 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 		Promise.resolve().then(() => this.host?.registerControl(this));
 	}
 
+	/**
+	 * Registers provided control as a child of the current control.
+	 *
+	 * @param control - control that will be registered.
+	 * @internal
+	 */
 	registerControl(control: DIControl<TChildModel>): void {
 		this.children.add(control);
 
@@ -48,6 +89,12 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 		});
 	}
 
+	/**
+	 * Unregisters provided control from the current control.
+	 *
+	 * @param control - control that will be unregistered.
+	 * @internal
+	 */
 	unregisterControl(control: DIControl<TChildModel>): void {
 		this.children.delete(control);
 	}
@@ -63,19 +110,50 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 		};
 	}
 
+	/**
+	 * Registers provided function as a callback that will be called when the current control changes.
+	 * This function will be provided by the host control to update its model.
+	 *
+	 * @param fn - callback function.
+	 * @internal
+	 */
 	registerOnControlChange(fn: (value: TModel | null) => void): void {
 		this.onControlChangeFn = fn;
 	}
 
+	/**
+	 * Registers provided function as a callback that can be called to request an update from the host control.
+	 * After calling this function the host control will update the model of the current control based on the current
+	 * state of the control and host control logic.
+	 *
+	 * @param fn - callback function.
+	 * @internal
+	 */
 	registerRequestForUpdate(fn: () => void): void {
 		this.requestForUpdate = fn;
 	}
 
-	/** Updates model and run changes */
+	/**
+	 * Updates the model of the current control.
+	 * This is the main method that should be used to update the model.
+	 *
+	 * @param value - new value.
+	 */
 	override updateModel(value: TModel | null): void {
 		super.updateModel(value);
 		this.onControlChangeFn(value);
 		this.updateControls(this.model());
+	}
+
+	/**
+	 * Can be used to catch updates from outside (FormControl, NgModel, Another Host Control, Child Control),
+	 * to update the current control state, e.g. update the native `<input>` value.
+	 *
+	 * @param value - new value.
+	 * @protected
+	 */
+	protected override incomingUpdate(value: TModel | null): void {
+		this.updateControls(value);
 	}
 
 	override writeValue(value: TModel | null): void {
@@ -86,32 +164,47 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 		}
 	}
 
-	protected override incomingUpdate(value: TModel | null): void {
-		this.updateControls(value);
-	}
-
+	/**
+	 * Updates all child controls with the provided value.
+	 *
+	 * @param value - new value.
+	 * @protected
+	 * @internal
+	 */
 	protected updateControls(value: TModel | null): void {
 		this.children.forEach((control: DIControl<TChildModel>) => {
-			if (control !== this.updateFrom()) {
+			if (control !== this.updateFrom) {
 				this.updateControl(control, value);
 			}
 		});
-		this.updateFrom.set(null);
+		this.updateFrom = null;
 	}
 
+	/**
+	 * Updates provided control with the provided value.
+	 *
+	 * @param control - control that will be updated.
+	 * @param value - new value.
+	 * @protected
+	 * @internal
+	 */
 	protected updateControl(control: DIControl<TChildModel>, value: TModel | null): void {
 		control.writeValueFromHost(value as TChildModel);
 	}
 
+	/**
+	 * Function catches updates from child controls and updates the current control model.
+	 *
+	 * @param control - control that was updated.
+	 * @param value - new value.
+	 * @protected
+	 * @internal
+	 */
 	protected childControlChange(control: DIControl<TChildModel>, value: TModel | null): void {
 		if (this.model() !== value) {
-			this.updateFrom.set(control);
+			this.updateFrom = control;
 			this.updateModel(value);
 			this.incomingUpdate(value);
 		}
-	}
-
-	ngOnDestroy(): void {
-		this.host?.unregisterControl(this);
 	}
 }
