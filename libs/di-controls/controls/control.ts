@@ -11,7 +11,7 @@ import {EMPTY_FUNCTION} from '../constants';
  * To create a control you need to extend your `@Component` or `@Directive` from `DIControl` class.
  * After that your control will be able to work with `NgModel`, `FormControl`.
  *
- * ```ts name="custom-control.component.ts"
+ * ```ts fileName="custom-control.component.ts"
  * @Component({})
  * export class CustomControlComponent extends DIControl<string> {
  * 	constructor() {
@@ -25,7 +25,7 @@ import {EMPTY_FUNCTION} from '../constants';
  * for another controls, then your control will be able to accept updates from them. To do that you need to
  * use `provideHostControl` function.
  *
- * ```ts name="custom-control.component.ts" {2}
+ * ```ts {2} fileName="custom-control.component.ts"
  * @Component({
  * 	providers: [provideHostControl(CustomControlComponent)],
  * })
@@ -34,15 +34,55 @@ import {EMPTY_FUNCTION} from '../constants';
  * 		super();
  * 	}
  * }
+ * ```
+ *
+ * ## Injecting host control
+ * By default your control doesn't communicate with another controls. But you can inject host control and put it
+ * into `super` call. This will register your control in the host control and start communication between them.
+ *
+ * > **Note**
+ * > If you register your control as a host for another controls, then you can inject `DI_HOST_CONTROL` token
+ * > only with `skipSelf` option.
+ *
+ * ```ts {4} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIControl<string> {
+ * 	constructor() {
+ * 		super(inject(DI_HOST_CONTROL));
+ * 	}
+ * }
+ * ```
  *
  */
 @Directive()
 export abstract class DIControl<TModel, TChildModel = TModel>
 	extends DIControlValueAccessor<TModel>
 	implements OnInit {
+	/**
+	 * List of children controls.
+	 *
+	 * @protected
+	 * @internal
+	 */
 	protected children: Set<DIControl<TChildModel>> = new Set<DIControl<TChildModel>>();
+	/**
+	 * Control from which we have to update our model.
+	 *
+	 * @protected
+	 * @internal
+	 */
 	protected updateFrom: DIControl<TChildModel> | null = null;
+
+	/**
+	 * Request host for update the current control.
+	 *
+	 * @protected
+	 * @internal
+	 */
 	protected requestForUpdate: () => void = EMPTY_FUNCTION;
+	/**
+	 * Function that should be used to make control touched.
+	 */
 	protected override touch: () => void = () => this.host?.touch();
 
 	private onControlChangeFn: (value: TModel | null) => void = EMPTY_FUNCTION;
