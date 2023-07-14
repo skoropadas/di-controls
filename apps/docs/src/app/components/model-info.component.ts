@@ -38,7 +38,7 @@ import {FormControl} from '@angular/forms';
 					flex-direction: column;
 					align-items: flex-start;
 					gap: 8px;
-					background: #ededed;
+					background: var(--ng-doc-base-2);
 					padding: 16px;
 				}
 			}

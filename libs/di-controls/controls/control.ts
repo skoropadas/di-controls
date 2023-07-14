@@ -22,7 +22,7 @@ import {EMPTY_FUNCTION} from '../constants';
  *
  * ## Registering as a host
  * By default your control can work only with `NgModel` and `FormControl`. But you can register your control as a host
- * for another controls, then your control will be able to accept updates from them. To do that you need to
+ * for another controls, then your control will be able to update them and accept updates from them. To do that you need to
  * use `provideHostControl` function.
  *
  * ```ts {2} fileName="custom-control.component.ts"
@@ -53,6 +53,41 @@ import {EMPTY_FUNCTION} from '../constants';
  * }
  * ```
  *
+ * ## Updating model
+ * To update model you need to call `updateModel` method. It will update model for the current control and all
+ * children controls, as well as for the `NgModel` or `FormControl`.
+ *
+ * ```ts {9} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIControl<string> {
+ * 	constructor() {
+ * 		super();
+ * 	}
+ *
+ * 	@HostListener('click')
+ * 	onClick() {
+ * 		this.updateModel('new value');
+ * 	}
+ * }
+ * ```
+ * ## Catching updates
+ * Sometimes you may need to catch updates from different sources. For example, to update the value of the native
+ * input element. To do this, you can override the `incomingUpdate` method.
+ *
+ * ```ts {10} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIControl<string> {
+ * 	constructor() {
+ * 		super();
+ * 	}
+ *
+ * 	protected override incomingUpdate(value: string | null): void {
+ * 		super.incomingUpdate(value);
+ *
+ * 		this.elementRef.nativeElement.value = value;
+ * 	}
+ * }
+ * ```
  */
 @Directive()
 export abstract class DIControl<TModel, TChildModel = TModel>

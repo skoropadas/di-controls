@@ -16,5 +16,5 @@ import {Fruit} from '../../../../constants/fruits';
 	`,
 })
 export class CheckboxObjectComponent {
-	control: FormControl<Fruit | false | null> = new FormControl<Fruit | false>(false);
+	control: FormControl<Fruit | false | null> = new FormControl<Fruit | false | null>(null);
 }

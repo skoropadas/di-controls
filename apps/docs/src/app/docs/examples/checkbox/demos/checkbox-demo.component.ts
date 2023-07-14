@@ -15,5 +15,5 @@ import {ModelInfoComponent} from '../../../../components/model-info.component';
 	`,
 })
 export class CheckboxDemoComponent {
-	control: FormControl<boolean | null> = new FormControl<boolean>(false);
+	control: FormControl<boolean | null> = new FormControl<boolean | null>(null);
 }

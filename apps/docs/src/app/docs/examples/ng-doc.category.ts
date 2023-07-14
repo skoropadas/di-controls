@@ -2,7 +2,8 @@ import {NgDocCategory} from '@ng-doc/core';
 
 const ExamplesCategory: NgDocCategory = {
 	title: 'Examples',
-	expandable: true,
+	expanded: true,
+	order: 3,
 };
 
 export default ExamplesCategory;

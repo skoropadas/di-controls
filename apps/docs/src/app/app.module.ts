@@ -24,7 +24,9 @@ import {ControlDirective} from './control.directive';
 			anchorScrolling: 'enabled',
 			scrollOffset: [0, 70],
 		}),
-		NgDocModule.forRoot(),
+		NgDocModule.forRoot({
+			defaultThemeId: 'auto'
+		}),
 		NgDocGeneratedModule.forRoot(),
 	],
 	providers: [provideSearchEngine(NgDocDefaultSearchEngine)],
