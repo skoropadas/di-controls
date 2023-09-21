@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormControl} from '@angular/forms';
 import {NgDocButtonComponent} from '@ng-doc/ui-kit';
@@ -11,10 +11,17 @@ import {NgDocButtonComponent} from '@ng-doc/ui-kit';
 		<div class="control">
 			<ng-content></ng-content>
 		</div>
+		<div class="buttons">
+			<button ng-doc-button (click)="control.reset()">Reset</button>
+		</div>
 		<ul class="control-info">
 			<li>
 				<label>Model:</label>
 				<b>{{ control.value | json }}</b>
+			</li>
+			<li>
+				<label>Model type:</label>
+				<b>{{ typeOf(control.value) }}</b>
 			</li>
 			<li>
 				<label>Touched:</label>
@@ -23,10 +30,6 @@ import {NgDocButtonComponent} from '@ng-doc/ui-kit';
 			<li>
 				<label>Dirty:</label>
 				<b>{{ control.dirty }}</b>
-			</li>
-
-			<li class="buttons">
-				<button ng-doc-button (click)="control.reset()">Reset</button>
 			</li>
 		</ul>
 	`,
@@ -37,12 +40,20 @@ import {NgDocButtonComponent} from '@ng-doc/ui-kit';
 				flex-direction: column;
 				gap: 16px;
 
+				.control {
+					margin-bottom: calc(var(--ng-doc-base-gutter) * 2);
+				}
+
 				.control-info {
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
 					gap: 8px;
-					padding: 16px;
+				}
+
+				.buttons {
+					display: flex;
+					gap: 8px;
 				}
 
 				ul {
@@ -63,17 +74,19 @@ import {NgDocButtonComponent} from '@ng-doc/ui-kit';
 						}
 					}
 				}
-
-				.buttons {
-					display: flex;
-					gap: 8px;
-					margin-top: calc(var(--ng-doc-base-gutter) * 2);
-				}
 			}
 		`,
 	],
+	// Enabled to make sure that the component is updated when the control is updated.
+	changeDetection: ChangeDetectionStrategy.Default
 })
 export class ModelInfoComponent {
 	@Input({required: true})
 	control!: FormControl;
+
+	typeOf<T>(value: T): string {
+		const isObject = typeof value === 'object' && value !== null;
+
+		return typeof value + (isObject ? ` (${value.constructor.name})` : '');
+	}
 }
