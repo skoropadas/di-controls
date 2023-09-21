@@ -4,7 +4,7 @@ import {EMPTY_FUNCTION} from '../constants';
 
 /**
  * DIControl can be used to implement any control that you want. It can work with any model type.
- * All updates from children will be accepted as is. And updates from outside (FormControl, NgModel, Another Host Control)
+ * All updates from children will be accepted as is. And updates from outside (FormControl, NgModel, another Control)
  * will be accepted as is too.
  *
  * ## Creating a control
@@ -37,7 +37,7 @@ import {EMPTY_FUNCTION} from '../constants';
  * ```
  *
  * ## Injecting host control
- * By default your control doesn't communicate with another controls. But you can inject host control and put it
+ * By default your control doesn't communicate with host controls. But you can inject host control and put it
  * into `super` call. This will register your control in the host control and start communication between them.
  *
  * > **Note**
@@ -49,6 +49,23 @@ import {EMPTY_FUNCTION} from '../constants';
  * export class CustomControlComponent extends DIControl<string> {
  * 	constructor() {
  * 		super(inject(DI_HOST_CONTROL));
+ * 	}
+ * }
+ * ```
+ *
+ * ## Getting model
+ * To get model you need to use `model` property. It will return model for the current control.
+ *
+ * ```ts {9} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIControl<string> {
+ * 	constructor() {
+ * 		super();
+ * 	}
+ *
+ * 	@HostListener('click')
+ * 	onClick() {
+ * 		console.log(this.model());
  * 	}
  * }
  * ```

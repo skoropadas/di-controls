@@ -2,16 +2,16 @@
 
 ## Checkbox
 
-{{ NgDocActions.demo("CheckboxDemoComponent") }}
+{{ NgDocActions.demo("CheckboxDemoComponent", {expanded: true}) }}
 
 ## Checkbox with Object
 
-{{ NgDocActions.demo("CheckboxObjectComponent") }}
+{{ NgDocActions.demo("CheckboxObjectComponent", {expanded: true}) }}
 
 ## Checkbox Group
 
-{{ NgDocActions.demo("CheckboxGroupDemoComponent") }}
+{{ NgDocActions.demo("CheckboxGroupDemoComponent", {expanded: true}) }}
 
 ## Checkbox Group with Object
 
-{{ NgDocActions.demo("CheckboxGroupObjectComponent") }}
+{{ NgDocActions.demo("CheckboxGroupObjectComponent", {expanded: true}) }}

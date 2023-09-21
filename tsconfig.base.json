@@ -1,33 +1,25 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "rootDir": ".",
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "importHelpers": true,
-        "target": "es2015",
-        "module": "esnext",
-        "lib": ["es2017", "dom"],
-        "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "baseUrl": ".",
-        "paths": {
-			"@ng-doc/generated": [
-				".ng-doc/docs/index.ts"
-			],
-			"@ng-doc/generated/*": [
-				".ng-doc/docs/*"
-			],
-			"di-controls": [
-				"libs/di-controls/index.ts"
-			],
-			"di-controls/*": [
-				"libs/di-controls/*"
-			]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": ".",
+		"sourceMap": true,
+		"declaration": false,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"target": "es2015",
+		"module": "esnext",
+		"lib": ["es2017", "dom"],
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@ng-doc/generated": [".ng-doc/docs/index.ts"],
+			"@ng-doc/generated/*": [".ng-doc/docs/*"],
+			"di-controls": ["libs/di-controls/index.ts"],
+			"di-controls/*": ["libs/di-controls/*"]
 		}
-    },
-    "exclude": ["node_modules", "tmp"]
+	},
+	"exclude": ["node_modules", "tmp"]
 }
