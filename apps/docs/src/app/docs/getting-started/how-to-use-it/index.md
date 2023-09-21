@@ -19,4 +19,7 @@ facilitate communication between child controls and simple input directives.
 </combobox>
 ```
 
-Please
+Please see following articles:
+
+- `DIControl`
+- `*InputsPage`

@@ -11,6 +11,7 @@ const RadioPage: NgDocPage = {
 		RadioDemoComponent,
 		RadioObjectDemoComponent,
 	},
+	keyword: 'RadioPage',
 };
 
 export default RadioPage;
