@@ -1,4 +1,4 @@
-import {computed, Directive, effect, Input, OnChanges, Signal, SimpleChanges} from '@angular/core';
+import {computed, Directive, effect, ElementRef, inject, Input, OnChanges, Signal, SimpleChanges} from '@angular/core';
 import {DICompareHost} from '../classes';
 import {DI_DEFAULT_COMPARE} from '../constants';
 import {DIControl} from './control';

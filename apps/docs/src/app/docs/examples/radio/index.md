@@ -2,8 +2,8 @@
 
 ## Radio
 
-{{ NgDocActions.demo("RadioDemoComponent") }}
+{{ NgDocActions.demo("RadioDemoComponent", {expanded: true}) }}
 
 ## Radio with Object
 
-{{ NgDocActions.demo("RadioObjectDemoComponent") }}
+{{ NgDocActions.demo("RadioObjectDemoComponent", {expanded: true}) }}
