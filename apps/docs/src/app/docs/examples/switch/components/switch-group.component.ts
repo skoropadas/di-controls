@@ -3,10 +3,9 @@ import {CommonModule} from '@angular/common';
 import {DIArrayControl, provideHostControl} from 'di-controls';
 
 @Component({
-	selector: 'di-checkbox-group',
 	standalone: true,
-	imports: [CommonModule],
-	template: `<ng-content></ng-content>`,
+	selector: 'di-switch-group',
+	template: `<ng-content/>`,
 	styles: [
 		`
 			:host {
@@ -16,10 +15,11 @@ import {DIArrayControl, provideHostControl} from 'di-controls';
 			}
 		`,
 	],
-	providers: [provideHostControl(CheckboxGroupComponent)],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	imports: [CommonModule],
+	providers: [provideHostControl(SwitchGroupComponent)],
 })
-export class CheckboxGroupComponent<T = unknown> extends DIArrayControl<T> {
+export class SwitchGroupComponent<T = unknown> extends DIArrayControl<T> {
 	constructor() {
 		super();
 	}
