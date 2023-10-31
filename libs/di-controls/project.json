@@ -20,10 +20,10 @@
 				"development": {
 					"tsConfig": "libs/di-controls/tsconfig.lib.json"
 				}
-            },
-            "defaultConfiguration": "production"
-        },
-        "test": {
+			},
+			"defaultConfiguration": "production"
+		},
+		"test": {
 			"executor": "@nx/jest:jest",
 			"outputs": [
 				"{workspaceRoot}/coverage/libs/di-controls"
@@ -33,15 +33,15 @@
 				"passWithNoTests": true
 			}
 		},
-        "lint": {
-            "executor": "@nx/linter:eslint",
-            "options": {
+		"lint": {
+			"executor": "@nx/linter:eslint",
+			"options": {
 				"lintFilePatterns": [
 					"libs/di-controls/**/*.ts",
 					"libs/di-controls/**/*.html"
 				]
-            }
-        }
-    },
-    "tags": []
+			}
+		}
+	},
+	"tags": []
 }

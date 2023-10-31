@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {DIArrayControl, provideHostControl} from 'di-controls';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DIArrayControl, provideHostControl } from 'di-controls';
 
 @Component({
 	selector: 'di-checkbox-group',

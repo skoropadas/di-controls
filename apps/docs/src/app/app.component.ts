@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {NgDocNavbarComponent, NgDocRootComponent, NgDocSidebarComponent} from '@ng-doc/app';
-import {RouterOutlet} from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgDocNavbarComponent, NgDocRootComponent, NgDocSidebarComponent } from '@ng-doc/app';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
 	selector: 'di-controls-root',

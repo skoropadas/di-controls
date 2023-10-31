@@ -1,35 +1,48 @@
 {
-    "extends": ["../../.eslintrc.json"],
-    "ignorePatterns": ["!**/*"],
-    "overrides": [
-        {
-            "files": ["*.ts"],
-            "extends": ["plugin:@nx/angular", "plugin:@angular-eslint/template/process-inline-templates"],
-            "rules": {
-                "@angular-eslint/directive-selector": [
-                    "error",
-                    {
+	"extends": [
+		"../../.eslintrc.json"
+	],
+	"ignorePatterns": [
+		"!**/*"
+	],
+	"overrides": [
+		{
+			"files": [
+				"*.ts"
+			],
+			"extends": [
+				"plugin:@nx/angular",
+				"plugin:@angular-eslint/template/process-inline-templates"
+			],
+			"rules": {
+				"@angular-eslint/directive-selector": [
+					"error",
+					{
 						"type": "attribute",
 						"prefix": "di",
 						"style": "camelCase"
 					}
-                ],
-                "@angular-eslint/component-selector": [
-                    "error",
+				],
+				"@angular-eslint/component-selector": [
+					"error",
 					{
 						"type": "element",
 						"prefix": "di",
 						"style": "kebab-case"
 					}
-                ],
-                "@typescript-eslint/no-inferrable-types": "off",
-                "@typescript-eslint/member-ordering": "off"
-            }
-        },
-        {
-            "files": ["*.html"],
-            "extends": ["plugin:@nx/angular-template"],
-            "rules": {}
-        }
-    ]
+				],
+				"@typescript-eslint/no-inferrable-types": "off",
+				"@typescript-eslint/member-ordering": "off"
+			}
+		},
+		{
+			"files": [
+				"*.html"
+			],
+			"extends": [
+				"plugin:@nx/angular-template"
+			],
+			"rules": {}
+		}
+	]
 }

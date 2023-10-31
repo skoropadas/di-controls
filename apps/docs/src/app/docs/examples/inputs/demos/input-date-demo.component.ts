@@ -11,11 +11,11 @@ import {InputDateDirective} from '../components/input-date.directive';
 	standalone: true,
 	imports: [CommonModule, ModelInfoComponent, ReactiveFormsModule, InputDateDirective],
 	template: `
-      <di-model-info [control]="control">
-        <!-- snippet "Usage" opened -->
-        <input diInputDate [formControl]="control" />
-        <!-- snippet -->
-      </di-model-info>
+		<di-model-info [control]="control">
+			<!-- snippet "Usage" opened -->
+			<input diInputDate [formControl]="control" />
+			<!-- snippet -->
+		</di-model-info>
 	`,
 })
 export class InputDateDemoComponent {

@@ -2,8 +2,19 @@ import {Directive, Input} from '@angular/core';
 import {DICompareHost, SetCompare} from '../classes';
 import {DI_DEFAULT_COMPARE} from '../constants';
 import {DICompareFunction} from '../types';
-import {DIControl} from './control';
+import {DIControl, DIControlConfig} from './control';
 import {DIStateControl} from './state-control';
+
+/**
+ * Configuration for the `DIArrayControl`.
+ */
+export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConfig<TModel[], TChildModel> {
+	/**
+	 * Function that will be used to compare values in the array.
+	 * Useful when you want to compare objects by some property.
+	 */
+	compareHost?: DICompareHost<TModel> | null;
+}
 
 /** Uses to implement host that stores multiple values */
 @Directive()
@@ -16,11 +27,8 @@ export abstract class DIArrayControl<TModel>
 
 	private proxyModel: SetCompare<TModel> = new SetCompare<TModel>();
 
-	protected constructor(
-		protected override host?: DIControl<unknown, TModel> | null,
-		protected compareHost?: DICompareHost<TModel> | null,
-	) {
-		super(host);
+	protected constructor(protected override config?: DIArrayControlConfig<TModel, TModel | TModel[]>) {
+		super(config);
 	}
 
 	override updateModel(obj: TModel[] | null): void {
@@ -41,15 +49,23 @@ export abstract class DIArrayControl<TModel>
 		super.writeValueFromHost(obj);
 	}
 
-	protected override childControlChange(control: DIControl<TModel | TModel[]>, value: TModel[] | null) {
+	protected override childControlChange(
+		control: DIControl<TModel | TModel[]>,
+		value: TModel[] | null,
+	) {
 		this.updateFrom = control;
 		this.updateModel(this.getNewModel(control, value));
-		this.incomingUpdate(this.model());
+		this.incomingUpdate && this.incomingUpdate(this.model());
 	}
 
-	private getNewModel(control: DIControl<TModel | TModel[]>, updates: TModel | TModel[] | null): TModel[] | null {
+	private getNewModel(
+		control: DIControl<TModel | TModel[]>,
+		updates: TModel | TModel[] | null,
+	): TModel[] | null {
 		if (control instanceof DIStateControl) {
-			control.checked() ? this.proxyModel.add(control.value) : this.proxyModel.delete(control.value);
+			control.checked()
+				? this.proxyModel.add(control.value)
+				: this.proxyModel.delete(control.value);
 		} else if (Array.isArray(updates)) {
 			this.proxyModel = new SetCompare<TModel>(this.compareFn, updates);
 		} else {
@@ -61,7 +77,7 @@ export abstract class DIArrayControl<TModel>
 		return this.proxyModel.toArray();
 	}
 
-	protected override updateControl(control: DIControl<TModel | TModel[]>, value: TModel[] | null): void {
+	protected override updateControl(control: DIControl<TModel | TModel[]>): void {
 		if (control instanceof DIStateControl) {
 			control.writeValueFromHost(this.proxyModel.has(control.value) ? control.value : false);
 		} else {

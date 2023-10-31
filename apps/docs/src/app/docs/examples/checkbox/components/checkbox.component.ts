@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {DI_HOST_CONTROL, DICompareHost, DIStateControl} from 'di-controls';
-import {FormsModule} from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
+import { FormsModule } from '@angular/forms';
 
 @Component({
 	selector: 'di-checkbox',
@@ -13,8 +13,7 @@ import {FormsModule} from '@angular/forms';
 				type="checkbox"
 				[ngModel]="checked()"
 				(ngModelChange)="toggle(); touch()"
-				[indeterminate]="isIntermediate"
-			/>
+				[indeterminate]="isIntermediate" />
 			<ng-content></ng-content>
 		</label>
 	`,
@@ -36,6 +35,10 @@ import {FormsModule} from '@angular/forms';
 })
 export class CheckboxComponent<T = unknown> extends DIStateControl<T> {
 	constructor() {
-		super(inject(DI_HOST_CONTROL, {optional: true}), inject(DICompareHost, {optional: true}), true);
+		super({
+			host: injectHostControl<T>({ optional: true }),
+			compareHost: inject(DICompareHost, { optional: true }),
+			hasIntermediate: true,
+		});
 	}
 }

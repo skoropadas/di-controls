@@ -1,5 +1,5 @@
-import {Directive} from '@angular/core';
-import {DIControl} from 'libs/di-controls';
+import { Directive } from '@angular/core';
+import { DIControl } from 'libs/di-controls';
 
 @Directive({
 	selector: '[flexControlsControl]',

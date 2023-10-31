@@ -9,7 +9,13 @@ import {InputNumberDirective} from '../components/input-number.directive';
 @Component({
 	selector: 'di-input-number-demo',
 	standalone: true,
-	imports: [CommonModule, FormsModule, ModelInfoComponent, InputNumberDirective, ReactiveFormsModule],
+	imports: [
+		CommonModule,
+		FormsModule,
+		ModelInfoComponent,
+		InputNumberDirective,
+		ReactiveFormsModule,
+	],
 	template: `
 		<di-model-info [control]="control">
 			<!-- snippet "Usage" opened -->

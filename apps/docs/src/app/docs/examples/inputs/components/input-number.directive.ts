@@ -1,5 +1,5 @@
-import {Directive, ElementRef, HostListener, inject} from '@angular/core';
-import {DIControl} from 'di-controls';
+import { Directive, ElementRef, HostListener, inject } from '@angular/core';
+import { DIControl } from 'di-controls';
 
 @Directive({
 	selector: 'input[diInputNumber]',
@@ -9,7 +9,11 @@ export class InputNumberDirective extends DIControl<number> {
 	protected readonly inputElement: HTMLInputElement = inject(ElementRef).nativeElement;
 
 	constructor() {
-		super();
+		super({
+			onIncomingUpdate: (value: number | null) => {
+				this.inputElement.value = String(value ?? '');
+			},
+		});
 	}
 
 	@HostListener('input')
@@ -20,11 +24,5 @@ export class InputNumberDirective extends DIControl<number> {
 	@HostListener('blur')
 	protected onBlur(): void {
 		this.touch();
-	}
-
-	protected override incomingUpdate(value: number | null): void {
-		super.incomingUpdate(value);
-
-		this.inputElement.value = String(value ?? '');
 	}
 }

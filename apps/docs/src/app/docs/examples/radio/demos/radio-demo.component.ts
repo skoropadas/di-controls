@@ -6,8 +6,8 @@ import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {FRUIT_NAMES} from '../../../../constants/fruits';
 import {RadioGroupComponent} from '../components/radio-group.component';
 
-// snippet-from-file="../components/radio.component.ts"
 // snippet-from-file="../components/radio-group.component.ts"
+// snippet-from-file="../components/radio.component.ts"
 
 @Component({
 	selector: 'di-radio-demo',
@@ -23,7 +23,7 @@ import {RadioGroupComponent} from '../components/radio-group.component';
 		<di-model-info [control]="control">
 			<!-- snippet "Usage" opened -->
 			<di-radio-group [formControl]="control">
-				<di-radio *ngFor="let item of items" [value]="item">{{item}}</di-radio>
+				<di-radio *ngFor="let item of items" [value]="item">{{ item }}</di-radio>
 			</di-radio-group>
 			<!-- snippet -->
 		</di-model-info>

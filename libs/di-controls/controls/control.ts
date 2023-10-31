@@ -1,10 +1,34 @@
-import {DestroyRef, Directive, inject, OnInit} from '@angular/core';
-import {DIControlValueAccessor} from './control-value-accessor';
-import {EMPTY_FUNCTION} from '../constants';
+import { DestroyRef, Directive, inject, OnInit } from '@angular/core';
+import { DIControlValueAccessor } from './control-value-accessor';
+import { EMPTY_FUNCTION } from '../constants';
+
+/**
+ * Configuration for the `DIControl`.
+ */
+export interface DIControlConfig<TModel, TChildModel> {
+	/**
+	 * Host control for the current control. It can be injected using `DI_HOST_CONTROL` token.
+	 */
+	host?: DIControl<any, TModel> | null;
+	/**
+	 * Function that will be called when the current control receives an update from the host control or from the
+	 * Forms API.
+	 *
+	 * @param value - new value.
+	 */
+	onIncomingUpdate?: (value: TModel | null) => void;
+	/**
+	 * Function that will be called when the current control receives an update from the child control.
+	 *
+	 * @param control - child control that was updated.
+	 * @param value - new value.
+	 */
+	onChildControlChange?: (control: DIControl<TChildModel>, value: TModel | null) => void;
+}
 
 /**
  * DIControl can be used to implement any control that you want. It can work with any model type.
- * All updates from children will be accepted as is. And updates from outside (FormControl, NgModel, another Control)
+ * All updates from children will be accepted as is. And updates from outside (`FormControl`, `NgModel`, another Control)
  * will be accepted as is too.
  *
  * ## Creating a control
@@ -109,7 +133,8 @@ import {EMPTY_FUNCTION} from '../constants';
 @Directive()
 export abstract class DIControl<TModel, TChildModel = TModel>
 	extends DIControlValueAccessor<TModel>
-	implements OnInit {
+	implements OnInit
+{
 	/**
 	 * List of children controls.
 	 *
@@ -127,6 +152,7 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 
 	/**
 	 * Request host for update the current control.
+	 * Host will update the current control based on its current state and host control logic.
 	 *
 	 * @protected
 	 * @internal
@@ -135,15 +161,15 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 	/**
 	 * Function that should be used to make control touched.
 	 */
-	protected override touch: () => void = () => this.host?.touch();
+	protected override touch: () => void = () => this.config?.host?.touch();
 
 	private onControlChangeFn: (value: TModel | null) => void = EMPTY_FUNCTION;
 	private destroyRef: DestroyRef = inject(DestroyRef);
 
-	protected constructor(protected host?: DIControl<unknown, TModel> | null) {
-		super();
+	protected constructor(protected readonly config?: DIControlConfig<TModel, TChildModel>) {
+		super(config?.onIncomingUpdate);
 
-		this.destroyRef.onDestroy(() => this.host?.unregisterControl(this))
+		this.destroyRef.onDestroy(() => this.config?.host?.unregisterControl(this));
 	}
 
 	ngOnInit(): void {
@@ -151,7 +177,7 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 		 * We have to register control with Promise.resolve because NgModel uses it too to set first
 		 * value (https://github.com/angular/angular/blob/7df9127088bda3c9d29937a04287b87dc2045ea7/packages/forms/src/directives/ng_model.ts#L314)
 		 */
-		Promise.resolve().then(() => this.host?.registerControl(this));
+		Promise.resolve().then(() => this.config?.host?.registerControl(this));
 	}
 
 	/**
@@ -174,6 +200,7 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 
 		control.registerOnControlChange((value: unknown | null) => {
 			this.childControlChange(control, value as TModel | null);
+			this.config?.onChildControlChange?.(control, value as TModel | null);
 		});
 
 		control.registerRequestForUpdate(() => {
@@ -195,10 +222,8 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 		this.touch = () => {
 			fn();
 
-			/**
-			 * Touch host control to update its state
-			 */
-			this.host?.touch();
+			// Touch host control to update its state
+			this.config?.host?.touch();
 		};
 	}
 
@@ -235,17 +260,6 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 		super.updateModel(value);
 		this.onControlChangeFn(value);
 		this.updateControls(this.model());
-	}
-
-	/**
-	 * Can be used to catch updates from outside (FormControl, NgModel, Another Host Control, Child Control),
-	 * to update the current control state, e.g. update the native `<input>` value.
-	 *
-	 * @param value - new value.
-	 * @protected
-	 */
-	protected override incomingUpdate(value: TModel | null): void {
-		this.updateControls(value);
 	}
 
 	override writeValue(value: TModel | null): void {
@@ -296,7 +310,7 @@ export abstract class DIControl<TModel, TChildModel = TModel>
 		if (this.model() !== value) {
 			this.updateFrom = control;
 			this.updateModel(value);
-			this.incomingUpdate(value);
+			this.incomingUpdate && this.incomingUpdate(value);
 		}
 	}
 }

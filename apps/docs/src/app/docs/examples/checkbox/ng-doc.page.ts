@@ -1,9 +1,9 @@
-import {NgDocPage} from '@ng-doc/core';
+import { NgDocPage } from '@ng-doc/core';
 import ExamplesCategory from '../ng-doc.category';
-import {CheckboxDemoComponent} from './demos/checkbox-demo.component';
-import {CheckboxGroupDemoComponent} from './demos/checkbox-group-demo.component';
-import {CheckboxGroupObjectComponent} from './demos/checkbox-group-object.component';
-import {CheckboxObjectComponent} from './demos/checkbox-object.component';
+import { CheckboxDemoComponent } from './demos/checkbox-demo.component';
+import { CheckboxGroupDemoComponent } from './demos/checkbox-group-demo.component';
+import { CheckboxGroupObjectComponent } from './demos/checkbox-group-object.component';
+import { CheckboxObjectComponent } from './demos/checkbox-object.component';
 
 const CheckboxPage: NgDocPage = {
 	title: `Checkbox`,
@@ -15,7 +15,7 @@ const CheckboxPage: NgDocPage = {
 		CheckboxGroupDemoComponent,
 		CheckboxGroupObjectComponent,
 	},
-	keyword: 'CheckboxPage'
+	keyword: 'CheckboxPage',
 };
 
 export default CheckboxPage;

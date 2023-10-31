@@ -6,13 +6,19 @@ import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {CheckboxGroupComponent} from '../components/checkbox-group.component';
 import {Fruit, FRUITS} from '../../../../constants/fruits';
 
-// snippet-from-file="../components/checkbox.component.ts"
 // snippet-from-file="../components/checkbox-group.component.ts"
+// snippet-from-file="../components/checkbox.component.ts"
 
 @Component({
 	selector: 'di-checkbox-group-object',
 	standalone: true,
-	imports: [CommonModule, CheckboxComponent, ModelInfoComponent, ReactiveFormsModule, CheckboxGroupComponent],
+	imports: [
+		CommonModule,
+		CheckboxComponent,
+		ModelInfoComponent,
+		ReactiveFormsModule,
+		CheckboxGroupComponent,
+	],
 	template: `
 		<di-model-info [control]="control">
 			<!-- snippet "Usage" opened -->
@@ -25,7 +31,7 @@ import {Fruit, FRUITS} from '../../../../constants/fruits';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxGroupObjectComponent {
-	control: FormControl<Fruit[] | null> = new FormControl<Fruit[]>([{id: 1, name: 'Apple'}]);
+	control: FormControl<Fruit[] | null> = new FormControl<Fruit[]>([{ id: 1, name: 'Apple' }]);
 	items: Fruit[] = FRUITS;
 
 	compareFruits(a: Fruit | null, b: Fruit | null): boolean {

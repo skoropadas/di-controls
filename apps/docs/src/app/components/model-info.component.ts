@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormControl} from '@angular/forms';
-import {NgDocButtonComponent} from '@ng-doc/ui-kit';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl } from '@angular/forms';
+import { NgDocButtonComponent } from '@ng-doc/ui-kit';
 
 @Component({
 	selector: 'di-model-info',
@@ -78,10 +78,10 @@ import {NgDocButtonComponent} from '@ng-doc/ui-kit';
 		`,
 	],
 	// Enabled to make sure that the component is updated when the control is updated.
-	changeDetection: ChangeDetectionStrategy.Default
+	changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ModelInfoComponent {
-	@Input({required: true})
+	@Input({ required: true })
 	control!: FormControl;
 
 	typeOf<T>(value: T): string {

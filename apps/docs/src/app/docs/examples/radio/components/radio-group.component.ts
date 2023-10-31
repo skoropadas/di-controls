@@ -1,12 +1,12 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {DIControl, provideHostControl} from 'di-controls';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DIControl, provideHostControl } from 'di-controls';
 
 @Component({
 	selector: 'di-radio-group',
 	standalone: true,
 	imports: [CommonModule],
-	template: `<ng-content></ng-content>`,
+	template: ` <ng-content></ng-content>`,
 	styles: [
 		`
 			:host {

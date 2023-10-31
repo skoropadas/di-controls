@@ -1,7 +1,7 @@
-import {Directive, inject} from '@angular/core';
-import {createFixture} from './utils/create-fixture';
-import {BaseControlDirective} from './utils';
-import {DI_HOST_CONTROL, provideHostControl} from '../../tokens';
+import { Directive } from '@angular/core';
+import { createFixture } from './utils/create-fixture';
+import { BaseControlDirective } from './utils';
+import { injectHostControl, provideHostControl } from '../../tokens';
 
 describe('DIControl', () => {
 	describe('standalone', () => {
@@ -15,10 +15,10 @@ describe('DIControl', () => {
 			}
 		}
 
-		const hostControlFn = () => ({control: ControlDirective, selector: '[diControl]'});
+		const hostControlFn = () => ({ control: ControlDirective, selector: '[diControl]' });
 
 		it('should set default value', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
 			});
@@ -28,7 +28,7 @@ describe('DIControl', () => {
 		});
 
 		it('should update value', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
 			});
@@ -40,7 +40,7 @@ describe('DIControl', () => {
 		});
 
 		it('should update ngControl value', async () => {
-			const {fixture, formControl, control, getTemplateModel} = await createFixture({
+			const { fixture, formControl, control, getTemplateModel } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
 			});
@@ -55,7 +55,7 @@ describe('DIControl', () => {
 		});
 
 		it('should make formControl touched', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
 			});
@@ -66,7 +66,7 @@ describe('DIControl', () => {
 		});
 
 		it('should disabled control', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
 			});
@@ -79,9 +79,9 @@ describe('DIControl', () => {
 		});
 
 		it('should remove disabled attribute if control was enabled', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
-				defaultValue: ''
+				defaultValue: '',
 			});
 
 			formControl.disable();
@@ -94,6 +94,9 @@ describe('DIControl', () => {
 	});
 
 	describe('host', () => {
+		const onIncomingUpdate = jest.fn();
+		const onChildControlChange = jest.fn();
+
 		@Directive({
 			selector: '[diHostControl]',
 			standalone: true,
@@ -101,7 +104,10 @@ describe('DIControl', () => {
 		})
 		class HostControlDirective extends BaseControlDirective<string> {
 			constructor() {
-				super();
+				super({
+					onIncomingUpdate,
+					onChildControlChange,
+				});
 			}
 		}
 
@@ -111,15 +117,15 @@ describe('DIControl', () => {
 		})
 		class ControlDirective extends BaseControlDirective<string> {
 			constructor() {
-				super(inject(DI_HOST_CONTROL));
+				super({ host: injectHostControl() });
 			}
 		}
 
-		const hostControlFn = () => ({control: HostControlDirective, selector: '[diHostControl]'});
-		const controlFn = () => ({control: ControlDirective, selector: '[diControl]'});
+		const hostControlFn = () => ({ control: HostControlDirective, selector: '[diHostControl]' });
+		const controlFn = () => ({ control: ControlDirective, selector: '[diControl]' });
 
 		it('should initialize children with host model', async () => {
-			const {fixture, nestedControls} = await createFixture({
+			const { fixture, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
 				nestedControls: [controlFn, controlFn],
@@ -132,7 +138,7 @@ describe('DIControl', () => {
 		});
 
 		it('should update children model if model was manually updated', async () => {
-			const {control, nestedControls} = await createFixture({
+			const { control, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
 				nestedControls: [controlFn, controlFn],
@@ -144,7 +150,7 @@ describe('DIControl', () => {
 		});
 
 		it('should update children model if ngControl model was changed', async () => {
-			const {formControl, nestedControls} = await createFixture({
+			const { formControl, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
 				nestedControls: [controlFn, controlFn],
@@ -156,10 +162,10 @@ describe('DIControl', () => {
 		});
 
 		it('children should touch host', async () => {
-			const {formControl, nestedControls} = await createFixture({
+			const { formControl, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
-				nestedControls: [() => ({control: ControlDirective, selector: '[diControl]'})],
+				nestedControls: [() => ({ control: ControlDirective, selector: '[diControl]' })],
 			});
 
 			nestedControls[0].touchControl();
@@ -168,10 +174,10 @@ describe('DIControl', () => {
 		});
 
 		it('children should update host model', async () => {
-			const {formControl, nestedControls, control} = await createFixture({
+			const { formControl, nestedControls, control } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
-				nestedControls: [() => ({control: ControlDirective, selector: '[diControl]'})],
+				nestedControls: [() => ({ control: ControlDirective, selector: '[diControl]' })],
 			});
 
 			nestedControls[0].updateModel('2');
@@ -181,15 +187,52 @@ describe('DIControl', () => {
 		});
 
 		it('children update should update other children model', async () => {
-			const {nestedControls} = await createFixture({
+			const { nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: '1',
-				nestedControls: [controlFn, controlFn]
+				nestedControls: [controlFn, controlFn],
 			});
 
 			nestedControls[0].updateModel('2');
 
 			expect(nestedControls.map((control) => control.getModel())).toEqual(['2', '2']);
 		});
+
+		it('should trigger onIncomingUpdate on initialization', async () => {
+			const { control } = await createFixture({
+				hostControlFn,
+				defaultValue: '1',
+				nestedControls: [controlFn],
+			});
+
+			expect(onIncomingUpdate).toHaveBeenCalledTimes(1);
+			expect(onIncomingUpdate).toHaveBeenCalledWith('1');
+		})
+
+		it('should trigger onIncomingUpdate on update', async () => {
+			const { nestedControls: [childControl] } = await createFixture({
+				hostControlFn,
+				defaultValue: '1',
+				nestedControls: [controlFn],
+			});
+
+			childControl.updateModel('2');
+
+			expect(onIncomingUpdate).toHaveBeenCalledTimes(2);
+			expect(onIncomingUpdate).toHaveBeenCalledWith('2');
+		})
+
+		it('should trigger onChildControlChange on child changes', async () => {
+			const { nestedControls: [childControl] } = await createFixture({
+				hostControlFn,
+				defaultValue: '1',
+				nestedControls: [controlFn],
+			});
+
+			childControl.updateModel('2');
+
+			expect(onChildControlChange).toHaveBeenCalledTimes(1);
+			expect(onChildControlChange).toHaveBeenCalledWith(childControl, '2');
+		})
 	});
 });

@@ -1,20 +1,25 @@
 {
-  "singleQuote": true,
-  "trailingComma": "all",
-  "tabWidth": 4,
-  "endOfLine": "crlf",
-  "printWidth": 120,
-  "semi": true,
-  "bracketSpacing": false,
-  "jsxBracketSameLine": true,
-  "overrides": [
-    {
-      "files": [
-        "*.ts"
-      ],
-      "options": {
-        "parser": "typescript"
-      }
-    }
-  ]
+	"singleQuote": true,
+	"trailingComma": "all",
+	"endOfLine": "lf",
+	"semi": true,
+	"bracketSameLine": true,
+	"overrides": [
+		{
+			"files": [
+				"*.ts"
+			],
+			"options": {
+				"parser": "typescript"
+			}
+		},
+		{
+			"files": [
+				"*.ts.nunj"
+			],
+			"options": {
+				"parser": "typescript"
+			}
+		}
+	]
 }

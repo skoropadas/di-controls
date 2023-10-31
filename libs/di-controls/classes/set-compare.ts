@@ -1,5 +1,5 @@
-import {DI_DEFAULT_COMPARE} from '../constants';
-import {DICompareFunction} from '../types';
+import { DI_DEFAULT_COMPARE } from '../constants';
+import { DICompareFunction } from '../types';
 
 export class SetCompare<T> implements Iterable<T> {
 	private values: Set<T> = new Set<T>();

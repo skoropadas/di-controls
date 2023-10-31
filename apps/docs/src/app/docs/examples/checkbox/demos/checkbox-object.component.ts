@@ -14,7 +14,7 @@ import {Fruit} from '../../../../constants/fruits';
 	template: `
 		<di-model-info [control]="control">
 			<!-- snippet "Usage" opened -->
-			<di-checkbox [formControl]="control" [value]="{id: 1, name: 'Apple'}">Apple</di-checkbox>
+			<di-checkbox [formControl]="control" [value]="{ id: 1, name: 'Apple' }">Apple</di-checkbox>
 			<!-- snippet -->
 		</di-model-info>
 	`,

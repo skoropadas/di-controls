@@ -9,7 +9,13 @@ import {ModelInfoComponent} from '../../../../components/model-info.component';
 @Component({
 	selector: 'di-input-string-demo',
 	standalone: true,
-	imports: [CommonModule, FormsModule, InputStringDirective, ModelInfoComponent, ReactiveFormsModule],
+	imports: [
+		CommonModule,
+		FormsModule,
+		InputStringDirective,
+		ModelInfoComponent,
+		ReactiveFormsModule,
+	],
 	template: `
 		<di-model-info [control]="control">
 			<!-- snippet "Usage" opened -->

@@ -1,6 +1,6 @@
-import {Directive, ElementRef, HostListener, inject, Input} from '@angular/core';
-import {DIControl} from 'di-controls';
-import {parse, format} from 'date-fns';
+import { Directive, ElementRef, HostListener, inject, Input } from '@angular/core';
+import { DIControl } from 'di-controls';
+import { format, parse } from 'date-fns';
 
 @Directive({
 	selector: 'input[diInputDate]',
@@ -13,7 +13,11 @@ export class InputDateDirective extends DIControl<Date> {
 	protected readonly inputElement: HTMLInputElement = inject(ElementRef).nativeElement;
 
 	constructor() {
-		super();
+		super({
+			onIncomingUpdate: (value: Date | null) => {
+				this.inputElement.value = value ? format(value, this.format) : '';
+			},
+		});
 	}
 
 	@HostListener('input')
@@ -24,11 +28,5 @@ export class InputDateDirective extends DIControl<Date> {
 	@HostListener('blur')
 	protected onBlur(): void {
 		this.touch();
-	}
-
-	protected override incomingUpdate(value: Date | null): void {
-		super.incomingUpdate(value);
-
-		this.inputElement.value = value ? format(value, this.format) : '';
 	}
 }

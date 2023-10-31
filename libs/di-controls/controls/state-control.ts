@@ -1,27 +1,31 @@
-import {computed, Directive, effect, ElementRef, inject, Input, OnChanges, Signal, SimpleChanges} from '@angular/core';
+import {computed, Directive, effect, Input, OnChanges, Signal, SimpleChanges} from '@angular/core';
 import {DICompareHost} from '../classes';
 import {DI_DEFAULT_COMPARE} from '../constants';
-import {DIControl} from './control';
+import {DIControl, DIControlConfig} from './control';
 import {DICompareFunction} from 'di-controls/types';
+
+export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TModel> {
+	compareHost?: DICompareHost<TModel | null> | null;
+	hasIntermediate?: boolean;
+}
 
 /** Uses to implement controls with state (like checkbox, radio-button, chip, etc.) */
 @Directive({})
-export abstract class DIStateControl<T> extends DIControl<T | boolean> implements OnChanges {
+export abstract class DIStateControl<TModel> extends DIControl<TModel | boolean> implements OnChanges {
 	@Input()
-	value: T | true = true;
+	value: TModel | true = true;
 
 	checked: Signal<boolean | null> = computed(() => {
-		const compareFn: DICompareFunction<T | boolean> = this.compareHost?.compareFn ?? DI_DEFAULT_COMPARE;
+		const compareFn: DICompareFunction<TModel | boolean> =
+			this.config?.compareHost?.compareFn ?? DI_DEFAULT_COMPARE;
 
 		return compareFn(this.value, this.model()) ? true : this.isIntermediate ? null : false;
 	});
 
 	protected constructor(
-		protected override readonly host?: DIControl<unknown, T> | null,
-		protected readonly compareHost?: DICompareHost<T | boolean | null> | null,
-		protected readonly hasIntermediate?: boolean,
+		protected override readonly config?: DIStateControlConfig<TModel | boolean>,
 	) {
-		super(host);
+		super(config);
 
 		// Setting aria attributes
 		effect(() => {
@@ -31,7 +35,7 @@ export abstract class DIStateControl<T> extends DIControl<T | boolean> implement
 		});
 	}
 
-	ngOnChanges({value}: SimpleChanges): void {
+	ngOnChanges({ value }: SimpleChanges): void {
 		/*
 		 * We have to request host for updates, because when we use ngFor directive
 		 * with trackBy function, Angular doesn't re-create components, it just changes their inputs,
@@ -63,6 +67,6 @@ export abstract class DIStateControl<T> extends DIControl<T | boolean> implement
 	}
 
 	get isIntermediate(): boolean {
-		return this.model() === null && !!this.hasIntermediate;
+		return this.model() === null && !!this.config?.hasIntermediate;
 	}
 }

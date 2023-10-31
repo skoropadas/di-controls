@@ -1,6 +1,14 @@
-import {ChangeDetectionStrategy, Component, Input, QueryList, Type, ViewChild, ViewChildren} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	Input,
+	QueryList,
+	Type,
+	ViewChild,
+	ViewChildren,
+} from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 export interface ControlConfig<Control extends Type<unknown>> {
 	control: Control;
@@ -10,13 +18,21 @@ export interface ControlConfig<Control extends Type<unknown>> {
 
 export type ControlFn<TControl extends Type<unknown>> = () => ControlConfig<TControl>;
 
-export interface FixtureConfig<TValue, THost extends Type<unknown>, TChildren extends Type<unknown>> {
+export interface FixtureConfig<
+	TValue,
+	THost extends Type<unknown>,
+	TChildren extends Type<unknown>,
+> {
 	hostControlFn: ControlFn<THost>;
 	nestedControls?: Array<ControlFn<TChildren>>;
 	defaultValue: TValue;
 }
 
-export interface ITestComponent<TValue, THost extends Type<unknown>, TChildren extends Type<unknown>> {
+export interface ITestComponent<
+	TValue,
+	THost extends Type<unknown>,
+	TChildren extends Type<unknown>,
+> {
 	formControl: FormControl<TValue>;
 	control: InstanceType<THost>;
 
@@ -51,31 +67,38 @@ export async function createFixture<
 	THost extends Type<unknown>,
 	TChildren extends Type<unknown> = Type<unknown>,
 >(config: FixtureConfig<TValue, THost, TChildren>): Promise<Fixture<TValue, THost, TChildren>> {
-	const {control, selector, inputs} = config.hostControlFn();
-	const nestedControls: Array<ControlConfig<TChildren>> = (config.nestedControls ?? []).map((controlFn) =>
-		controlFn(),
+	const { control, selector, inputs } = config.hostControlFn();
+	const nestedControls: Array<ControlConfig<TChildren>> = (config.nestedControls ?? []).map(
+		(controlFn) => controlFn(),
 	);
 	const nestControlsTemplate = nestedControls
-		.map(({selector, inputs}) => `<div ${selector} ${mapInputs(inputs)}></div>`)
+		.map(({ selector, inputs }) => `<div ${selector} ${mapInputs(inputs)}></div>`)
 		.join('\n');
 	const firstNestedControl = nestedControls[0]?.control ?? control;
 
 	@Component({
 		template: `
-			<div ${selector} ${mapInputs(inputs)} [formControl]="formControl">${nestControlsTemplate}</div>
+			<div ${selector} ${mapInputs(inputs)} [formControl]="formControl">
+				${nestControlsTemplate}
+			</div>
 			<di-cdr-test [model]="formControl.value" #cdrTest></di-cdr-test>
 		`,
-		imports: [control, CdrTestComponent, ReactiveFormsModule, ...nestedControls.map(({control}) => control)],
+		imports: [
+			control,
+			CdrTestComponent,
+			ReactiveFormsModule,
+			...nestedControls.map(({ control }) => control),
+		],
 		standalone: true,
 		changeDetection: ChangeDetectionStrategy.OnPush,
 	})
 	class TestComponent implements ITestComponent<TValue, THost, TChildren> {
 		formControl: FormControl = new FormControl<TValue>(config.defaultValue);
 
-		@ViewChild(control, {static: true})
+		@ViewChild(control, { static: true })
 		control!: InstanceType<THost>;
 
-		@ViewChild(CdrTestComponent, {static: true})
+		@ViewChild(CdrTestComponent, { static: true })
 		protected cdrTestComponent?: CdrTestComponent<TValue>;
 
 		@ViewChildren(firstNestedControl)

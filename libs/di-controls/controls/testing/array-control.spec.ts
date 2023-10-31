@@ -1,7 +1,12 @@
-import {Directive, inject} from '@angular/core';
-import {DI_HOST_CONTROL, provideHostControl} from '../../tokens';
-import {DICompareHost, provideCompareHost} from '../../classes';
-import {BaseArrayControlDirective, BaseControlDirective, BaseStateControlDirective, createFixture} from './utils';
+import { Directive, inject } from '@angular/core';
+import {injectHostControl, provideHostControl} from '../../tokens';
+import { DICompareHost, provideCompareHost } from '../../classes';
+import {
+	BaseArrayControlDirective,
+	BaseControlDirective,
+	BaseStateControlDirective,
+	createFixture,
+} from './utils';
 
 describe('DIArrayControl', () => {
 	describe('DIStateControl', () => {
@@ -22,19 +27,19 @@ describe('DIArrayControl', () => {
 		})
 		class StateControlDirective extends BaseStateControlDirective<number> {
 			constructor() {
-				super(inject(DI_HOST_CONTROL));
+				super({host: injectHostControl()});
 			}
 		}
 
-		const hostControlFn = () => ({control: ArrayControlDirective, selector: '[diArrayControl]'});
+		const hostControlFn = () => ({ control: ArrayControlDirective, selector: '[diArrayControl]' });
 		const controlFn = (value: unknown) => () => ({
 			control: StateControlDirective,
 			selector: '[diStateControl]',
-			inputs: {value},
+			inputs: { value },
 		});
 
 		it('should initialize children with host model', async () => {
-			const {fixture, nestedControls} = await createFixture({
+			const { fixture, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn(1), controlFn(2)],
@@ -48,7 +53,7 @@ describe('DIArrayControl', () => {
 		});
 
 		it('should update children model if model was manually updated', async () => {
-			const {control, nestedControls} = await createFixture({
+			const { control, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn(1), controlFn(2)],
@@ -61,7 +66,7 @@ describe('DIArrayControl', () => {
 		});
 
 		it('should update children model if ngControl model was changed', async () => {
-			const {formControl, nestedControls} = await createFixture({
+			const { formControl, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn(1), controlFn(2)],
@@ -74,7 +79,7 @@ describe('DIArrayControl', () => {
 		});
 
 		it('should update host model if children model was changed', async () => {
-			const {fixture, control, nestedControls} = await createFixture({
+			const { fixture, control, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn(1), controlFn(2)],
@@ -99,13 +104,16 @@ describe('DIArrayControl', () => {
 		@Directive({
 			selector: '[diArrayControl]',
 			standalone: true,
-			providers: [provideHostControl(ArrayControlDirective), provideCompareHost(ArrayControlDirective)],
+			providers: [
+				provideHostControl(ArrayControlDirective),
+				provideCompareHost(ArrayControlDirective),
+			],
 		})
 		class ArrayControlDirective extends BaseArrayControlDirective<TestObject> {
 			override compareFn = (a: TestObject | null, b: TestObject | null) => a?.id === b?.id;
 
 			constructor() {
-				super(null);
+				super();
 			}
 		}
 
@@ -115,7 +123,7 @@ describe('DIArrayControl', () => {
 		})
 		class StateControlDirective extends BaseStateControlDirective<number> {
 			constructor() {
-				super(inject(DI_HOST_CONTROL), inject(DICompareHost));
+				super({host: injectHostControl(), compareHost: inject(DICompareHost)});
 			}
 		}
 
@@ -126,53 +134,71 @@ describe('DIArrayControl', () => {
 		const controlFn = (value: unknown) => () => ({
 			control: StateControlDirective,
 			selector: '[diStateControl]',
-			inputs: {value},
+			inputs: { value },
 		});
 
 		it('should initialize children with host model', async () => {
-			const {fixture, nestedControls} = await createFixture({
+			const { fixture, nestedControls } = await createFixture({
 				hostControlFn,
-				defaultValue: [{id: 1, name: 'test1'}],
-				nestedControls: [controlFn({id: 1, name: 'test1'}), controlFn({id: 2, name: 'test2'})],
+				defaultValue: [{ id: 1, name: 'test1' }],
+				nestedControls: [controlFn({ id: 1, name: 'test1' }), controlFn({ id: 2, name: 'test2' })],
 			});
 
 			// Wait for children initialization
 			await fixture.whenStable();
 
-			expect(nestedControls.map((control) => control.getModel())).toEqual([{id: 1, name: 'test1'}, false]);
+			expect(nestedControls.map((control) => control.getModel())).toEqual([
+				{
+					id: 1,
+					name: 'test1',
+				},
+				false,
+			]);
 		});
 
 		it('should update children model if model was manually updated', async () => {
-			const {control, nestedControls} = await createFixture({
+			const { control, nestedControls } = await createFixture({
 				hostControlFn,
-				defaultValue: [{id: 1, name: 'test1'}],
-				nestedControls: [controlFn({id: 1, name: 'test1'}), controlFn({id: 2, name: 'test2'})],
+				defaultValue: [{ id: 1, name: 'test1' }],
+				nestedControls: [controlFn({ id: 1, name: 'test1' }), controlFn({ id: 2, name: 'test2' })],
 			});
 
-			control.updateModel([{id: 2, name: 'test2'}]);
+			control.updateModel([{ id: 2, name: 'test2' }]);
 
-			expect(nestedControls.map((control) => control.getModel())).toEqual([false, {id: 2, name: 'test2'}]);
+			expect(nestedControls.map((control) => control.getModel())).toEqual([
+				false,
+				{
+					id: 2,
+					name: 'test2',
+				},
+			]);
 			expect(nestedControls.map((control) => control.checked())).toEqual([false, true]);
 		});
 
 		it('should update children model if ngControl model was changed', async () => {
-			const {formControl, nestedControls} = await createFixture({
+			const { formControl, nestedControls } = await createFixture({
 				hostControlFn,
-				defaultValue: [{id: 1, name: 'test1'}],
-				nestedControls: [controlFn({id: 1, name: 'test1'}), controlFn({id: 2, name: 'test2'})],
+				defaultValue: [{ id: 1, name: 'test1' }],
+				nestedControls: [controlFn({ id: 1, name: 'test1' }), controlFn({ id: 2, name: 'test2' })],
 			});
 
-			formControl.setValue([{id: 2, name: 'test2'}]);
+			formControl.setValue([{ id: 2, name: 'test2' }]);
 
-			expect(nestedControls.map((control) => control.getModel())).toEqual([false, {id: 2, name: 'test2'}]);
+			expect(nestedControls.map((control) => control.getModel())).toEqual([
+				false,
+				{
+					id: 2,
+					name: 'test2',
+				},
+			]);
 			expect(nestedControls.map((control) => control.checked())).toEqual([false, true]);
 		});
 
 		it('should update host model if children model was changed', async () => {
-			const {fixture, control, nestedControls} = await createFixture({
+			const { fixture, control, nestedControls } = await createFixture({
 				hostControlFn,
-				defaultValue: [{id: 1, name: 'test1'}],
-				nestedControls: [controlFn({id: 1, name: 'test1'}), controlFn({id: 2, name: 'test2'})],
+				defaultValue: [{ id: 1, name: 'test1' }],
+				nestedControls: [controlFn({ id: 1, name: 'test1' }), controlFn({ id: 2, name: 'test2' })],
 			});
 
 			// Wait for children initialization
@@ -181,8 +207,14 @@ describe('DIArrayControl', () => {
 			nestedControls[0].toggle();
 			nestedControls[1].toggle();
 
-			expect(control.getModel()).toEqual([{id: 2, name: 'test2'}]);
-			expect(nestedControls.map((control) => control.getModel())).toEqual([false, {id: 2, name: 'test2'}]);
+			expect(control.getModel()).toEqual([{ id: 2, name: 'test2' }]);
+			expect(nestedControls.map((control) => control.getModel())).toEqual([
+				false,
+				{
+					id: 2,
+					name: 'test2',
+				},
+			]);
 		});
 	});
 
@@ -204,18 +236,18 @@ describe('DIArrayControl', () => {
 		})
 		class ControlDirective extends BaseControlDirective<number[]> {
 			constructor() {
-				super(inject(DI_HOST_CONTROL));
+				super({ host: injectHostControl() });
 			}
 		}
 
-		const hostControlFn = () => ({control: ArrayControlDirective, selector: '[diArrayControl]'});
+		const hostControlFn = () => ({ control: ArrayControlDirective, selector: '[diArrayControl]' });
 		const controlFn = () => ({
 			control: ControlDirective,
 			selector: '[diControl]',
 		});
 
 		it('should initialize children with host model', async () => {
-			const {fixture, nestedControls} = await createFixture({
+			const { fixture, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn, controlFn],
@@ -228,7 +260,7 @@ describe('DIArrayControl', () => {
 		});
 
 		it('should update children model if model was manually updated', async () => {
-			const {control, nestedControls} = await createFixture({
+			const { control, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn, controlFn],
@@ -240,7 +272,7 @@ describe('DIArrayControl', () => {
 		});
 
 		it('should update children model if ngControl model was changed', async () => {
-			const {formControl, nestedControls} = await createFixture({
+			const { formControl, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn, controlFn],
@@ -252,7 +284,7 @@ describe('DIArrayControl', () => {
 		});
 
 		it('should update host model if children model was changed', async () => {
-			const {control, nestedControls} = await createFixture({
+			const { control, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn, controlFn],
@@ -265,7 +297,7 @@ describe('DIArrayControl', () => {
 		});
 
 		it('should clear model if child was updated with non-array value', async () => {
-			const {control, nestedControls} = await createFixture({
+			const { control, nestedControls } = await createFixture({
 				hostControlFn,
 				defaultValue: [1],
 				nestedControls: [controlFn, controlFn],
@@ -274,7 +306,8 @@ describe('DIArrayControl', () => {
 			nestedControls[0].updateModel(2 as any);
 
 			expect(control.getModel()).toEqual(null);
-			expect(nestedControls.map((control) => control.getModel())).toEqual([null, null]);
+			// updated child model should be ignored
+			expect(nestedControls.map((control) => control.getModel())).toEqual([2, null]);
 		});
 	});
 });

@@ -45,40 +45,40 @@
 					"@ng-doc/core"
 				]
 			},
-            "configurations": {
-                "production": {
-                    "budgets": [
-                        {
-                            "type": "initial",
-                            "maximumWarning": "500kb",
-                            "maximumError": "1mb"
-                        },
-                        {
-                            "type": "anyComponentStyle",
-                            "maximumWarning": "2kb",
-                            "maximumError": "4kb"
-                        }
-                    ],
-                    "fileReplacements": [
-                        {
-                            "replace": "apps/docs/src/environments/environment.ts",
-                            "with": "apps/docs/src/environments/environment.prod.ts"
-                        }
-                    ],
-                    "outputHashing": "all"
-                },
-                "development": {
-                    "buildOptimizer": false,
-                    "optimization": false,
-                    "vendorChunk": true,
-                    "extractLicenses": false,
-                    "sourceMap": true,
-                    "namedChunks": true
-                }
-            },
-            "defaultConfiguration": "production"
-        },
-        "serve": {
+			"configurations": {
+				"production": {
+					"budgets": [
+						{
+							"type": "initial",
+							"maximumWarning": "500kb",
+							"maximumError": "1mb"
+						},
+						{
+							"type": "anyComponentStyle",
+							"maximumWarning": "2kb",
+							"maximumError": "4kb"
+						}
+					],
+					"fileReplacements": [
+						{
+							"replace": "apps/docs/src/environments/environment.ts",
+							"with": "apps/docs/src/environments/environment.prod.ts"
+						}
+					],
+					"outputHashing": "all"
+				},
+				"development": {
+					"buildOptimizer": false,
+					"optimization": false,
+					"vendorChunk": true,
+					"extractLicenses": false,
+					"sourceMap": true,
+					"namedChunks": true
+				}
+			},
+			"defaultConfiguration": "production"
+		},
+		"serve": {
 			"executor": "@ng-doc/builder:dev-server",
 			"configurations": {
 				"production": {
@@ -90,19 +90,22 @@
 			},
 			"defaultConfiguration": "development"
 		},
-        "extract-i18n": {
-            "executor": "@angular-devkit/build-angular:extract-i18n",
-            "options": {
-                "browserTarget": "docs:build"
-            }
-        },
-        "lint": {
-            "executor": "@nx/linter:eslint",
-            "options": {
-                "lintFilePatterns": ["apps/docs/**/*.ts", "apps/docs/**/*.html"]
-            }
-        },
-        "test": {
+		"extract-i18n": {
+			"executor": "@angular-devkit/build-angular:extract-i18n",
+			"options": {
+				"browserTarget": "docs:build"
+			}
+		},
+		"lint": {
+			"executor": "@nx/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"apps/docs/**/*.ts",
+					"apps/docs/**/*.html"
+				]
+			}
+		},
+		"test": {
 			"executor": "@nx/jest:jest",
 			"outputs": [
 				"{workspaceRoot}/coverage/apps/docs"
@@ -112,6 +115,6 @@
 				"passWithNoTests": true
 			}
 		}
-    },
-    "tags": []
+	},
+	"tags": []
 }

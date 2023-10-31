@@ -6,8 +6,8 @@ import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {Fruit, FRUITS} from '../../../../constants/fruits';
 import {RadioGroupComponent} from '../components/radio-group.component';
 
-// snippet-from-file="../components/radio.component.ts"
 // snippet-from-file="../components/radio-group.component.ts"
+// snippet-from-file="../components/radio.component.ts"
 
 @Component({
 	selector: 'di-radio-object-demo',

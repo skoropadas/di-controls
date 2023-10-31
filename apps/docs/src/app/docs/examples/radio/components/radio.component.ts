@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {DI_HOST_CONTROL, DICompareHost, DIStateControl} from 'di-controls';
-import {FormsModule} from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
+import { FormsModule } from '@angular/forms';
 
 @Component({
 	selector: 'di-radio',
@@ -9,10 +9,7 @@ import {FormsModule} from '@angular/forms';
 	imports: [CommonModule, FormsModule],
 	template: `
 		<label>
-			<input
-				type="radio"
-				[checked]="checked()"
-				(change)="check(); touch()"/>
+			<input type="radio" [checked]="checked()" (change)="check(); touch()" />
 			<ng-content></ng-content>
 		</label>
 	`,
@@ -34,6 +31,9 @@ import {FormsModule} from '@angular/forms';
 })
 export class RadioComponent<T = unknown> extends DIStateControl<T> {
 	constructor() {
-		super(inject(DI_HOST_CONTROL, {optional: true}), inject(DICompareHost, {optional: true}));
+		super({
+			host: injectHostControl({ optional: true }),
+			compareHost: inject(DICompareHost, { optional: true }),
+		});
 	}
 }

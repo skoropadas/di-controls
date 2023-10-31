@@ -6,7 +6,7 @@ import {
 	Input,
 	Renderer2,
 	signal,
-	WritableSignal,
+	WritableSignal
 } from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION} from '../constants';
@@ -27,8 +27,8 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	protected touch: () => void = EMPTY_FUNCTION;
 	protected change: (value: T | null) => void = EMPTY_FUNCTION;
 
-	protected constructor() {
-		this.ngControl = inject(NgControl, {optional: true, self: true});
+	protected constructor(protected readonly incomingUpdate?: (value: T | null) => void) {
+		this.ngControl = inject(NgControl, { optional: true, self: true });
 		this.changeDetectorRef = inject(ChangeDetectorRef);
 
 		if (this.ngControl) {
@@ -36,10 +36,16 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 		}
 	}
 
+	/**
+	 * Returns true if the control is not empty.
+	 */
 	get hasValue(): boolean {
 		return hasValue(this.model());
 	}
 
+	/**
+	 * Returns true if the control is disabled.
+	 */
 	@Input()
 	get disabled(): boolean {
 		return this.disabledValue();
@@ -49,20 +55,44 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 		this.setDisabledState(isDisabled);
 	}
 
+	/**
+	 * Method is called by the forms API.
+	 *
+	 * @param fn - callback function to register on value change
+	 * @internal
+	 */
 	registerOnChange(fn: (value: T | null) => void): void {
 		this.change = fn;
 	}
 
+	/**
+	 * Method is called by the forms API.
+	 *
+	 * @param fn - callback function to register on touch
+	 * @internal
+	 */
 	registerOnTouched(fn: () => void): void {
 		this.touch = fn;
 	}
 
+	/**
+	 * Method is called by the forms API to write to the view when programmatic changes from model to view are requested.
+	 *
+	 * @param obj - new value
+	 * @internal
+	 */
 	writeValue(obj: T | null): void {
 		if (this.model() !== obj) {
 			this.update(obj);
 		}
 	}
 
+	/**
+	 * Method is called by the host to update the value of the control.
+	 *
+	 * @param obj - new value
+	 * @internal
+	 */
 	writeValueFromHost(obj: T | null): void {
 		if (this.model() !== obj) {
 			this.update(obj);
@@ -82,22 +112,22 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	}
 
 	/**
-	 * Triggered when some updates are incoming. Override this method to refresh your Control's view
+	 * Method is called by the forms API to write to the view when programmatic changes from model to view are requested.
 	 *
-	 * @param value - new value
-	 * @protected
+	 * @param isDisabled - new value
+	 * @internal
 	 */
-	protected incomingUpdate(value: T | null): void {
-		// Override this method to refresh your Control's view
-	}
-
 	setDisabledState(isDisabled: boolean): void {
 		this.disabledValue.set(isDisabled);
 
 		this.disabledValue()
 			? this.renderer.setAttribute(this.elementRef.nativeElement, 'disabled', 'true')
 			: this.renderer.removeAttribute(this.elementRef.nativeElement, 'disabled');
-		this.renderer.setAttribute(this.elementRef.nativeElement, 'aria-disabled', `${this.disabledValue()}`);
+		this.renderer.setAttribute(
+			this.elementRef.nativeElement,
+			'aria-disabled',
+			`${this.disabledValue()}`,
+		);
 	}
 
 	private update(value: T | null): void {

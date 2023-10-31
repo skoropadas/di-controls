@@ -1,6 +1,6 @@
-import {Directive} from '@angular/core';
-import {createFixture} from './utils/create-fixture';
-import {BaseStateControlDirective} from './utils';
+import { Directive } from '@angular/core';
+import { createFixture } from './utils/create-fixture';
+import { BaseStateControlDirective } from './utils';
 
 describe('DIStateControl', () => {
 	describe('control with intermediate state', () => {
@@ -10,14 +10,14 @@ describe('DIStateControl', () => {
 		})
 		class StateControlDirective extends BaseStateControlDirective<boolean> {
 			constructor() {
-				super(null, null, true);
+				super({hasIntermediate: true});
 			}
 		}
 
-		const hostControlFn = () => ({control: StateControlDirective, selector: '[diStateControl]'});
+		const hostControlFn = () => ({ control: StateControlDirective, selector: '[diStateControl]' });
 
 		it('should set default value', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: true,
 			});
@@ -29,7 +29,7 @@ describe('DIStateControl', () => {
 		});
 
 		it('should toggle value', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: true,
 			});
@@ -43,7 +43,7 @@ describe('DIStateControl', () => {
 		});
 
 		it('should check value', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: false,
 			});
@@ -57,7 +57,7 @@ describe('DIStateControl', () => {
 		});
 
 		it('should uncheck value', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: true,
 			});
@@ -71,7 +71,7 @@ describe('DIStateControl', () => {
 		});
 
 		it('should set intermediate value', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: true,
 			});
@@ -96,10 +96,10 @@ describe('DIStateControl', () => {
 			}
 		}
 
-		const hostControlFn = () => ({control: StateControlDirective, selector: '[diStateControl]'});
+		const hostControlFn = () => ({ control: StateControlDirective, selector: '[diStateControl]' });
 
 		it('should set intermediate value', async () => {
-			const {formControl, control} = await createFixture({
+			const { formControl, control } = await createFixture({
 				hostControlFn,
 				defaultValue: true,
 			});
