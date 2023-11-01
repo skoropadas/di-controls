@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, inject } from '@angular/core';
-import { DIControl } from 'di-controls';
+import {DIControl, injectHostControl} from 'di-controls';
 
 @Directive({
 	selector: 'input[diInputString]',
@@ -10,6 +10,7 @@ export class InputStringDirective<T = unknown> extends DIControl<T> {
 
 	constructor() {
 		super({
+			host: injectHostControl({optional: true}),
 			onIncomingUpdate: (value: T | null) => {
 				this.inputElement.value = String(value ?? '');
 			},

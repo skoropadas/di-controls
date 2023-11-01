@@ -8,6 +8,7 @@ import { StartDirective } from '../components/start.directive';
 import { EndDirective } from '../components/end.directive';
 
 // snippet-from-file="../components/date-range.component.ts"
+// snippet-from-file="../../inputs/components/input-date.directive.ts"
 // snippet-from-file="../components/start.directive.ts"
 // snippet-from-file="../components/end.directive.ts"
 
