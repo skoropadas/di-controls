@@ -102,38 +102,39 @@ export class MyControlComponent extends DIStateControl<string> {
 - API: `DIStateControl`
 - Examples: `*CheckboxPage`, `*RadioPage`
 
-### DIArrayControl
+### DICollectionControl
 
-`DIArrayControl` stores its model as an array and has additional integration with `DIStateControl`.
+`DICollectionControl` stores its model as an array and has additional integration with `DIStateControl`.
 If
 the child `DIStateControl` has a state of `checked = true`, its value will be added to the
-`DIArrayControl`'s model as an array element. Otherwise, it will be removed. This control can assist
+`DICollectionControl`'s model as an array element. Otherwise, it will be removed. This control can assist
 you in creating components like CheckboxGroup or a multi-select ComboBox.
 
 ```ts fileName="my-control.component.ts"
 @Component({
   // ...
 })
-export class MyControlComponent extends DIArrayControl<string> {
+export class MyControlComponent extends DICollectionControl<string> {
   constructor() {
     super();
   }
 }
 ```
 
-- API: `DIArrayControl`
+- API: `DICollectionControl`
 - Examples: `*CheckboxPage`, `*SwitchPage`
 
-### DIObjectControl
+### DIProxyControl
 
-`DIObjectControl` is very situational, it can be used to bind the model of a child control to a
-specific field of its parent's object.
+`DIProxyControl` is very situational, it can be used to bind the model of a child control to a
+specific field of its parent's object or to modify the model before providing it to the child control
+and vice versa.
 
 ```ts fileName="my-control.component.ts"
 @Component({
   // ...
 })
-export class MyControlComponent extends DIObjectControl<string> {
+export class MyControlComponent extends DIProxyControl<string> {
   constructor() {
     super({
       getValue: (obj) => obj?.date,
@@ -143,5 +144,5 @@ export class MyControlComponent extends DIObjectControl<string> {
 }
 ```
 
-- API: `DIObjectControl`
+- API: `DIProxyControl`
 - Examples: `*InputsPage`

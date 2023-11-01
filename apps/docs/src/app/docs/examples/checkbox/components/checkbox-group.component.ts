@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DIArrayControl, provideHostControl } from 'di-controls';
+import { DICollectionControl, provideHostControl } from 'di-controls';
 
 @Component({
 	selector: 'di-checkbox-group',
@@ -19,7 +19,7 @@ import { DIArrayControl, provideHostControl } from 'di-controls';
 	providers: [provideHostControl(CheckboxGroupComponent)],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxGroupComponent<T = unknown> extends DIArrayControl<T> {
+export class CheckboxGroupComponent<T = unknown> extends DICollectionControl<T> {
 	constructor() {
 		super();
 	}

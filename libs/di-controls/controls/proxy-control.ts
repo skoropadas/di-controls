@@ -1,37 +1,37 @@
 import {Directive} from '@angular/core';
-import {DIObjectControlGetValue, DIObjectControlSetValue} from 'di-controls/types';
+import {DIProxyControlGetValue, DIProxyControlSetValue} from 'di-controls/types';
 import {DIControl, DIControlConfig} from './control';
 
 /**
- * Configuration for the `DIObjectControl`.
+ * Configuration for the `DIProxyControl`.
  */
-export interface DIObjectControlConfig<TModel, TChildModel> extends DIControlConfig<TModel, TChildModel> {
+export interface DIProxyControlConfig<TModel, TChildModel> extends DIControlConfig<TModel, TChildModel> {
 	/**
 	 * Function that will be used to get value from the current object model and set it to the child control
 	 * when update is requested.
 	 */
-	getValue: DIObjectControlGetValue<TModel, TChildModel>;
+	getValue: DIProxyControlGetValue<TModel, TChildModel>;
 	/**
 	 * Function that will be used to set value to the object model when child control value is changed.
 	 */
-	setValue: DIObjectControlSetValue<TModel, TChildModel>;
+	setValue: DIProxyControlSetValue<TModel, TChildModel>;
 }
 
 /**
- * `DIObjectControl` is very suitable.
+ * `DIProxyControl` is very suitable.
  * It is typically used as a host and works exclusively with objects. It is
  * necessary to bind child controls to a specific property of the object,
  * thereby ensuring that they update only that specific property and not the
- * entire object as a whole. Please see `*DateRangePage*`.
+ * entire object as a whole. Please see `*DateRangePage`.
  *
  * ## Creating a control
- * To create a control you need to extend your `@Component` or `@Directive` from `DIObjectControl` class
+ * To create a control you need to extend your `@Component` or `@Directive` from `DIProxyControl` class
  * and provide `getValue` and `setValue` functions that will be used to get and set value from the object
  * to the child control.
  *
  * ```ts fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ * export class CustomControlComponent extends DIProxyControl<MyObject> {
  *   constructor() {
  *    super({
  *      getValue: (model) => model.objectProperty,
@@ -50,7 +50,7 @@ export interface DIObjectControlConfig<TModel, TChildModel> extends DIControlCon
  * @Component({
  *   providers: [provideHostControl(CustomControlComponent)],
  * })
- * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ * export class CustomControlComponent extends DIProxyControl<MyObject> {
  *   constructor() {
  *     super({
  *      getValue: (model) => model.objectProperty,
@@ -70,7 +70,7 @@ export interface DIObjectControlConfig<TModel, TChildModel> extends DIControlCon
  *
  * ```ts {5} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ * export class CustomControlComponent extends DIProxyControl<MyObject> {
  *   constructor() {
  *     // we add `optional` option to make it possible to use this control without host
  *     super({
@@ -87,7 +87,7 @@ export interface DIObjectControlConfig<TModel, TChildModel> extends DIControlCon
  *
  * ```ts {9} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ * export class CustomControlComponent extends DIProxyControl<MyObject> {
  *   constructor() {
  *     super(
  *       getValue: (model) => model.objectProperty,
@@ -108,7 +108,7 @@ export interface DIObjectControlConfig<TModel, TChildModel> extends DIControlCon
  *
  * ```ts {9} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ * export class CustomControlComponent extends DIProxyControl<MyObject> {
  *   constructor() {
  *     super(
  *       getValue: (model) => model.objectProperty,
@@ -128,7 +128,7 @@ export interface DIObjectControlConfig<TModel, TChildModel> extends DIControlCon
  *
  * ```ts {6} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ * export class CustomControlComponent extends DIProxyControl<MyObject> {
  *   constructor() {
  *     super({
  *       onIncomingUpdate: (value: MyObject | null) => {
@@ -140,9 +140,9 @@ export interface DIObjectControlConfig<TModel, TChildModel> extends DIControlCon
  * ```
  */
 @Directive()
-export abstract class DIObjectControl<TModel, TChildModel> extends DIControl<TModel, TChildModel> {
+export abstract class DIProxyControl<TModel, TChildModel> extends DIControl<TModel, TChildModel> {
 	protected constructor(
-		protected override config: DIObjectControlConfig<TModel, TChildModel>,
+		protected override config: DIProxyControlConfig<TModel, TChildModel>,
 	) {
 		super(config);
 	}

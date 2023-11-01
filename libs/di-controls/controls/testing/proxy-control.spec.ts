@@ -2,14 +2,14 @@ import {Directive, forwardRef} from '@angular/core';
 import { injectHostControl, provideHostControl } from 'di-controls';
 import { BaseControlDirective, BaseObjectControlDirective, createFixture } from './utils';
 
-describe('DIObjectControl', () => {
+describe('DIProxyControl', () => {
 	interface TestObject {
 		start: number | null;
 		end: number | null;
 	}
 
 	@Directive({
-		selector: '[diObjectControl]',
+		selector: '[diProxyControl]',
 		standalone: true,
 		providers: [provideHostControl(forwardRef(() => ObjectControlDirective))],
 	})
@@ -37,7 +37,7 @@ describe('DIObjectControl', () => {
 
 	const hostControlFn = () => ({
 		control: ObjectControlDirective,
-		selector: '[diObjectControl]',
+		selector: '[diProxyControl]',
 	});
 
 	const controlFn = () => ({

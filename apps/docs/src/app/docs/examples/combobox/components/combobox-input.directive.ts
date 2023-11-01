@@ -1,11 +1,11 @@
 import { Directive } from '@angular/core';
-import {DIObjectControl, injectHostControl} from 'di-controls';
+import {DIProxyControl, injectHostControl} from 'di-controls';
 
 @Directive({
 	selector: '[diComboboxInput]',
 	standalone: true,
 })
-export class ComboboxInputDirective<T> extends DIObjectControl<T, string> {
+export class ComboboxInputDirective<T> extends DIProxyControl<T, string> {
 	constructor() {
 		super({
 			host: injectHostControl(),

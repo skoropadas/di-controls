@@ -6,9 +6,9 @@ import {DIControl, DIControlConfig} from './control';
 import {DIStateControl} from './state-control';
 
 /**
- * Configuration for the `DIArrayControl`.
+ * Configuration for the `DICollectionControl`.
  */
-export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConfig<TModel[], TChildModel> {
+export interface DICollectionControlConfig<TModel, TChildModel> extends DIControlConfig<TModel[], TChildModel> {
 	/**
 	 * Function that will be used to compare values in the array.
 	 * Useful when you want to compare objects by some property.
@@ -17,24 +17,24 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
 }
 
 /**
- * `DIArrayControl` can be used to implement array controls (checkbox group, radio group, chips, etc.).
+ * `DICollectionControl` can be used to implement array controls (checkbox group, radio group, chips, etc.).
  * It has an additional integration with `DIStateControl` that allows you to use it as a host for
- * `DIStateControl` controls. If you use `DIStateControl` as a child control, then `DIArrayControl`
- * will update its model when the child control is checked or unchecked, so `DIArrayControl` will
+ * `DIStateControl` controls. If you use `DIStateControl` as a child control, then `DICollectionControl`
+ * will update its model when the child control is checked or unchecked, so `DICollectionControl` will
  * contain only checked values.
  *
  * It also works with other controls, but their model should be an array.
  *
  * > **Warning**
- * > If child control model is updated with non-array value, then `DIArrayControl` will be updated with `null`.
+ * > If child control model is updated with non-array value, then `DICollectionControl` will be updated with `null`.
  *
  * ## Creating a control
- * To create a control you need to extend your `@Component` or `@Directive` from `DIArrayControl` class.
+ * To create a control you need to extend your `@Component` or `@Directive` from `DICollectionControl` class.
  * After that your control will be able to work with `NgModel`, `FormControl`.
  *
  * ```ts fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIArrayControl<string> {
+ * export class CustomControlComponent extends DICollectionControl<string> {
  *   constructor() {
  *    super();
  *  }
@@ -50,7 +50,7 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
  * @Component({
  *   providers: [provideHostControl(CustomControlComponent)],
  * })
- * export class CustomControlComponent extends DIArrayControl<string> {
+ * export class CustomControlComponent extends DICollectionControl<string> {
  *   constructor() {
  *     super();
  *   }
@@ -67,7 +67,7 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
  *
  * ```ts {5} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIArrayControl<string> {
+ * export class CustomControlComponent extends DICollectionControl<string> {
  *   constructor() {
  *     // we add `optional` option to make it possible to use this control without host
  *     super({host: injectHostControl({optional: true})});
@@ -80,7 +80,7 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
  *
  * ```ts {9} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIArrayControl<string> {
+ * export class CustomControlComponent extends DICollectionControl<string> {
  *   constructor() {
  *     super();
  *   }
@@ -98,7 +98,7 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
  *
  * ```ts {9} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIArrayControl<string> {
+ * export class CustomControlComponent extends DICollectionControl<string> {
  *   constructor() {
  *     super();
  *   }
@@ -115,7 +115,7 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
  *
  * ```ts {6} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIArrayControl<string> {
+ * export class CustomControlComponent extends DICollectionControl<string> {
  *   constructor() {
  *     super({
  *       onIncomingUpdate: (value: string[] | null) => {
@@ -127,7 +127,7 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
  * ```
  *
  * ## Comparing values
- * By default `DIArrayControl` uses `===` operator to compare values. It may be not enough for some cases,
+ * By default `DICollectionControl` uses `===` operator to compare values. It may be not enough for some cases,
  * for example, when you want to compare immutable objects. To solve this problem you can provide `compareFn`
  * function and provide your control as a `DICompareHost`. It will be used to compare values in the array.
  *
@@ -139,7 +139,7 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
  * @Component({
  *   providers: [provideCompareHost(CustomControlComponent)],
  * })
- * export class CustomControlComponent extends DIArrayControl<string> {
+ * export class CustomControlComponent extends DICollectionControl<string> {
  *  constructor() {
  *    super()
  *  }
@@ -147,7 +147,7 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
  * ```
  */
 @Directive()
-export abstract class DIArrayControl<TModel>
+export abstract class DICollectionControl<TModel>
 	extends DIControl<TModel[], TModel | TModel[]>
 	implements DICompareHost<TModel>
 {
@@ -160,7 +160,7 @@ export abstract class DIArrayControl<TModel>
 
 	private proxyModel: SetCompare<TModel> = new SetCompare<TModel>();
 
-	protected constructor(protected override config?: DIArrayControlConfig<TModel, TModel | TModel[]>) {
+	protected constructor(protected override config?: DICollectionControlConfig<TModel, TModel | TModel[]>) {
 		super(config);
 	}
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DIArrayControl, provideHostControl } from 'di-controls';
+import { DICollectionControl, provideHostControl } from 'di-controls';
 
 @Component({
 	standalone: true,
@@ -19,7 +19,7 @@ import { DIArrayControl, provideHostControl } from 'di-controls';
 	imports: [CommonModule],
 	providers: [provideHostControl(SwitchGroupComponent)],
 })
-export class SwitchGroupComponent<T = unknown> extends DIArrayControl<T> {
+export class SwitchGroupComponent<T = unknown> extends DICollectionControl<T> {
 	constructor() {
 		super();
 	}

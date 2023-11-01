@@ -1,5 +1,5 @@
 import { Directive, ElementRef, inject } from '@angular/core';
-import { DIArrayControl, DIControl, DIObjectControl, DIStateControl } from 'di-controls';
+import { DICollectionControl, DIControl, DIProxyControl, DIStateControl } from 'di-controls';
 
 @Directive()
 export abstract class BaseControlDirective<T> extends DIControl<T> {
@@ -28,19 +28,19 @@ export abstract class BaseStateControlDirective<T> extends DIStateControl<T> {
 }
 
 @Directive()
-export abstract class BaseArrayControlDirective<T> extends DIArrayControl<T> {
+export abstract class BaseArrayControlDirective<T> extends DICollectionControl<T> {
 	element: HTMLElement = inject(ElementRef).nativeElement;
 
-	getModel(): ReturnType<DIArrayControl<T>['model']> {
+	getModel(): ReturnType<DICollectionControl<T>['model']> {
 		return this.model();
 	}
 }
 
 @Directive()
-export abstract class BaseObjectControlDirective<T, C> extends DIObjectControl<T, C> {
+export abstract class BaseObjectControlDirective<T, C> extends DIProxyControl<T, C> {
 	element: HTMLElement = inject(ElementRef).nativeElement;
 
-	getModel(): ReturnType<DIObjectControl<T, C>['model']> {
+	getModel(): ReturnType<DIProxyControl<T, C>['model']> {
 		return this.model();
 	}
 }

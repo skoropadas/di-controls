@@ -12,10 +12,10 @@ import {
 	createFixture,
 } from './utils';
 
-describe('DIArrayControl', () => {
+describe('DICollectionControl', () => {
 	describe('DIStateControl', () => {
 		@Directive({
-			selector: '[diArrayControl]',
+			selector: '[diCollectionControl]',
 			standalone: true,
 			providers: [provideHostControl(forwardRef(() => ArrayControlDirective))],
 		})
@@ -35,7 +35,7 @@ describe('DIArrayControl', () => {
 			}
 		}
 
-		const hostControlFn = () => ({ control: ArrayControlDirective, selector: '[diArrayControl]' });
+		const hostControlFn = () => ({ control: ArrayControlDirective, selector: '[diCollectionControl]' });
 		const controlFn = (value: unknown) => () => ({
 			control: StateControlDirective,
 			selector: '[diStateControl]',
@@ -106,7 +106,7 @@ describe('DIArrayControl', () => {
 		}
 
 		@Directive({
-			selector: '[diArrayControl]',
+			selector: '[diCollectionControl]',
 			standalone: true,
 			providers: [
 				provideHostControl(forwardRef(() => ArrayControlDirective)),
@@ -133,7 +133,7 @@ describe('DIArrayControl', () => {
 
 		const hostControlFn = () => ({
 			control: ArrayControlDirective,
-			selector: '[diArrayControl]',
+			selector: '[diCollectionControl]',
 		});
 		const controlFn = (value: unknown) => () => ({
 			control: StateControlDirective,
@@ -224,7 +224,7 @@ describe('DIArrayControl', () => {
 
 	describe('DIControl', () => {
 		@Directive({
-			selector: '[diArrayControl]',
+			selector: '[diCollectionControl]',
 			standalone: true,
 			providers: [provideHostControl(forwardRef(() => ArrayControlDirective))],
 		})
@@ -244,7 +244,7 @@ describe('DIArrayControl', () => {
 			}
 		}
 
-		const hostControlFn = () => ({ control: ArrayControlDirective, selector: '[diArrayControl]' });
+		const hostControlFn = () => ({ control: ArrayControlDirective, selector: '[diCollectionControl]' });
 		const controlFn = () => ({
 			control: ControlDirective,
 			selector: '[diControl]',

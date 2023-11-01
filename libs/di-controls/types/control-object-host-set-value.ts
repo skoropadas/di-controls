@@ -1,1 +1,1 @@
-export type DIObjectControlSetValue<H, C> = (hostValue: H | null, proxyValue: C | null) => H | null;
+export type DIProxyControlSetValue<H, C> = (hostValue: H | null, proxyValue: C | null) => H | null;

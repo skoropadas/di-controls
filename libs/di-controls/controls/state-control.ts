@@ -156,13 +156,13 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
  *  }
  *  ```
  *
- *  ## Using with `DIArrayControl`
- *  Using `DIStateControl` together with `DIArrayControl` will result in
- *  `DIArrayControl` containing a list of values from `DIStateControl` that have
+ *  ## Using with `DICollectionControl`
+ *  Using `DIStateControl` together with `DICollectionControl` will result in
+ *  `DICollectionControl` containing a list of values from `DIStateControl` that have
  *  a checked state. If your `DIStateControl` has objects as values, you may
  *  likely need a comparison function because they can sometimes be immutable.
  *
- * To achieve this, provide your `DIArrayControl` as a `DICompareHost` and
+ * To achieve this, provide your `DICollectionControl` as a `DICompareHost` and
  * inject it into your `DIStateControl` to give `DIStateControl` access to
  * the `compareFn` function.
  *
@@ -173,7 +173,7 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
  *     provideCompareHost(CheckboxGroupComponent),
  *   ],
  * })
- * export class CheckboxGroupComponent<T> extends DIArrayControl<T> {
+ * export class CheckboxGroupComponent<T> extends DICollectionControl<T> {
  *   constructor() {
  *     super();
  *   }

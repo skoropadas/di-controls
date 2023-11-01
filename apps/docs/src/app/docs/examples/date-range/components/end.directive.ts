@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import {DIObjectControl, injectHostControl, provideHostControl} from 'di-controls';
+import {DIProxyControl, injectHostControl, provideHostControl} from 'di-controls';
 import {DateRange} from './date-range.component';
 
 @Directive({
@@ -7,7 +7,7 @@ import {DateRange} from './date-range.component';
 	standalone: true,
 	providers: [provideHostControl(EndDirective)],
 })
-export class EndDirective extends DIObjectControl<DateRange, Date>{
+export class EndDirective extends DIProxyControl<DateRange, Date>{
 	constructor() {
 		super({
 			getValue: (obj: DateRange | null) => obj?.end ?? null,
