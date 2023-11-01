@@ -25,7 +25,7 @@ export class ParentControlComponent extends DIControl<string> {
 To connect a child control, you need to inject parent control using `injectHostControl` function.
 
 > **Note**
-> You can also pass additional properties that are available to the `inject` function.
+> You can also pass additional properties that are available to the `inject()` function.
 
 ```ts {6} fileName="child-control.component.ts"
 @Component({
@@ -100,7 +100,7 @@ export class MyControlComponent extends DIStateControl<string> {
 ```
 
 - API: `DIStateControl`
-- Examples: `*CheckboxPage`, `*RadioPage`
+- Examples: `*CheckboxPage`, `*RadioPage`, `*SwitchPage`, `*ComboboxPage`
 
 ### DICollectionControl
 
@@ -122,7 +122,7 @@ export class MyControlComponent extends DICollectionControl<string> {
 ```
 
 - API: `DICollectionControl`
-- Examples: `*CheckboxPage`, `*SwitchPage`
+- Examples: `*CheckboxPage`
 
 ### DIProxyControl
 
@@ -145,4 +145,4 @@ export class MyControlComponent extends DIProxyControl<string> {
 ```
 
 - API: `DIProxyControl`
-- Examples: `*InputsPage`
+- Examples: `*DateRangePage`, `*ComboboxPage`
