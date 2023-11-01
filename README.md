@@ -1,98 +1,71 @@
-# FlexControls
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+<h1 align="center" style="margin-bottom: 0; border-bottom: 0">di-controls</h1>
+  <p align="center">
+    Flexible UI Controls in seconds!
+    <br />
+    <a href="https://ng-doc.com/">Documentation</a>
+    ·
+    <a href="https://github.com/ng-doc/ng-doc/issues/new/choose">Report Bug</a>
+    ·
+    <a href="https://github.com/ng-doc/ng-doc/issues/new/choose">Request Feature</a>
 
-This project was generated using [Nx](https://nx.dev).
+[![GitHub Workflow Status][build-shield]][build-url]
+[![NPM][npm-shield]][npm-url]
+[![MIT License][license-shield]][license-url]
+  </p>
+</div>
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<!-- ABOUT THE PROJECT -->
 
-🔎 **Smart, Fast and Extensible Build System**
+## About The Project
 
-## Quick Start & Documentation
+DIControls is a library for Angular for creating reusable, flexible UI controls using
+a declarative approach.
 
-[Nx Documentation](https://nx.dev/angular)
+By using it, you can create your own UI components in a matter of seconds and extend them
+without additional code changes. To learn more, please refer to our documentation.
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
+Why you should try:
 
-[Interactive Tutorial](https://nx.dev/react-tutorial/01-create-application)
+- 😃 Creating a new control takes just a few seconds.
+- 🧼 Your component code remains clean and contains only the necessary business logic.
+- 🔄 Controls by default support working with `NgModel` and `FormControl`.
+- 🚀 Created controls can be reused, extended, and provided with these capabilities to your users.
+- 🧩 To connect one control to another, simply nest it inside the tag!
+- 🧪 They are already covered by tests, so cover only code that you write.
 
-## Adding capabilities to your workspace
+<!-- GETTING STARTED -->
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+## Installation
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+To install DIControls, run:
 
-Below are our core plugins:
+```bash
+npm i di-controls
+```
 
--   [Angular](https://angular.io)
-    -   `ng add @nx/angular`
--   [React](https://reactjs.org)
-    -   `ng add @nrwl/react`
--   Web (no framework frontends)
-    -   `ng add @nrwl/web`
--   [Nest](https://nestjs.com)
-    -   `ng add @nrwl/nest`
--   [Express](https://expressjs.com)
-    -   `ng add @nrwl/express`
--   [Node](https://nodejs.org)
-    -   `ng add @nrwl/node`
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+<!-- CONTRIBUTING -->
 
-## Generate an application
+## Contributing
 
-Run `ng g @nx/angular:app my-app` to generate an application.
+Contributions are what make the open source community such an amazing place to be learn, inspire,
+and create. Any contributions you make are **greatly appreciated**. Please read the
+[Contributing Guidelines](CONTRIBUTING.md) for more information.
 
-> You can use any of the plugins above to generate applications as well.
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+[npm-shield]: https://img.shields.io/npm/v/di-controls.svg?style=for-the-badge
 
-## Generate a library
+[npm-url]: https://www.npmjs.com/package/di-controls
 
-Run `ng g @nx/angular:lib my-lib` to generate a library.
+[license-shield]: https://img.shields.io/github/license/skoropadas/di-controls.svg?style=for-the-badge
 
-> You can also use any of the plugins above to generate libraries as well.
+[license-url]: https://github.com/skoropadas/di-controls/blob/main/LICENSE
 
-Libraries are shareable across libraries and applications. They can be imported from `@di-controls/mylib`.
+[build-shield]: https://img.shields.io/github/actions/workflow/status/skoropadas/di-controls/release.yml?style=for-the-badge&branch=release
 
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+[build-url]: https://github.com/skoropadas/di-controls/actions
