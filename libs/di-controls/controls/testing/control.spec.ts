@@ -1,7 +1,7 @@
-import { Directive } from '@angular/core';
+import {Directive, forwardRef} from '@angular/core';
 import { createFixture } from './utils/create-fixture';
 import { BaseControlDirective } from './utils';
-import { injectHostControl, provideHostControl } from '../../tokens';
+import { injectHostControl, provideHostControl } from 'di-controls';
 
 describe('DIControl', () => {
 	describe('standalone', () => {
@@ -100,7 +100,7 @@ describe('DIControl', () => {
 		@Directive({
 			selector: '[diHostControl]',
 			standalone: true,
-			providers: [provideHostControl(HostControlDirective)],
+			providers: [provideHostControl(forwardRef(() => HostControlDirective))],
 		})
 		class HostControlDirective extends BaseControlDirective<string> {
 			constructor() {
@@ -123,6 +123,11 @@ describe('DIControl', () => {
 
 		const hostControlFn = () => ({ control: HostControlDirective, selector: '[diHostControl]' });
 		const controlFn = () => ({ control: ControlDirective, selector: '[diControl]' });
+
+		beforeEach(() => {
+			onIncomingUpdate.mockClear();
+			onChildControlChange.mockClear();
+		})
 
 		it('should initialize children with host model', async () => {
 			const { fixture, nestedControls } = await createFixture({

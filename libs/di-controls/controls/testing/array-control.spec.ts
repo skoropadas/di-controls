@@ -1,6 +1,10 @@
-import { Directive, inject } from '@angular/core';
-import {injectHostControl, provideHostControl} from '../../tokens';
-import { DICompareHost, provideCompareHost } from '../../classes';
+import {Directive, forwardRef, inject} from '@angular/core';
+import {
+	DICompareHost,
+	injectHostControl,
+	provideCompareHost,
+	provideHostControl,
+} from 'di-controls';
 import {
 	BaseArrayControlDirective,
 	BaseControlDirective,
@@ -13,7 +17,7 @@ describe('DIArrayControl', () => {
 		@Directive({
 			selector: '[diArrayControl]',
 			standalone: true,
-			providers: [provideHostControl(ArrayControlDirective)],
+			providers: [provideHostControl(forwardRef(() => ArrayControlDirective))],
 		})
 		class ArrayControlDirective extends BaseArrayControlDirective<number> {
 			constructor() {
@@ -27,7 +31,7 @@ describe('DIArrayControl', () => {
 		})
 		class StateControlDirective extends BaseStateControlDirective<number> {
 			constructor() {
-				super({host: injectHostControl()});
+				super({ host: injectHostControl() });
 			}
 		}
 
@@ -105,8 +109,8 @@ describe('DIArrayControl', () => {
 			selector: '[diArrayControl]',
 			standalone: true,
 			providers: [
-				provideHostControl(ArrayControlDirective),
-				provideCompareHost(ArrayControlDirective),
+				provideHostControl(forwardRef(() => ArrayControlDirective)),
+				provideCompareHost(forwardRef(() => ArrayControlDirective)),
 			],
 		})
 		class ArrayControlDirective extends BaseArrayControlDirective<TestObject> {
@@ -123,7 +127,7 @@ describe('DIArrayControl', () => {
 		})
 		class StateControlDirective extends BaseStateControlDirective<number> {
 			constructor() {
-				super({host: injectHostControl(), compareHost: inject(DICompareHost)});
+				super({ host: injectHostControl(), compareHost: inject(DICompareHost) });
 			}
 		}
 
@@ -222,7 +226,7 @@ describe('DIArrayControl', () => {
 		@Directive({
 			selector: '[diArrayControl]',
 			standalone: true,
-			providers: [provideHostControl(ArrayControlDirective)],
+			providers: [provideHostControl(forwardRef(() => ArrayControlDirective))],
 		})
 		class ArrayControlDirective extends BaseArrayControlDirective<number> {
 			constructor() {

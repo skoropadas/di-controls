@@ -1,5 +1,5 @@
 import { inject, InjectionToken, InjectOptions, Provider, Type } from '@angular/core';
-import { DIControl } from '../controls';
+import { DIControl } from 'di-controls/controls';
 
 const DI_HOST_CONTROL: InjectionToken<DIControl<unknown>> = new InjectionToken<DIControl<unknown>>(
 	'DI_HOST_CONTROL',

@@ -1,8 +1,5 @@
 import { Directive, ElementRef, inject } from '@angular/core';
-import { DIControl } from '../../control';
-import { DIStateControl } from '../../state-control';
-import { DIArrayControl } from '../../array-control';
-import { DIObjectControl } from '../../object-control';
+import { DIArrayControl, DIControl, DIObjectControl, DIStateControl } from 'di-controls';
 
 @Directive()
 export abstract class BaseControlDirective<T> extends DIControl<T> {

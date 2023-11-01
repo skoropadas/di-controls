@@ -4,20 +4,20 @@ import {
 	ElementRef,
 	inject,
 	Input,
-	Renderer2,
+	Renderer2, Signal,
 	signal,
 	WritableSignal
 } from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
-import {EMPTY_FUNCTION} from '../constants';
-import {hasValue} from '../helpers';
+import {EMPTY_FUNCTION} from 'di-controls/constants';
+import {hasValue} from 'di-controls/helpers';
 
 /**
  * Base implementation of ControlValueAccessor
  */
 @Directive()
 export abstract class DIControlValueAccessor<T> implements ControlValueAccessor {
-	protected readonly model: WritableSignal<T | null> = signal(null);
+	protected readonly model: Signal<T | null> = signal(null);
 	protected readonly ngControl: NgControl | null;
 	protected readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef);
 	protected readonly changeDetectorRef: ChangeDetectorRef;
@@ -88,25 +88,12 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	}
 
 	/**
-	 * Method is called by the host to update the value of the control.
-	 *
-	 * @param obj - new value
-	 * @internal
-	 */
-	writeValueFromHost(obj: T | null): void {
-		if (this.model() !== obj) {
-			this.update(obj);
-			this.change(obj);
-		}
-	}
-
-	/**
 	 * Updates the model. Use this method to update model from your Control
 	 *
 	 * @param value - new value
 	 */
 	updateModel(value: T | null): void {
-		this.model.set(value);
+		(this.model as WritableSignal<T | null>).set(value);
 		this.change(this.model());
 		this.changeDetectorRef.markForCheck();
 	}
@@ -131,7 +118,7 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	}
 
 	private update(value: T | null): void {
-		this.model.set(value);
+		(this.model as WritableSignal<T | null>).set(value);
 		this.incomingUpdate && this.incomingUpdate(value);
 		this.changeDetectorRef.markForCheck();
 	}

@@ -5,6 +5,7 @@ const HowToUseItPage: NgDocPage = {
 	title: `How to use it?`,
 	mdFile: './index.md',
 	category: GettingStartedCategory,
+	keyword: 'HowToUseItPage',
 };
 
 export default HowToUseItPage;

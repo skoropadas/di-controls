@@ -7,7 +7,7 @@ import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
 	selector: 'di-switch',
 	template: `
 		<button type="button" (click)="toggle(); touch()">
-			<span [class.checked]="checked()"></span>
+			<span></span>
 		</button>
 		<ng-content />
 	`,
@@ -28,6 +28,7 @@ import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
 					padding: 2px;
 					border: none;
 					border-radius: 100px;
+					cursor: pointer;
 
 					& > span {
 						position: relative;
@@ -35,16 +36,15 @@ import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
 						vertical-align: middle;
 						width: 16px;
 						height: 16px;
-						background-color: #a40000;
-						cursor: pointer;
+						background-color: #808080;
 						border-radius: 100px;
 						transition: 0.25s;
-
-						&.checked {
-							margin-left: 20px;
-							background-color: #14c814;
-						}
 					}
+				}
+
+				&[aria-checked="true"] > button > span {
+					margin-left: 20px;
+					background-color: #14c814;
 				}
 			}
 		`,
@@ -52,7 +52,7 @@ import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [CommonModule],
 })
-export class SwitchComponent<T = unknown> extends DIStateControl<T> {
+export class SwitchComponent<T = boolean> extends DIStateControl<T> {
 	constructor() {
 		super({
 			host: injectHostControl({ optional: true }),

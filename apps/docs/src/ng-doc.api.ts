@@ -6,7 +6,13 @@ const Api: NgDocApi = {
 		{
 			name: 'di-controls',
 			route: 'di-controls',
-			include: ['libs/di-controls/index.ts'],
+			include: [
+				'libs/di-controls/classes/*.ts',
+				'libs/di-controls/controls/*.ts',
+				'libs/di-controls/directives/**/*.ts',
+				'libs/di-controls/tokens/**/*.ts',
+				'libs/di-controls/types/**/*.ts',
+			],
 		},
 	],
 };

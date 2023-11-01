@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, inject, Input } from '@angular/core';
-import { DIControl } from 'di-controls';
+import {DIControl, injectHostControl} from 'di-controls';
 import { format, parse } from 'date-fns';
 
 @Directive({
@@ -14,6 +14,7 @@ export class InputDateDirective extends DIControl<Date> {
 
 	constructor() {
 		super({
+			host: injectHostControl({optional: true}),
 			onIncomingUpdate: (value: Date | null) => {
 				this.inputElement.value = value ? format(value, this.format) : '';
 			},

@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {DIArrayControl, provideHostControl} from 'di-controls';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DIArrayControl, provideHostControl } from 'di-controls';
 
 @Component({
 	standalone: true,
 	selector: 'di-switch-group',
-	template: `<ng-content/>`,
+	template: ` <ng-content />`,
 	styles: [
 		`
 			:host {

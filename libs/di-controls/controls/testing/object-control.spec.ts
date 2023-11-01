@@ -1,5 +1,5 @@
-import { Directive, inject } from '@angular/core';
-import {injectHostControl, provideHostControl} from '../../tokens';
+import {Directive, forwardRef} from '@angular/core';
+import { injectHostControl, provideHostControl } from 'di-controls';
 import { BaseControlDirective, BaseObjectControlDirective, createFixture } from './utils';
 
 describe('DIObjectControl', () => {
@@ -11,13 +11,16 @@ describe('DIObjectControl', () => {
 	@Directive({
 		selector: '[diObjectControl]',
 		standalone: true,
-		providers: [provideHostControl(ObjectControlDirective)],
+		providers: [provideHostControl(forwardRef(() => ObjectControlDirective))],
 	})
 	class ObjectControlDirective extends BaseObjectControlDirective<TestObject, number> {
 		constructor() {
 			super({
 				getValue: (obj: TestObject | null) => obj?.start ?? null,
-				setValue: (obj: TestObject | null, value: number | null) => ({ start: value, end: obj?.end ?? null }),
+				setValue: (obj: TestObject | null, value: number | null) => ({
+					start: value,
+					end: obj?.end ?? null,
+				}),
 			});
 		}
 	}

@@ -13,7 +13,7 @@ import {Fruit} from '../../../../constants/fruits';
 	template: `
 		<di-model-info [control]="control">
 			<!-- snippet "Usage" opened -->
-			<di-switch [formControl]="control" [value]="{id: 1, name: 'Apple'}">Apple</di-switch>
+			<di-switch [formControl]="control" [value]="{ id: 1, name: 'Apple' }">Apple</di-switch>
 			<!-- snippet -->
 		</di-model-info>
 	`,

@@ -1,1 +1,1 @@
-export * from '../directives/control-silencer';
+export * from './control-silencer';

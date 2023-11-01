@@ -1,7 +1,7 @@
 import {Directive, Input} from '@angular/core';
-import {DICompareHost, SetCompare} from '../classes';
-import {DI_DEFAULT_COMPARE} from '../constants';
-import {DICompareFunction} from '../types';
+import {DICompareHost, SetCompare} from 'di-controls/classes';
+import {DI_DEFAULT_COMPARE} from 'di-controls/constants';
+import {DICompareFunction} from 'di-controls/types';
 import {DIControl, DIControlConfig} from './control';
 import {DIStateControl} from './state-control';
 
@@ -16,12 +16,145 @@ export interface DIArrayControlConfig<TModel, TChildModel> extends DIControlConf
 	compareHost?: DICompareHost<TModel> | null;
 }
 
-/** Uses to implement host that stores multiple values */
+/**
+ * `DIArrayControl` can be used to implement array controls (checkbox group, radio group, chips, etc.).
+ * It has an additional integration with `DIStateControl` that allows you to use it as a host for
+ * `DIStateControl` controls. If you use `DIStateControl` as a child control, then `DIArrayControl`
+ * will update its model when the child control is checked or unchecked, so `DIArrayControl` will
+ * contain only checked values.
+ *
+ * It also works with other controls, but their model should be an array.
+ *
+ * > **Warning**
+ * > If child control model is updated with non-array value, then `DIArrayControl` will be updated with `null`.
+ *
+ * ## Creating a control
+ * To create a control you need to extend your `@Component` or `@Directive` from `DIArrayControl` class.
+ * After that your control will be able to work with `NgModel`, `FormControl`.
+ *
+ * ```ts fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIArrayControl<string> {
+ *   constructor() {
+ *    super();
+ *  }
+ * }
+ *  ```
+ *
+ * ## Registering as a host
+ * By default your control can work only with `NgModel` and `FormControl`. But you can register your control as a host
+ * for another controls, then your control will be able to update them and accept updates from them. To do that you need to
+ * use `provideHostControl` function.
+ *
+ * ```ts {2} fileName="custom-control.component.ts"
+ * @Component({
+ *   providers: [provideHostControl(CustomControlComponent)],
+ * })
+ * export class CustomControlComponent extends DIArrayControl<string> {
+ *   constructor() {
+ *     super();
+ *   }
+ * }
+ * ```
+ *
+ * ## Injecting host control
+ * By default your control doesn't communicate with host controls. But you can inject host control and put it
+ * into `super` call. This will register your control in the host control and start communication between them.
+ *
+ * > **Note**
+ * > If you register your control as a host for another controls, then you can inject it
+ * > only with `skipSelf` option.
+ *
+ * ```ts {5} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIArrayControl<string> {
+ *   constructor() {
+ *     // we add `optional` option to make it possible to use this control without host
+ *     super({host: injectHostControl({optional: true})});
+ *   }
+ * }
+ * ```
+ *
+ * ## Getting model
+ * To get model you need to use `model` property. It will return model for the current control.
+ *
+ * ```ts {9} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIArrayControl<string> {
+ *   constructor() {
+ *     super();
+ *   }
+ *
+ *   @HostListener('click')
+ *   onClick() {
+ *     console.log(this.model());
+ *   }
+ * }
+ * ```
+ *
+ * ## Updating model
+ * To update model you need to call `updateModel` method. It will update model for the current control and all
+ * children controls, as well as for the `NgModel` or `FormControl`.
+ *
+ * ```ts {9} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIArrayControl<string> {
+ *   constructor() {
+ *     super();
+ *   }
+ *
+ *   @HostListener('click')
+ *   onClick() {
+ *     this.updateModel(['new value']);
+ *   }
+ * }
+ * ```
+ * ## Catching updates
+ * Sometimes you may need to catch updates from different sources. For example, to update the value of the native
+ * input element. To do this, you can provide the `onIncomingUpdate` hook.
+ *
+ * ```ts {6} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIArrayControl<string> {
+ *   constructor() {
+ *     super({
+ *       onIncomingUpdate: (value: string[] | null) => {
+ *         this.elementRef.nativeElement.value = value;
+ *       },
+ *     });
+ *   }
+ * }
+ * ```
+ *
+ * ## Comparing values
+ * By default `DIArrayControl` uses `===` operator to compare values. It may be not enough for some cases,
+ * for example, when you want to compare immutable objects. To solve this problem you can provide `compareFn`
+ * function and provide your control as a `DICompareHost`. It will be used to compare values in the array.
+ *
+ * > **Warning**
+ * > This function will be used by `DIStateControl` to compare values, to set checked state.
+ * > Don't forget to inject `DICompareHost` in your `DIStateControl` to make it work.
+ *
+ * ```ts {2} fileName="custom-control.component.ts"
+ * @Component({
+ *   providers: [provideCompareHost(CustomControlComponent)],
+ * })
+ * export class CustomControlComponent extends DIArrayControl<string> {
+ *  constructor() {
+ *    super()
+ *  }
+ * }
+ * ```
+ */
 @Directive()
 export abstract class DIArrayControl<TModel>
 	extends DIControl<TModel[], TModel | TModel[]>
 	implements DICompareHost<TModel>
 {
+	/**
+	 * Function that will be used to compare values in the array.
+	 * Useful when you want to compare objects by some property (e.g. `id`).
+	 */
 	@Input()
 	compareFn: DICompareFunction<TModel> = DI_DEFAULT_COMPARE;
 

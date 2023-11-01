@@ -22,7 +22,13 @@ import {FRUIT_NAMES} from '../../../../constants/fruits';
 		</di-model-info>
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, SwitchComponent, ReactiveFormsModule, ModelInfoComponent, SwitchGroupComponent],
+	imports: [
+		CommonModule,
+		SwitchComponent,
+		ReactiveFormsModule,
+		ModelInfoComponent,
+		SwitchGroupComponent,
+	],
 })
 export class SwitchGroupDemoComponent {
 	control: FormControl<string[] | null> = new FormControl<string[]>([FRUIT_NAMES[2]]);

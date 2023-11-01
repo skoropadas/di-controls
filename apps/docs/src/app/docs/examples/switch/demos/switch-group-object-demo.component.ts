@@ -22,10 +22,16 @@ import {Fruit, FRUITS} from '../../../../constants/fruits';
 		</di-model-info>
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, ModelInfoComponent, SwitchGroupComponent, SwitchComponent, ReactiveFormsModule],
+	imports: [
+		CommonModule,
+		ModelInfoComponent,
+		SwitchGroupComponent,
+		SwitchComponent,
+		ReactiveFormsModule,
+	],
 })
 export class SwitchGroupObjectDemoComponent {
-	control: FormControl<Fruit[] | null> = new FormControl<Fruit[]>([{id: 1, name: 'Apple'}]);
+	control: FormControl<Fruit[] | null> = new FormControl<Fruit[]>([{ id: 1, name: 'Apple' }]);
 	items: Fruit[] = FRUITS;
 
 	compareFruits(a: Fruit | null, b: Fruit | null): boolean {

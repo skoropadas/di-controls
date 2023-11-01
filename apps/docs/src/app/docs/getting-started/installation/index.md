@@ -12,4 +12,4 @@ npm i di-controls
 
 ## Next Steps
 
-To learn more about the concept and how to use the library, please visit the `*Concept` page;
+To learn more about the concept and how to use the library, please visit the `*HowToUseItPage` page;

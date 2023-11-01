@@ -1,4 +1,4 @@
-import {DICompareFunction} from '../types';
+import {DICompareFunction} from 'di-controls/types';
 import {Provider, Type} from '@angular/core';
 
 /** Uses to implement host with compare function */

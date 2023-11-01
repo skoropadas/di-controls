@@ -63,6 +63,7 @@ import { NgDocButtonComponent } from '@ng-doc/ui-kit';
 
 					li {
 						width: 100%;
+						font-size: 14px;
 
 						label {
 							color: var(--ng-doc-text-muted);

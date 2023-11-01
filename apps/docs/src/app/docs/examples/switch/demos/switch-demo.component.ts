@@ -10,11 +10,11 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 	standalone: true,
 	selector: 'di-switch-demo',
 	template: `
-        <di-model-info [control]="control">
-            <!-- snippet "Usage" opened -->
+		<di-model-info [control]="control">
+			<!-- snippet "Usage" opened -->
 			<di-switch [formControl]="control">Switch</di-switch>
-            <!-- snippet -->
-        </di-model-info>
+			<!-- snippet -->
+		</di-model-info>
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [CommonModule, SwitchComponent, ReactiveFormsModule, ModelInfoComponent],

@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {DIObjectControlGetValue, DIObjectControlSetValue} from '../types';
+import {DIObjectControlGetValue, DIObjectControlSetValue} from 'di-controls/types';
 import {DIControl, DIControlConfig} from './control';
 
 /**
@@ -17,7 +17,128 @@ export interface DIObjectControlConfig<TModel, TChildModel> extends DIControlCon
 	setValue: DIObjectControlSetValue<TModel, TChildModel>;
 }
 
-/** Uses to implement host that stores value to an object key */
+/**
+ * `DIObjectControl` is very suitable.
+ * It is typically used as a host and works exclusively with objects. It is
+ * necessary to bind child controls to a specific property of the object,
+ * thereby ensuring that they update only that specific property and not the
+ * entire object as a whole. Please see `*DateRangePage*`.
+ *
+ * ## Creating a control
+ * To create a control you need to extend your `@Component` or `@Directive` from `DIObjectControl` class
+ * and provide `getValue` and `setValue` functions that will be used to get and set value from the object
+ * to the child control.
+ *
+ * ```ts fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ *   constructor() {
+ *    super({
+ *      getValue: (model) => model.objectProperty,
+ *      setValue: (model, value) => ({...model, objectProperty: value}),
+ *    });
+ *  }
+ * }
+ *  ```
+ *
+ * ## Registering as a host
+ * By default your control can work only with `NgModel` and `FormControl`. But you can register your control as a host
+ * for another controls, then your control will be able to update them and accept updates from them. To do that you need to
+ * use `provideHostControl` function.
+ *
+ * ```ts {2} fileName="custom-control.component.ts"
+ * @Component({
+ *   providers: [provideHostControl(CustomControlComponent)],
+ * })
+ * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ *   constructor() {
+ *     super({
+ *      getValue: (model) => model.objectProperty,
+ *      setValue: (model, value) => ({...model, objectProperty: value}),
+ *    });
+ *   }
+ * }
+ * ```
+ *
+ * ## Injecting host control
+ * By default your control doesn't communicate with host controls. But you can inject host control and put it
+ * into `super` call. This will register your control in the host control and start communication between them.
+ *
+ * > **Note**
+ * > If you register your control as a host for another controls, then you can inject it
+ * > only with `skipSelf` option.
+ *
+ * ```ts {5} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ *   constructor() {
+ *     // we add `optional` option to make it possible to use this control without host
+ *     super({
+ *       host: injectHostControl({optional: true}),
+ *       getValue: (model) => model.objectProperty,
+ *       setValue: (model, value) => ({...model, objectProperty: value}),
+ *     });
+ *   }
+ * }
+ * ```
+ *
+ * ## Getting model
+ * To get model you need to use `model` property. It will return model for the current control.
+ *
+ * ```ts {9} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ *   constructor() {
+ *     super(
+ *       getValue: (model) => model.objectProperty,
+ *       setValue: (model, value) => ({...model, objectProperty: value}),
+ *     );
+ *   }
+ *
+ *   @HostListener('click')
+ *   onClick() {
+ *     console.log(this.model());
+ *   }
+ * }
+ * ```
+ *
+ * ## Updating model
+ * To update model you need to call `updateModel` method. It will update model for the current control and all
+ * children controls, as well as for the `NgModel` or `FormControl`.
+ *
+ * ```ts {9} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ *   constructor() {
+ *     super(
+ *       getValue: (model) => model.objectProperty,
+ *       setValue: (model, value) => ({...model, objectProperty: value}),
+ *     );
+ *   }
+ *
+ *   @HostListener('click')
+ *   onClick() {
+ *     this.updateModel({objectProperty: 'new value'});
+ *   }
+ * }
+ * ```
+ * ## Catching updates
+ * Sometimes you may need to catch updates from different sources. For example, to update the value of the native
+ * input element. To do this, you can provide the `onIncomingUpdate` hook.
+ *
+ * ```ts {6} fileName="custom-control.component.ts"
+ * @Component({})
+ * export class CustomControlComponent extends DIObjectControl<MyObject> {
+ *   constructor() {
+ *     super({
+ *       onIncomingUpdate: (value: MyObject | null) => {
+ *         this.elementRef.nativeElement.value = value;
+ *       },
+ *     });
+ *   }
+ * }
+ * ```
+ */
 @Directive()
 export abstract class DIObjectControl<TModel, TChildModel> extends DIControl<TModel, TChildModel> {
 	protected constructor(

@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
 	],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RadioComponent<T = unknown> extends DIStateControl<T> {
+export class RadioComponent<T = boolean> extends DIStateControl<T> {
 	constructor() {
 		super({
 			host: injectHostControl({ optional: true }),

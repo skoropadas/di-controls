@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
-import { provideHostControl } from '../../tokens';
-import { DIControl } from '../../controls';
+import { provideHostControl } from 'di-controls/tokens';
+import { DIControl } from 'di-controls/controls';
 
 @Directive({
 	selector: '[diControlSilencer]',
