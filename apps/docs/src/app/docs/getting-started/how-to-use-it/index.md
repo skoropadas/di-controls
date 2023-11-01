@@ -6,7 +6,7 @@ DIControls includes several classes that can be used to create controls.
 
 Each control can be connected to its child or parent through Dependency Injection. When controls are
 connected, they exchange model updates to "synchronize" it. In other words, when one control updates
-its model independently or through the NgControl API, all other linked controls will also update
+its model independently or through the `NgControl` API, all other linked controls will also update
 their models based on this update.
 
 To connect controls, your parent component should be provided using `provideHostControl` function.
