@@ -5,11 +5,11 @@
   <p align="center">
     Flexible UI Controls in seconds!
     <br />
-    <a href="https://ng-doc.com/">Documentation</a>
+    <a href="https://not-exist.com/">Documentation</a>
     ·
-    <a href="https://github.com/ng-doc/ng-doc/issues/new/choose">Report Bug</a>
+    <a href="https://github.com/skoropadas/di-controls/issues/new/choose">Report Bug</a>
     ·
-    <a href="https://github.com/ng-doc/ng-doc/issues/new/choose">Request Feature</a>
+    <a href="https://github.com/skoropadas/di-controls/issues/new/choose">Request Feature</a>
 
 [![GitHub Workflow Status][build-shield]][build-url]
 [![NPM][npm-shield]][npm-url]
