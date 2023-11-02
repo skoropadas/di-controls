@@ -6,16 +6,16 @@ import { CheckboxGroupObjectComponent } from './demos/checkbox-group-object.comp
 import { CheckboxObjectComponent } from './demos/checkbox-object.component';
 
 const CheckboxPage: NgDocPage = {
-	title: `Checkbox`,
-	mdFile: './index.md',
-	category: ExamplesCategory,
-	demos: {
-		CheckboxDemoComponent,
-		CheckboxObjectComponent,
-		CheckboxGroupDemoComponent,
-		CheckboxGroupObjectComponent,
-	},
-	keyword: 'CheckboxPage',
+  title: `Checkbox`,
+  mdFile: './index.md',
+  category: ExamplesCategory,
+  demos: {
+    CheckboxDemoComponent,
+    CheckboxObjectComponent,
+    CheckboxGroupDemoComponent,
+    CheckboxGroupObjectComponent,
+  },
+  keyword: 'CheckboxPage',
 };
 
 export default CheckboxPage;

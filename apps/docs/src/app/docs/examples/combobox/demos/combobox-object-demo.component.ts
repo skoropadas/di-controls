@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Fruit, FRUITS} from '../../../../constants/fruits';
 import {ComboboxComponent} from '../components/combobox.component';
-import {InputStringDirective} from '../../inputs/components/input-string.directive';
-import {FRUIT_NAMES} from '../../../../constants/fruits';
+import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {OptionComponent} from '../components/option.component';
 
 // snippet-from-file="../components/combobox.component.ts"
@@ -13,21 +12,20 @@ import {OptionComponent} from '../components/option.component';
 // snippet-from-file="../components/option.component.ts"
 
 @Component({
-  selector: 'di-combobox-demo',
+  selector: 'di-combobox-object-demo',
   standalone: true,
   imports: [
     CommonModule,
-    ModelInfoComponent,
     ComboboxComponent,
-    InputStringDirective,
+    ModelInfoComponent,
     OptionComponent,
     ReactiveFormsModule,
   ],
   template: `
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
-      <di-combobox [formControl]="control">
-        <di-option *ngFor="let item of items" [value]="item">{{ item }}</di-option>
+      <di-combobox [formControl]="control" [compareFn]="compareFruits" [stringifyFn]="displayFruit">
+        <di-option *ngFor="let item of items" [value]="item">{{ item.name }}</di-option>
       </di-combobox>
       <!-- snippet -->
     </di-model-info>
@@ -35,7 +33,15 @@ import {OptionComponent} from '../components/option.component';
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ComboboxDemoComponent {
-  control: FormControl<string | null> = new FormControl<string | null>(null);
-  items: string[] = FRUIT_NAMES;
+export class ComboboxObjectDemoComponent {
+  control: FormControl<Fruit | null> = new FormControl<Fruit | null>(null);
+  items: Fruit[] = FRUITS;
+
+  compareFruits(a: Fruit | null, b: Fruit | null): boolean {
+    return !!a && !!b && a.id === b.id;
+  }
+
+  displayFruit(fruit: Fruit | null): string {
+    return fruit?.name ?? '';
+  }
 }

@@ -5,11 +5,11 @@ import { InputNumberDemoComponent } from './demos/input-number-demo.component';
 import { InputDateDemoComponent } from './demos/input-date-demo.component';
 
 const InputsPage: NgDocPage = {
-	title: `Inputs`,
-	mdFile: './index.md',
-	category: ExamplesCategory,
-	demos: { InputStringDemoComponent, InputNumberDemoComponent, InputDateDemoComponent },
-	keyword: 'InputsPage',
+  title: `Inputs`,
+  mdFile: './index.md',
+  category: ExamplesCategory,
+  demos: { InputStringDemoComponent, InputNumberDemoComponent, InputDateDemoComponent },
+  keyword: 'InputsPage',
 };
 
 export default InputsPage;

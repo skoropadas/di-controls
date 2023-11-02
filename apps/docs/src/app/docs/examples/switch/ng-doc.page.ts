@@ -6,16 +6,16 @@ import { SwitchObjectDemoComponent } from './demos/switch-object-demo.component'
 import { SwitchGroupObjectDemoComponent } from './demos/switch-group-object-demo.component';
 
 const SwitchPage: NgDocPage = {
-	title: `Switch`,
-	mdFile: './index.md',
-	category: ExamplesCategory,
-	demos: {
-		SwitchDemoComponent,
-		SwitchGroupDemoComponent,
-		SwitchObjectDemoComponent,
-		SwitchGroupObjectDemoComponent,
-	},
-	keyword: 'SwitchPage'
+  title: `Switch`,
+  mdFile: './index.md',
+  category: ExamplesCategory,
+  demos: {
+    SwitchDemoComponent,
+    SwitchGroupDemoComponent,
+    SwitchObjectDemoComponent,
+    SwitchGroupObjectDemoComponent,
+  },
+  keyword: 'SwitchPage',
 };
 
 export default SwitchPage;

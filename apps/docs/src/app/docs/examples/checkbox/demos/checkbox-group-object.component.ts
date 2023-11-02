@@ -10,31 +10,31 @@ import {Fruit, FRUITS} from '../../../../constants/fruits';
 // snippet-from-file="../components/checkbox.component.ts"
 
 @Component({
-	selector: 'di-checkbox-group-object',
-	standalone: true,
-	imports: [
-		CommonModule,
-		CheckboxComponent,
-		ModelInfoComponent,
-		ReactiveFormsModule,
-		CheckboxGroupComponent,
-	],
-	template: `
-		<di-model-info [control]="control">
-			<!-- snippet "Usage" opened -->
-			<di-checkbox-group [formControl]="control" [compareFn]="compareFruits">
-				<di-checkbox *ngFor="let item of items" [value]="item">{{ item.name }}</di-checkbox>
-			</di-checkbox-group>
-			<!-- snippet -->
-		</di-model-info>
-	`,
-	changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'di-checkbox-group-object',
+  standalone: true,
+  imports: [
+    CommonModule,
+    CheckboxComponent,
+    ModelInfoComponent,
+    ReactiveFormsModule,
+    CheckboxGroupComponent,
+  ],
+  template: `
+    <di-model-info [control]="control">
+      <!-- snippet "Usage" opened -->
+      <di-checkbox-group [formControl]="control" [compareFn]="compareFruits">
+        <di-checkbox *ngFor="let item of items" [value]="item">{{ item.name }}</di-checkbox>
+      </di-checkbox-group>
+      <!-- snippet -->
+    </di-model-info>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxGroupObjectComponent {
-	control: FormControl<Fruit[] | null> = new FormControl<Fruit[]>([{ id: 1, name: 'Apple' }]);
-	items: Fruit[] = FRUITS;
+  control: FormControl<Fruit[] | null> = new FormControl<Fruit[]>([{ id: 1, name: 'Apple' }]);
+  items: Fruit[] = FRUITS;
 
-	compareFruits(a: Fruit | null, b: Fruit | null): boolean {
-		return a?.id === b?.id;
-	}
+  compareFruits(a: Fruit | null, b: Fruit | null): boolean {
+    return a?.id === b?.id;
+  }
 }

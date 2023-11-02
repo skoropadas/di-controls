@@ -104,10 +104,12 @@ export class MyControlComponent extends DIStateControl<string> {
 
 ### DICollectionControl
 
-`DICollectionControl` stores its model as an array and has additional integration with `DIStateControl`.
+`DICollectionControl` stores its model as an array and has additional integration
+with `DIStateControl`.
 If
 the child `DIStateControl` has a state of `checked = true`, its value will be added to the
-`DICollectionControl`'s model as an array element. Otherwise, it will be removed. This control can assist
+`DICollectionControl`'s model as an array element. Otherwise, it will be removed. This control can
+assist
 you in creating components like CheckboxGroup or a multi-select ComboBox.
 
 ```ts fileName="my-control.component.ts"
@@ -127,7 +129,8 @@ export class MyControlComponent extends DICollectionControl<string> {
 ### DIProxyControl
 
 `DIProxyControl` is very situational, it can be used to bind the model of a child control to a
-specific field of its parent's object or to modify the model before providing it to the child control
+specific field of its parent's object or to modify the model before providing it to the child
+control
 and vice versa.
 
 ```ts fileName="my-control.component.ts"

@@ -7,17 +7,17 @@ import {ModelInfoComponent} from '../../../../components/model-info.component';
 // snippet-from-file="../components/checkbox.component.ts"
 
 @Component({
-	selector: 'di-checkbox-demo',
-	standalone: true,
-	imports: [CommonModule, CheckboxComponent, ReactiveFormsModule, ModelInfoComponent],
-	template: `
-		<di-model-info [control]="control">
-			<!-- snippet "Usage" opened -->
-			<di-checkbox [formControl]="control">Checkbox</di-checkbox>
-			<!-- snippet -->
-		</di-model-info>
-	`,
+  selector: 'di-checkbox-demo',
+  standalone: true,
+  imports: [CommonModule, CheckboxComponent, ReactiveFormsModule, ModelInfoComponent],
+  template: `
+    <di-model-info [control]="control">
+      <!-- snippet "Usage" opened -->
+      <di-checkbox [formControl]="control">Checkbox</di-checkbox>
+      <!-- snippet -->
+    </di-model-info>
+  `,
 })
 export class CheckboxDemoComponent {
-	control: FormControl<boolean | null> = new FormControl<boolean | null>(null);
+  control: FormControl<boolean | null> = new FormControl<boolean | null>(null);
 }
