@@ -67,6 +67,6 @@ and create. Any contributions you make are **greatly appreciated**. Please read 
 
 [license-url]: https://github.com/skoropadas/di-controls/blob/main/LICENSE
 
-[build-shield]: https://img.shields.io/github/actions/workflow/status/skoropadas/di-controls/release.yml?style=for-the-badge&branch=release
+[build-shield]: https://img.shields.io/github/actions/workflow/status/skoropadas/di-controls/release.yml?style=for-the-badge&branch=master
 
 [build-url]: https://github.com/skoropadas/di-controls/actions
