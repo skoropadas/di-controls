@@ -7,7 +7,7 @@ import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
   selector: 'di-switch',
   template: `
     <button type="button" (click)="toggle(); touch()">
-      <span></span>
+      <span [class.checked]="checked()"></span>
     </button>
     <ng-content />
   `,
@@ -39,12 +39,12 @@ import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
             background-color: #808080;
             border-radius: 100px;
             transition: 0.25s;
-          }
-        }
 
-        &[aria-checked='true'] > button > span {
-          margin-left: 20px;
-          background-color: #14c814;
+            &.checked {
+              margin-left: 20px;
+              background-color: #14c814;
+            }
+          }
         }
       }
     `,

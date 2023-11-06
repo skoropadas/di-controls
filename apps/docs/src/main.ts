@@ -7,7 +7,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
 	NG_DOC_DEFAULT_PAGE_PROCESSORS,
-	NG_DOC_DEFAULT_PAGE_SKELETON, NG_DOC_NIGHT_THEME,
+	NG_DOC_DEFAULT_PAGE_SKELETON,
 	NgDocDefaultSearchEngine,
 	provideMainPageProcessor,
 	provideNgDocApp,
