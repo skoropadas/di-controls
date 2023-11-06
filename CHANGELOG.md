@@ -1,3 +1,11 @@
+# [2.1.0](https://github.com/skoropadas/di-controls/compare/v2.0.1...v2.1.0) (2023-11-06)
+
+
+### Features
+
+* **project:** add Combobox demo ([82bd22c](https://github.com/skoropadas/di-controls/commit/82bd22cf4d93ea80b64fbd234d9a5e761beefb3f))
+* **project:** add date range component and update documentation ([b22a90e](https://github.com/skoropadas/di-controls/commit/b22a90e06535dac6b5d050c4f0fd051072a0d3b3))
+
 ## [2.0.1](https://github.com/skoropadas/flex-controls/compare/v2.0.0...v2.0.1) (2023-05-09)
 
 
