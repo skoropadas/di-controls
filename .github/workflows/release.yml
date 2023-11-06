@@ -36,13 +36,13 @@ jobs:
         run: npx nx run-many --all --target=build --configuration=ci --parallel
 
       - name: Tar Artifacts
-        run: tar -cvf ng-doc.tar dist/apps/ng-doc
+        run: tar -cvf docs.tar dist/apps/docs
 
       - name: Uploading Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: artifacts
-          path: ng-doc.tar
+          path: docs.tar
 
       - name: Release
         env:

@@ -22,11 +22,11 @@ jobs:
           workflow_conclusion: success
 
       - name: Extract artifact
-        run: tar -xvf artifacts/ng-doc.tar
+        run: tar -xvf artifacts/docs.tar
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: master
-          FOLDER: dist/apps/demo
+          FOLDER: dist/apps/docs
