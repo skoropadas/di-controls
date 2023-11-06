@@ -4,13 +4,11 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {InputDateDirective} from '../../inputs/components/input-date.directive';
 import {DateRange, DateRangeComponent} from '../components/date-range.component';
-import {StartDirective} from '../components/start.directive';
-import {EndDirective} from '../components/end.directive';
+import {RangeDirective} from '../components/range.directive';
 
 // snippet-from-file="../components/date-range.component.ts"
 // snippet-from-file="../../inputs/components/input-date.directive.ts"
-// snippet-from-file="../components/start.directive.ts"
-// snippet-from-file="../components/end.directive.ts"
+// snippet-from-file="../components/range.directive.ts"
 
 @Component({
   selector: 'di-date-range-demo',
@@ -21,8 +19,7 @@ import {EndDirective} from '../components/end.directive';
     ModelInfoComponent,
     InputDateDirective,
     DateRangeComponent,
-    StartDirective,
-    EndDirective,
+    RangeDirective,
     ReactiveFormsModule,
   ],
   template: `
@@ -31,12 +28,12 @@ import {EndDirective} from '../components/end.directive';
       <di-date-range [formControl]="control">
         <label>
           Start
-          <input diInputDate diStart />
+          <input diInputDate diRange="start" />
         </label>
 
         <label>
           End
-          <input diInputDate diEnd />
+          <input diInputDate diRange="end" />
         </label>
       </di-date-range>
       <!-- snippet -->

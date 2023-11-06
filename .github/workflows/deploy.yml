@@ -2,21 +2,15 @@ name: 📚 Deploy
 
 on:
   workflow_run:
-    workflows: [📦 Release]
-    types: [completed]
-    branches: [release]
+    workflows: [ 📦 Release ]
+    types: [ completed ]
+    branches: [ master ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,8 +25,8 @@ jobs:
         run: tar -xvf artifacts/ng-doc.tar
 
       - name: Deploy
-        if: success()
-        run: |
-          aws s3 rm s3://ng-doc --recursive
-          aws s3 sync ./dist/apps/ng-doc s3://ng-doc
-          AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/*"
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: master
+          FOLDER: dist/apps/demo

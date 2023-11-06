@@ -38,7 +38,8 @@ export class ChildControlComponent extends DIControl<string> {
 }
 ````
 
-Now if you put `ChildControlComponent` inside `ParentControlComponent` tag, they will be connected.
+Now if you put `ChildControlComponent` inside `ParentControlComponent` tag
+or its template, they will be connected.
 
 ```html
 

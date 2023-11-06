@@ -12,7 +12,10 @@ export interface DateRange {
   standalone: true,
   imports: [CommonModule],
   template: `<ng-content></ng-content>`,
-  providers: [provideHostControl(DateRangeComponent)],
+  providers: [
+    // Provide this component as a host for all children
+    provideHostControl(DateRangeComponent)
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateRangeComponent extends DIControl<DateRange> {

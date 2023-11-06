@@ -22,7 +22,7 @@ import {RadioGroupComponent} from '../components/radio-group.component';
   template: `
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
-      <di-radio-group [formControl]="control">
+      <di-radio-group [formControl]="control" [compareFn]="compareFruits">
         <di-radio *ngFor="let item of items" [value]="item">{{ item.name }}</di-radio>
       </di-radio-group>
       <!-- snippet -->
@@ -32,4 +32,8 @@ import {RadioGroupComponent} from '../components/radio-group.component';
 export class RadioObjectDemoComponent {
   control: FormControl<Fruit | null> = new FormControl<Fruit | null>(FRUITS[2]);
   items: Fruit[] = FRUITS;
+
+  compareFruits(a: Fruit | null, b: Fruit | null): boolean {
+    return a?.id === b?.id;
+  }
 }

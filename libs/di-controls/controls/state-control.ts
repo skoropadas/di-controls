@@ -156,7 +156,7 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
  *  }
  *  ```
  *
- *  ## Using with `DICollectionControl`
+ *  ## Using with DICollectionControl
  *  Using `DIStateControl` together with `DICollectionControl` will result in
  *  `DICollectionControl` containing a list of values from `DIStateControl` that have
  *  a checked state. If your `DIStateControl` has objects as values, you may

@@ -12,7 +12,7 @@ import {
   selector: 'di-radio-group',
   standalone: true,
   imports: [CommonModule],
-  template: ` <ng-content></ng-content>`,
+  template: `<ng-content></ng-content>`,
   styles: [
     `
       :host {
@@ -22,10 +22,16 @@ import {
       }
     `,
   ],
-  providers: [provideHostControl(RadioGroupComponent), provideCompareHost(RadioGroupComponent)],
+  providers: [
+    // Provide this component as a host for all children
+    provideHostControl(RadioGroupComponent),
+    // Provide this component as a compare host for all children to get access to its compare function
+    provideCompareHost(RadioGroupComponent),
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioGroupComponent<T = unknown> extends DIControl<T> implements DICompareHost<T> {
+  // For comparing immutable objects
   @Input()
   compareFn: DICompareFunction<T> = (a, b) => a === b;
 
