@@ -7,7 +7,7 @@ on:
         type: string
         description: Base branch
         required: false
-        default: 'main'
+        default: 'master'
       head:
         type: string
         description: Head branch
