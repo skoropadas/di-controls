@@ -31,7 +31,14 @@ bootstrapApplication(AppComponent, {
 		provideAnimations(),
 		provideHttpClient(),
 		provideRouter(
-			NG_DOC_ROUTING,
+			[
+				...NG_DOC_ROUTING,
+				{
+					path: '**',
+					redirectTo: 'getting-started/installation',
+					pathMatch: 'full',
+				},
+			],
 			withInMemoryScrolling({
 				scrollPositionRestoration: 'enabled',
 				anchorScrolling: 'enabled',
