@@ -5,7 +5,7 @@
   <p align="center">
     Flexible UI Controls in seconds!
     <br />
-    <a href="https://not-exist.com/">Documentation</a>
+    <a href="https://skoropadas.github.io/di-controls/">Documentation</a>
     ·
     <a href="https://github.com/skoropadas/di-controls/issues/new/choose">Report Bug</a>
     ·
