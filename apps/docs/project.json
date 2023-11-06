@@ -17,6 +17,7 @@
 				"polyfills": "apps/docs/src/polyfills.ts",
 				"tsConfig": "apps/docs/tsconfig.app.json",
 				"inlineStyleLanguage": "scss",
+				"baseHref": "/di-controls/",
 				"assets": [
 					{
 						"glob": "**/*",
