@@ -63,7 +63,7 @@ and create. Any contributions you make are **greatly appreciated**. Please read 
 
 [npm-url]: https://www.npmjs.com/package/di-controls
 
-[license-shield]: https://img.shields.io/github/license/skoropadas/di-controls.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/skoropadas/di-controls.svg?style=for-the-badge&branch=master
 
 [license-url]: https://github.com/skoropadas/di-controls/blob/main/LICENSE
 
