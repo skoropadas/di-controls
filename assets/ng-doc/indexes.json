@@ -9,7 +9,31 @@
     "section": "Checkbox",
     "route": "/examples/checkbox",
     "fragment": "checkbox",
-    "content": "In this section, we will discuss creating a checkbox and checkbox group using this library. To start, let's outline the list of requirements and necessary components. The checkbox should consist of the following components: Checkbox groupCheckbox provided from external sources using ng-content List of requirements: Checkbox should be provided via ng-content.When an item from the list is selected, its value should be added to the checkbox group's model.When an item from the list is deselected, its value should be removed from the checkbox group's model.If checkbox group's model is changed, the checkbox should be selected or deselected.The checkbox should support working with immutable objects."
+    "content": "In this section, we will discuss creating a checkbox and checkbox group using this library. To start, let's outline the list of requirements and necessary components."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Checkbox"
+    ],
+    "pageType": "guide",
+    "title": "Checkbox",
+    "section": "The checkbox should consist of the following components",
+    "route": "/examples/checkbox",
+    "fragment": "the-checkbox-should-consist-of-the-following-components",
+    "content": "⚙️ Checkbox group⚙️ Checkbox provided from external sources using ng-content"
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Checkbox"
+    ],
+    "pageType": "guide",
+    "title": "Checkbox",
+    "section": "List of requirements",
+    "route": "/examples/checkbox",
+    "fragment": "list-of-requirements",
+    "content": "🚩 Checkbox should be provided via ng-content.🚩 When an item from the list is selected, its value should be added to the checkbox group's model.🚩 When an item from the list is deselected, its value should be removed from the checkbox group's model.🚩 If checkbox group's model is changed, the checkbox should be selected or deselected.🚩 The checkbox should support working with immutable objects."
   },
   {
     "breadcrumbs": [
@@ -45,7 +69,31 @@
     "section": "Combobox",
     "route": "/examples/combobox",
     "fragment": "combobox",
-    "content": "In this section, we will discuss creating a combobox using this library. To start, let's outline the list of requirements and necessary components. The combobox should consist of the following components: Input fieldDropdownList of items provided from external sources using ng-content that will be displayed in the dropdown List of requirements: List items should be provided via ng-content.When an item from the list is selected, its value should be set in the input field.When the input field gains focus, the dropdown should automatically open.When an item from the list is selected, the dropdown should close.If the user changes the text in the input field while an item is selected, the model's value should be reset.The combobox should support working with immutable objects."
+    "content": "In this section, we will discuss creating a combobox using this library. To start, let's outline the list of requirements and necessary components."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "The combobox should consist of the following components",
+    "route": "/examples/combobox",
+    "fragment": "the-combobox-should-consist-of-the-following-components",
+    "content": "⚙️ Input field⚙️ Dropdown⚙️ List of items provided from external sources using ng-content that will be displayed in the dropdown"
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "List of requirements",
+    "route": "/examples/combobox",
+    "fragment": "list-of-requirements",
+    "content": "🚩 List items should be provided via ng-content.🚩 When an item from the list is selected, its value should be set in the input field.🚩 When the input field gains focus, the dropdown should automatically open.🚩 When an item from the list is selected, the dropdown should close.🚩 If the user changes the text in the input field while an item is selected, the model's value should be reset.🚩 The combobox should support working with immutable objects."
   },
   {
     "breadcrumbs": [
@@ -105,7 +153,31 @@
     "section": "Date Range",
     "route": "/examples/date-range",
     "fragment": "date-range",
-    "content": "In this section, we will discuss creating a date range control using this library. To start, let's outline the list of requirements and necessary components. The date range should consist of the following components: Input for the start dateInput for the end date List of requirements: Date Range should return an object with the start and end date.Input for the start date should change the start date in the model.Input for the end date should change the end date in the model."
+    "content": "In this section, we will discuss creating a date range control using this library. To start, let's outline the list of requirements and necessary components."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "The date range should consist of the following components",
+    "route": "/examples/date-range",
+    "fragment": "the-date-range-should-consist-of-the-following-components",
+    "content": "⚙️ Input for the start date⚙️ Input for the end date"
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "List of requirements",
+    "route": "/examples/date-range",
+    "fragment": "list-of-requirements",
+    "content": "🚩 Date Range should return an object with the start and end date.🚩 Input for the start date should change the start date in the model.🚩 Input for the end date should change the end date in the model."
   },
   {
     "breadcrumbs": [
@@ -165,7 +237,31 @@
     "section": "Radio",
     "route": "/examples/radio",
     "fragment": "radio",
-    "content": "In this section, we will discuss creating a radio and radio group using this library. To start, let's outline the list of requirements and necessary components. The radio should consist of the following components: Radio groupRadio provided from external sources using ng-content List of requirements: Radio should be provided via ng-content.Only one radio can be selected at a time.If radio group's model is changed, the radio should be selected or deselected.The radio should support working with immutable objects."
+    "content": "In this section, we will discuss creating a radio and radio group using this library. To start, let's outline the list of requirements and necessary components."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Radio"
+    ],
+    "pageType": "guide",
+    "title": "Radio",
+    "section": "The radio should consist of the following components",
+    "route": "/examples/radio",
+    "fragment": "the-radio-should-consist-of-the-following-components",
+    "content": "⚙️ Radio group⚙️ Radio"
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Radio"
+    ],
+    "pageType": "guide",
+    "title": "Radio",
+    "section": "List of requirements",
+    "route": "/examples/radio",
+    "fragment": "list-of-requirements",
+    "content": "🚩 Radio should be provided via ng-content.🚩 Only one radio can be selected at a time.🚩 If radio group's model is changed, the radio should be selected or deselected.🚩 The radio should support working with immutable objects."
   },
   {
     "breadcrumbs": [
