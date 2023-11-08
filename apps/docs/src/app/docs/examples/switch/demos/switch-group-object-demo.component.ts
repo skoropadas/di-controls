@@ -1,13 +1,13 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
-import {SwitchGroupComponent} from '../components/switch-group.component';
 import {SwitchComponent} from '../components/switch.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Fruit, FRUITS} from '../../../../constants/fruits';
+import {CheckboxGroupComponent} from '../../checkbox/components/checkbox-group.component';
 
 // snippet-from-file="../components/switch.component.ts"
-// snippet-from-file="../components/switch-group.component.ts"
+// snippet-from-file="../../checkbox/components/checkbox-group.component.ts"
 
 @Component({
   standalone: true,
@@ -15,9 +15,9 @@ import {Fruit, FRUITS} from '../../../../constants/fruits';
   template: `
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
-      <di-switch-group [formControl]="control" [compareFn]="compareFruits">
+      <di-checkbox-group [formControl]="control" [compareFn]="compareFruits">
         <di-switch *ngFor="let item of items" [value]="item">{{ item.name }}</di-switch>
-      </di-switch-group>
+      </di-checkbox-group>
       <!-- snippet -->
     </di-model-info>
   `,
@@ -25,9 +25,9 @@ import {Fruit, FRUITS} from '../../../../constants/fruits';
   imports: [
     CommonModule,
     ModelInfoComponent,
-    SwitchGroupComponent,
     SwitchComponent,
     ReactiveFormsModule,
+    CheckboxGroupComponent
   ],
 })
 export class SwitchGroupObjectDemoComponent {

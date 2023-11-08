@@ -4,6 +4,7 @@ import { SwitchGroupDemoComponent } from './demos/switch-group-demo.component';
 import { SwitchDemoComponent } from './demos/switch-demo.component';
 import { SwitchObjectDemoComponent } from './demos/switch-object-demo.component';
 import { SwitchGroupObjectDemoComponent } from './demos/switch-group-object-demo.component';
+import {SwitchRadioGroupDemoComponent} from './demos/switch-radio-group-demo.component';
 
 const SwitchPage: NgDocPage = {
   title: `Switch`,
@@ -14,6 +15,7 @@ const SwitchPage: NgDocPage = {
     SwitchGroupDemoComponent,
     SwitchObjectDemoComponent,
     SwitchGroupObjectDemoComponent,
+    SwitchRadioGroupDemoComponent
   },
   keyword: 'SwitchPage',
 };

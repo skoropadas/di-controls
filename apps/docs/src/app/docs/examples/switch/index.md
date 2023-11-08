@@ -15,3 +15,7 @@
 ## Switch Group with Object
 
 {{ NgDocActions.demo("SwitchGroupObjectDemoComponent", {expanded: true}) }}
+
+## Radio Group
+
+{{ NgDocActions.demo("SwitchRadioGroupDemoComponent", {expanded: true}) }}
