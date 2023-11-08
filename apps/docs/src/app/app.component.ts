@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgDocNavbarComponent, NgDocRootComponent, NgDocSidebarComponent } from '@ng-doc/app';
 import { RouterOutlet } from '@angular/router';
+import {NgDocButtonIconComponent, NgDocIconComponent, NgDocTooltipDirective} from '@ng-doc/ui-kit';
 
 @Component({
 	selector: 'di-controls-root',
@@ -8,6 +9,14 @@ import { RouterOutlet } from '@angular/router';
 	styleUrls: ['./app.component.scss'],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [NgDocRootComponent, RouterOutlet, NgDocNavbarComponent, NgDocSidebarComponent],
+	imports: [
+		NgDocRootComponent,
+		RouterOutlet,
+		NgDocNavbarComponent,
+		NgDocSidebarComponent,
+		NgDocButtonIconComponent,
+		NgDocTooltipDirective,
+		NgDocIconComponent,
+	],
 })
 export class AppComponent {}
