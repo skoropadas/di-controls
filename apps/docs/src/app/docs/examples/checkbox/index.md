@@ -3,19 +3,19 @@
 In this section, we will discuss creating a checkbox and checkbox group using this library. To
 start, let's outline the list of requirements and necessary components.
 
-**The checkbox should consist of the following components:**
+### The checkbox should consist of the following components
 
-- Checkbox group
-- Checkbox provided from external sources using `ng-content`
+- ⚙️ Checkbox group
+- ⚙️ Checkbox provided from external sources using `ng-content`
 
-**List of requirements:**
+### List of requirements
 
-- Checkbox should be provided via `ng-content`.
-- When an item from the list is selected, its value should be added to the checkbox group's model.
-- When an item from the list is deselected, its value should be removed from the checkbox group's
+- 🚩 Checkbox should be provided via `ng-content`.
+- 🚩 When an item from the list is selected, its value should be added to the checkbox group's model.
+- 🚩 When an item from the list is deselected, its value should be removed from the checkbox group's
   model.
-- If checkbox group's model is changed, the checkbox should be selected or deselected.
-- The checkbox should support working with immutable objects.
+- 🚩 If checkbox group's model is changed, the checkbox should be selected or deselected.
+- 🚩 The checkbox should support working with immutable objects.
 
 ## Creating a checkbox and checkbox group
 

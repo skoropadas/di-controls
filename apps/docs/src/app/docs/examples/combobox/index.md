@@ -3,22 +3,22 @@
 In this section, we will discuss creating a combobox using this library. To start, let's outline the
 list of requirements and necessary components.
 
-**The combobox should consist of the following components:**
+### The combobox should consist of the following components
 
-- Input field
-- Dropdown
-- List of items provided from external sources using `ng-content` that will be displayed in the
+- ⚙️ Input field
+- ⚙️ Dropdown
+- ⚙️ List of items provided from external sources using `ng-content` that will be displayed in the
   dropdown
 
-**List of requirements:**
+### List of requirements
 
-- List items should be provided via `ng-content`.
-- When an item from the list is selected, its value should be set in the input field.
-- When the input field gains focus, the dropdown should automatically open.
-- When an item from the list is selected, the dropdown should close.
-- If the user changes the text in the input field while an item is selected, the model's value
+- 🚩 List items should be provided via `ng-content`.
+- 🚩 When an item from the list is selected, its value should be set in the input field.
+- 🚩 When the input field gains focus, the dropdown should automatically open.
+- 🚩 When an item from the list is selected, the dropdown should close.
+- 🚩 If the user changes the text in the input field while an item is selected, the model's value
   should be reset.
-- The combobox should support working with immutable objects.
+- 🚩 The combobox should support working with immutable objects.
 
 ## Creating a combobox
 

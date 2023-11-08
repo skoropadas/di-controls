@@ -3,17 +3,17 @@
 In this section, we will discuss creating a radio and radio group using this library. To
 start, let's outline the list of requirements and necessary components.
 
-**The radio should consist of the following components:**
+### The radio should consist of the following components
 
-- Radio group
-- Radio provided from external sources using `ng-content`
+- ⚙️ Radio group
+- ⚙️ Radio
 
-**List of requirements:**
+### List of requirements
 
-- Radio should be provided via `ng-content`.
-- Only one radio can be selected at a time.
-- If radio group's model is changed, the radio should be selected or deselected.
-- The radio should support working with immutable objects.
+- 🚩 Radio should be provided via `ng-content`.
+- 🚩 Only one radio can be selected at a time.
+- 🚩 If radio group's model is changed, the radio should be selected or deselected.
+- 🚩 The radio should support working with immutable objects.
 
 ## Creating a radio and radio group
 
