@@ -7,9 +7,7 @@
 	"targets": {
 		"build": {
 			"executor": "@nx/angular:package",
-			"outputs": [
-				"{workspaceRoot}/dist/libs/di-controls"
-			],
+			"outputs": ["{workspaceRoot}/dist/libs/di-controls"],
 			"options": {
 				"project": "libs/di-controls/ng-package.json"
 			},
@@ -25,21 +23,15 @@
 		},
 		"test": {
 			"executor": "@nx/jest:jest",
-			"outputs": [
-				"{workspaceRoot}/coverage/libs/di-controls"
-			],
+			"outputs": ["{workspaceRoot}/coverage/libs/di-controls"],
 			"options": {
-				"jestConfig": "libs/di-controls/jest.config.ts",
-				"passWithNoTests": true
+				"jestConfig": "libs/di-controls/jest.config.ts"
 			}
 		},
 		"lint": {
-			"executor": "@nx/linter:eslint",
+			"executor": "@nx/eslint:lint",
 			"options": {
-				"lintFilePatterns": [
-					"libs/di-controls/**/*.ts",
-					"libs/di-controls/**/*.html"
-				]
+				"lintFilePatterns": ["libs/di-controls/**/*.ts", "libs/di-controls/**/*.html"]
 			}
 		}
 	},

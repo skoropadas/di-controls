@@ -7,9 +7,7 @@
 	"targets": {
 		"build": {
 			"executor": "@ng-doc/builder:browser",
-			"outputs": [
-				"{options.outputPath}"
-			],
+			"outputs": ["{options.outputPath}"],
 			"options": {
 				"outputPath": "dist/apps/docs",
 				"index": "apps/docs/src/index.html",
@@ -37,14 +35,9 @@
 					"apps/docs/src/favicon.ico",
 					"apps/docs/src/assets"
 				],
-				"styles": [
-					"node_modules/@ng-doc/app/styles/global.css",
-					"apps/docs/src/styles.scss"
-				],
+				"styles": ["node_modules/@ng-doc/app/styles/global.css", "apps/docs/src/styles.scss"],
 				"scripts": [],
-				"allowedCommonJsDependencies": [
-					"@ng-doc/core"
-				]
+				"allowedCommonJsDependencies": ["@ng-doc/core"]
 			},
 			"configurations": {
 				"production": {
@@ -98,22 +91,16 @@
 			}
 		},
 		"lint": {
-			"executor": "@nx/linter:eslint",
+			"executor": "@nx/eslint:lint",
 			"options": {
-				"lintFilePatterns": [
-					"apps/docs/**/*.ts",
-					"apps/docs/**/*.html"
-				]
+				"lintFilePatterns": ["apps/docs/**/*.ts", "apps/docs/**/*.html"]
 			}
 		},
 		"test": {
 			"executor": "@nx/jest:jest",
-			"outputs": [
-				"{workspaceRoot}/coverage/apps/docs"
-			],
+			"outputs": ["{workspaceRoot}/coverage/apps/docs"],
 			"options": {
-				"jestConfig": "apps/docs/jest.config.ts",
-				"passWithNoTests": true
+				"jestConfig": "apps/docs/jest.config.ts"
 			}
 		}
 	},
