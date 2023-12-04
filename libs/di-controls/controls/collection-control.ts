@@ -212,7 +212,9 @@ export abstract class DICollectionControl<TModel>
 
 	protected override updateControl(control: DIControl<TModel | TModel[]>): void {
 		if (control instanceof DIStateControl) {
-			control.writeValueFromHost(this.proxyModel.has(control.value) ? control.value : false);
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-expect-error
+			control.writeValueFromHost(this.proxyModel.has(control.value) ? control.value : control.config.uncheckValue);
 		} else {
 			control.writeValueFromHost(this.model());
 		}

@@ -34,6 +34,7 @@ import { ComboboxInputDirective } from './combobox-input.directive';
           display: flex;
           flex-direction: column;
           width: 100%;
+          color: #000;
           border: 1px solid #ccc;
           background: #fff;
           z-index: 1;

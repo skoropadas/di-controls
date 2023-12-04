@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
 import { FormsModule } from '@angular/forms';
@@ -29,7 +29,10 @@ import { FormsModule } from '@angular/forms';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RadioComponent<T = boolean> extends DIStateControl<T> {
+export class RadioComponent<T> extends DIStateControl<T | boolean> {
+  @Input()
+  override value: T | boolean = true;
+
   constructor() {
     super({
       host: injectHostControl({ optional: true }),

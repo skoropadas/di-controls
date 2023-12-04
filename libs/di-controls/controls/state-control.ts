@@ -1,4 +1,4 @@
-import {computed, Directive, effect, Input, OnChanges, Signal, SimpleChanges} from '@angular/core';
+import {computed, Directive, effect, OnChanges, Signal, SimpleChanges} from '@angular/core';
 import {DICompareHost} from 'di-controls/classes';
 import {DI_DEFAULT_COMPARE} from 'di-controls/constants';
 import {DIControl, DIControlConfig} from './control';
@@ -8,6 +8,10 @@ import {DICompareFunction} from 'di-controls/types';
  * Configuration for the `DIStateControl`.
  */
 export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TModel> {
+	/**
+	 * Value that will be used for the unchecked state.
+	 */
+	uncheckValue?: TModel;
 	/**
 	 * Function that will be used to compare host value with the current control value.
 	 */
@@ -31,6 +35,9 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
  * ```ts fileName="custom-control.component.ts"
  * @Component({})
  * export class CustomControlComponent<T = boolean> extends DIStateControl<T> {
+ *   @Input({required: true})
+ *   value!: T;
+ *
  *   constructor() {
  *    super();
  *  }
@@ -59,9 +66,12 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
  * To get checked state you need to use `checked` signal. It will return `true` if the current control is checked,
  * `false` if it is unchecked and `null` if it is in intermediate state.
  *
- * ```ts {6} fileName="custom-control.component.ts"
+ * ```ts {9} fileName="custom-control.component.ts"
  * @Component({})
- * export class CustomControlComponent extends DIControl<string> {
+ * export class CustomControlComponent<T> extends DIControl<T> {
+ *  @Input({required: true})
+ *   value!: T;
+ *
  *   constructor() {
  *     super();
  *
@@ -166,6 +176,9 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
  * inject it into your `DIStateControl` to give `DIStateControl` access to
  * the `compareFn` function.
  *
+ * > **Warning**
+ * > `DICollectionControl` requires an explicit specification of the `uncheckedValue` in the `DIStateControl`
+ *
  * ```ts {3-4} fileName="checkbox-group.component.ts"
  * @Component({
  *   providers: [
@@ -199,21 +212,24 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
  */
 @Directive({})
 export abstract class DIStateControl<TModel>
-	extends DIControl<TModel | boolean>
+	extends DIControl<TModel>
 	implements OnChanges
 {
-	@Input()
-	value: TModel | true = true;
+	/**
+	 * Value that will be used for the checked state.
+	 * You can override it to transform it to `@Input` or to set value by default.
+	 */
+	abstract value: TModel;
 
 	checked: Signal<boolean | null> = computed(() => {
-		const compareFn: DICompareFunction<TModel | boolean> =
+		const compareFn: DICompareFunction<TModel> =
 			this.config?.compareHost?.compareFn ?? DI_DEFAULT_COMPARE;
 
 		return compareFn(this.value, this.model()) ? true : this.isIntermediate ? null : false;
 	});
 
 	protected constructor(
-		protected override readonly config?: DIStateControlConfig<TModel | boolean>,
+		protected override readonly config?: DIStateControlConfig<TModel>,
 	) {
 		super(config);
 
@@ -243,7 +259,11 @@ export abstract class DIStateControl<TModel>
 
 	/** Sets unchecked state */
 	uncheck(): void {
-		this.updateModel(false);
+		if (!('uncheckValue'  in (this.config ?? {}))) {
+			throw new Error('To use uncheck method you need to provide uncheckValue in DIStateControl config');
+		}
+
+		this.updateModel(this.config!.uncheckValue as TModel);
 	}
 
 	/** Sets intermediate state */
@@ -253,7 +273,7 @@ export abstract class DIStateControl<TModel>
 
 	/** Toggles checked state */
 	toggle(): void {
-		this.updateModel(this.checked() === false ? this.value : false);
+		this.checked() ? this.uncheck() : this.check();
 	}
 
 	get isIntermediate(): boolean {

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostListener, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener, inject, Input} from '@angular/core';
 import {DICompareHost, DIStateControl, injectHostControl} from 'di-controls';
 
 @Component({
@@ -24,6 +24,9 @@ import {DICompareHost, DIStateControl, injectHostControl} from 'di-controls';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OptionComponent<T> extends DIStateControl<T> {
+  @Input({required: true})
+  override value!: T;
+
   constructor() {
     super({
       // Inject host control to get access to its model

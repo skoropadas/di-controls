@@ -1,4 +1,4 @@
-import {Directive, forwardRef, inject} from '@angular/core';
+import {Directive, forwardRef, inject, Input} from '@angular/core';
 import {
 	DICompareHost,
 	injectHostControl,
@@ -30,8 +30,11 @@ describe('DICollectionControl', () => {
 			standalone: true,
 		})
 		class StateControlDirective extends BaseStateControlDirective<number> {
+			@Input({required: true})
+			value!: number;
+
 			constructor() {
-				super({ host: injectHostControl() });
+				super({ host: injectHostControl(), uncheckValue: 0 });
 			}
 		}
 
@@ -52,7 +55,7 @@ describe('DICollectionControl', () => {
 			// Wait for children initialization
 			await fixture.whenStable();
 
-			expect(nestedControls.map((control) => control.getModel())).toEqual([1, false]);
+			expect(nestedControls.map((control) => control.getModel())).toEqual([1, 0]);
 			expect(nestedControls.map((control) => control.checked())).toEqual([true, false]);
 		});
 
@@ -65,7 +68,7 @@ describe('DICollectionControl', () => {
 
 			control.updateModel([2]);
 
-			expect(nestedControls.map((control) => control.getModel())).toEqual([false, 2]);
+			expect(nestedControls.map((control) => control.getModel())).toEqual([0, 2]);
 			expect(nestedControls.map((control) => control.checked())).toEqual([false, true]);
 		});
 
@@ -78,7 +81,7 @@ describe('DICollectionControl', () => {
 
 			formControl.setValue([2]);
 
-			expect(nestedControls.map((control) => control.getModel())).toEqual([false, 2]);
+			expect(nestedControls.map((control) => control.getModel())).toEqual([0, 2]);
 			expect(nestedControls.map((control) => control.checked())).toEqual([false, true]);
 		});
 
@@ -126,8 +129,11 @@ describe('DICollectionControl', () => {
 			standalone: true,
 		})
 		class StateControlDirective extends BaseStateControlDirective<number> {
+			@Input({required: true})
+			value!: number;
+
 			constructor() {
-				super({ host: injectHostControl(), compareHost: inject(DICompareHost) });
+				super({ host: injectHostControl(), compareHost: inject(DICompareHost), uncheckValue: undefined });
 			}
 		}
 
@@ -156,7 +162,7 @@ describe('DICollectionControl', () => {
 					id: 1,
 					name: 'test1',
 				},
-				false,
+				undefined,
 			]);
 		});
 
@@ -170,7 +176,7 @@ describe('DICollectionControl', () => {
 			control.updateModel([{ id: 2, name: 'test2' }]);
 
 			expect(nestedControls.map((control) => control.getModel())).toEqual([
-				false,
+				undefined,
 				{
 					id: 2,
 					name: 'test2',
@@ -189,7 +195,7 @@ describe('DICollectionControl', () => {
 			formControl.setValue([{ id: 2, name: 'test2' }]);
 
 			expect(nestedControls.map((control) => control.getModel())).toEqual([
-				false,
+				undefined,
 				{
 					id: 2,
 					name: 'test2',
@@ -213,7 +219,7 @@ describe('DICollectionControl', () => {
 
 			expect(control.getModel()).toEqual([{ id: 2, name: 'test2' }]);
 			expect(nestedControls.map((control) => control.getModel())).toEqual([
-				false,
+				undefined,
 				{
 					id: 2,
 					name: 'test2',
@@ -307,7 +313,7 @@ describe('DICollectionControl', () => {
 				nestedControls: [controlFn, controlFn],
 			});
 
-			nestedControls[0].updateModel(2 as any);
+			nestedControls[0].updateModel(2 as never);
 
 			expect(control.getModel()).toEqual(null);
 			// updated child model should be ignored

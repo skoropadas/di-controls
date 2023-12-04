@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import {Directive, Input} from '@angular/core';
 import { createFixture } from './utils/create-fixture';
 import { BaseStateControlDirective } from './utils';
 
@@ -9,8 +9,11 @@ describe('DIStateControl', () => {
 			standalone: true,
 		})
 		class StateControlDirective extends BaseStateControlDirective<boolean> {
+			@Input()
+			value: boolean = true;
+
 			constructor() {
-				super({hasIntermediate: true});
+				super({uncheckValue: false, hasIntermediate: true});
 			}
 		}
 
@@ -91,8 +94,11 @@ describe('DIStateControl', () => {
 			standalone: true,
 		})
 		class StateControlDirective extends BaseStateControlDirective<boolean> {
+			@Input()
+			value: boolean = true;
+
 			constructor() {
-				super();
+				super({uncheckValue: false})
 			}
 		}
 

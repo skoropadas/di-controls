@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
 
@@ -52,9 +52,13 @@ import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
 })
-export class SwitchComponent<T = boolean> extends DIStateControl<T> {
+export class SwitchComponent<T> extends DIStateControl<T | boolean> {
+  @Input()
+  override value: T | boolean = true;
+
   constructor() {
     super({
+      uncheckValue: false,
       host: injectHostControl({ optional: true }),
       compareHost: inject(DICompareHost, { optional: true }),
     });

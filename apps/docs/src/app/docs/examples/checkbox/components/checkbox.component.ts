@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
 import { FormsModule } from '@angular/forms';
@@ -33,9 +33,13 @@ import { FormsModule } from '@angular/forms';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxComponent<T = boolean> extends DIStateControl<T> {
+export class CheckboxComponent<T> extends DIStateControl<T | boolean> {
+  @Input()
+  override value: T | boolean = true;
+
   constructor() {
     super({
+      uncheckValue: false,
       host: injectHostControl<T>({ optional: true }),
       compareHost: inject(DICompareHost, { optional: true }),
       hasIntermediate: true,
