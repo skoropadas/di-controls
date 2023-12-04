@@ -42,5 +42,5 @@ Thumbs.db
 
 
 # NgDoc files
-.ng-doc
+/ng-doc
 .nx/cache

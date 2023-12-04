@@ -36,10 +36,10 @@ jobs:
         run: npx nx run-many --all --target=build --configuration=ci --parallel
 
       - name: Copy 404.html
-        run: cp dist/apps/docs/index.html dist/apps/docs/404.html
+        run: cp dist/apps/docs/browser/index.html dist/apps/docs/browser/404.html
 
       - name: Tar Artifacts
-        run: tar -cvf docs.tar dist/apps/docs
+        run: tar -cvf docs.tar dist/apps/docs/browser
 
       - name: Uploading Artifacts
         uses: actions/upload-artifact@v3
