@@ -15,7 +15,7 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
 	/**
 	 * Function that will be used to compare host value with the current control value.
 	 */
-	compareHost?: DICompareHost<TModel | null> | null;
+	compareHost?: DICompareHost<TModel | null> | DICompareFunction<TModel | null> | null;
 	/**
 	 * Indicates whether the current control can have intermediate state.
 	 */
@@ -223,7 +223,9 @@ export abstract class DIStateControl<TModel>
 
 	checked: Signal<boolean | null> = computed(() => {
 		const compareFn: DICompareFunction<TModel> =
-			this.config?.compareHost?.compareFn ?? DI_DEFAULT_COMPARE;
+			typeof this.config?.compareHost === 'function'
+				? this.config.compareHost
+				: this.config?.compareHost?.compareFn ?? DI_DEFAULT_COMPARE;
 
 		return compareFn(this.value, this.model()) ? true : this.isIntermediate ? null : false;
 	});
