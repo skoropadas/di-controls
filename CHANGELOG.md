@@ -1,3 +1,23 @@
+# [3.0.0](https://github.com/skoropadas/di-controls/compare/v2.1.0...v3.0.0) (2023-12-05)
+
+
+### Bug Fixes
+
+* **state-control:** now `DIStateControl` will force you to implement `@Input value` to have better typings, `uncheckedValue` now also can be provided using `super` call ([c069e50](https://github.com/skoropadas/di-controls/commit/c069e50b6f3aeccaf0c319e6039360f1ebf88cb8))
+
+
+### Features
+
+* **angular:** update to Angular 17 ([edf647a](https://github.com/skoropadas/di-controls/commit/edf647ab1b232caabd577b5951353e8ad6812b01))
+* **project:** update to ng17 ([492db0e](https://github.com/skoropadas/di-controls/commit/492db0e1f6568ecc46707e1a20de76828ca2b65a))
+* **state-control:** state controls now can accept compare function instead of compare host ([c6c4905](https://github.com/skoropadas/di-controls/commit/c6c4905426a5c50e40f74e31ee4bea88d081e29b))
+
+
+### BREAKING CHANGES
+
+* **state-control:** Breaking changes in DIStateControl
+* **angular:** Angular 17
+
 # [2.1.0](https://github.com/skoropadas/di-controls/compare/v2.0.1...v2.1.0) (2023-11-06)
 
 
