@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/skoropadas/di-controls/compare/v3.0.0...v3.0.1) (2023-12-05)
+
+
+### Bug Fixes
+
+* **state-control:** rename `compareHost` to `compare` due to interface changes ([c8f875d](https://github.com/skoropadas/di-controls/commit/c8f875de6be2360e856ac6c671e9c950d5d19869))
+
 # [3.0.0](https://github.com/skoropadas/di-controls/compare/v2.1.0...v3.0.0) (2023-12-05)
 
 
