@@ -133,7 +133,7 @@ describe('DICollectionControl', () => {
 			value!: number;
 
 			constructor() {
-				super({ host: injectHostControl(), compareHost: inject(DICompareHost), uncheckValue: undefined });
+				super({ host: injectHostControl(), compare: inject(DICompareHost), uncheckValue: undefined });
 			}
 		}
 

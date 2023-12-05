@@ -60,7 +60,7 @@ export class SwitchComponent<T> extends DIStateControl<T | boolean> {
     super({
       uncheckValue: false,
       host: injectHostControl({ optional: true }),
-      compareHost: inject(DICompareHost, { optional: true }),
+      compare: inject(DICompareHost, { optional: true }),
     });
   }
 }

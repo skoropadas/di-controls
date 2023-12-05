@@ -36,7 +36,7 @@ export class RadioComponent<T> extends DIStateControl<T | boolean> {
   constructor() {
     super({
       host: injectHostControl({ optional: true }),
-      compareHost: inject(DICompareHost, { optional: true }),
+      compare: inject(DICompareHost, { optional: true }),
     });
   }
 }

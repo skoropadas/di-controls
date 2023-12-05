@@ -41,7 +41,7 @@ export class CheckboxComponent<T> extends DIStateControl<T | boolean> {
     super({
       uncheckValue: false,
       host: injectHostControl<T>({ optional: true }),
-      compareHost: inject(DICompareHost, { optional: true }),
+      compare: inject(DICompareHost, { optional: true }),
       hasIntermediate: true,
     });
   }

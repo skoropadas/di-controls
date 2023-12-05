@@ -32,7 +32,7 @@ export class OptionComponent<T> extends DIStateControl<T> {
       // Inject host control to get access to its model
       host: injectHostControl({ optional: true }),
       // Inject compare host to get access to its compare function
-      compareHost: inject(DICompareHost, { optional: true }),
+      compare: inject(DICompareHost, { optional: true }),
     });
   }
 
