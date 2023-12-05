@@ -100,7 +100,7 @@ import{a as o}from"./chunk-FWZKFHMH.js";import"./chunk-W2RZMSI2.js";import{a as 
 </span><span class="line ngde">  <span class="hljs-title function_ ngde">constructor</span>(<span class="hljs-params ngde"></span>) {
 </span><span class="line ngde">    <span class="hljs-variable language_ ngde">super</span>({
 </span><span class="line highlighted ngde">      <span class="hljs-attr ngde">host</span>: <span class="hljs-title function_ ngde"><a href="/api/di-controls/functions/injectHostControl3" class="ng-doc-code-anchor ngde" data-link-type="Function" class="ngde">injectHostControl</a></span>({ <span class="hljs-attr ngde">optional</span>: <span class="hljs-literal ngde">true</span> }),
-</span><span class="line highlighted ngde">      <span class="hljs-attr ngde">compareHost</span>: <span class="hljs-title function_ ngde">inject</span>(<span class="hljs-title class_ ngde"><a href="/api/di-controls/classes/DICompareHost" class="ng-doc-code-anchor ngde" data-link-type="Class" class="ngde">DICompareHost</a></span>, { <span class="hljs-attr ngde">optional</span>: <span class="hljs-literal ngde">true</span> }),
+</span><span class="line highlighted ngde">      <span class="hljs-attr ngde">compare</span>: <span class="hljs-title function_ ngde">inject</span>(<span class="hljs-title class_ ngde"><a href="/api/di-controls/classes/DICompareHost" class="ng-doc-code-anchor ngde" data-link-type="Class" class="ngde">DICompareHost</a></span>, { <span class="hljs-attr ngde">optional</span>: <span class="hljs-literal ngde">true</span> }),
 </span><span class="line highlighted ngde">      <span class="hljs-attr ngde">hasIntermediate</span>: <span class="hljs-literal ngde">true</span>,
 </span><span class="line ngde">    });
 </span><span class="line ngde">

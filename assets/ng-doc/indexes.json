@@ -1882,7 +1882,7 @@
     "section": "Properties",
     "route": "/api/di-controls/interfaces/DIStateControlConfig",
     "fragment": "properties",
-    "content": "Function that will be used to compare host value with the current control value."
+    "content": "Function that will be used to compare model value with the value property."
   },
   {
     "breadcrumbs": [
