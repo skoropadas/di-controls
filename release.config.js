@@ -10,5 +10,6 @@ module.exports = {
 				pkgRoot: 'dist/libs/di-controls',
 			},
 		],
+		'@semantic-release/github'
 	],
 };
