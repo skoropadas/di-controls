@@ -1940,6 +1940,19 @@
     "breadcrumbs": [
       "API",
       "di-controls",
+      "DIStateControlConfig"
+    ],
+    "pageType": "api",
+    "title": "DIStateControlConfig",
+    "section": "Properties",
+    "route": "/api/di-controls/interfaces/DIStateControlConfig",
+    "fragment": "properties",
+    "content": "Value that will be used for the unchecked state."
+  },
+  {
+    "breadcrumbs": [
+      "API",
+      "di-controls",
       "DIStateControl"
     ],
     "pageType": "api",
@@ -2074,6 +2087,19 @@
     ],
     "pageType": "api",
     "title": "DIStateControl",
+    "section": "Using with DICollectionControl",
+    "route": "/api/di-controls/classes/DIStateControl",
+    "fragment": "using-with-dicollectioncontrol",
+    "content": "DICollectionControl requires an explicit specification of the uncheckedValue in the DIStateControl"
+  },
+  {
+    "breadcrumbs": [
+      "API",
+      "di-controls",
+      "DIStateControl"
+    ],
+    "pageType": "api",
+    "title": "DIStateControl",
     "section": "Properties",
     "route": "/api/di-controls/classes/DIStateControl",
     "fragment": "properties",
@@ -2117,6 +2143,19 @@
     "route": "/api/di-controls/classes/DIStateControl",
     "fragment": "properties",
     "content": "Control from which we have to update our model."
+  },
+  {
+    "breadcrumbs": [
+      "API",
+      "di-controls",
+      "DIStateControl"
+    ],
+    "pageType": "api",
+    "title": "DIStateControl",
+    "section": "Properties",
+    "route": "/api/di-controls/classes/DIStateControl",
+    "fragment": "properties",
+    "content": "Value that will be used for the checked state. You can override it to transform it to @Input or to set value by default."
   },
   {
     "breadcrumbs": [
