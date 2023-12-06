@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/skoropadas/di-controls/compare/v3.1.0...v3.1.1) (2023-12-06)
+
+
+### Bug Fixes
+
+* **state-control:** value in `compareFn` has null in types ([8026fed](https://github.com/skoropadas/di-controls/commit/8026fed7a129a7a81161da634b9b691cdd6382fa))
+
 # [3.1.0](https://github.com/skoropadas/di-controls/compare/v3.0.1...v3.1.0) (2023-12-06)
 
 
