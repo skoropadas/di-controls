@@ -222,7 +222,7 @@ export abstract class DIStateControl<TModel, TValue extends TModel = TModel>
 	abstract value: TValue;
 
 	checked: Signal<boolean | null> = computed(() => {
-		const compareFn: DICompareFunction<TModel, TValue> =
+		const compareFn: DICompareFunction<TModel | null, TValue> =
 			typeof this.config?.compare === 'function'
 				? this.config.compare
 				: this.config?.compare?.compareFn ?? DI_DEFAULT_COMPARE;
