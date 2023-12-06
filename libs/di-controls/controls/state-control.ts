@@ -7,7 +7,7 @@ import {DICompareFunction} from 'di-controls/types';
 /**
  * Configuration for the `DIStateControl`.
  */
-export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TModel> {
+export interface DIStateControlConfig<TModel, TValue extends TModel = TModel> extends DIControlConfig<TModel, TModel> {
 	/**
 	 * Value that will be used for the unchecked state.
 	 */
@@ -15,7 +15,7 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
 	/**
 	 * Function that will be used to compare model value with the `value` property.
 	 */
-	compare?: DICompareHost<TModel | null> | DICompareFunction<TModel | null> | null;
+	compare?: DICompareHost<TModel | null, TValue> | DICompareFunction<TModel | null, TValue> | null;
 	/**
 	 * Indicates whether the current control can have intermediate state.
 	 */
@@ -211,7 +211,7 @@ export interface DIStateControlConfig<TModel> extends DIControlConfig<TModel, TM
  * ```
  */
 @Directive({})
-export abstract class DIStateControl<TModel>
+export abstract class DIStateControl<TModel, TValue extends TModel = TModel>
 	extends DIControl<TModel>
 	implements OnChanges
 {
@@ -219,19 +219,19 @@ export abstract class DIStateControl<TModel>
 	 * Value that will be used for the checked state.
 	 * You can override it to transform it to `@Input` or to set value by default.
 	 */
-	abstract value: TModel;
+	abstract value: TValue;
 
 	checked: Signal<boolean | null> = computed(() => {
-		const compareFn: DICompareFunction<TModel> =
+		const compareFn: DICompareFunction<TModel, TValue> =
 			typeof this.config?.compare === 'function'
 				? this.config.compare
 				: this.config?.compare?.compareFn ?? DI_DEFAULT_COMPARE;
 
-		return compareFn(this.value, this.model()) ? true : this.isIntermediate ? null : false;
+		return compareFn(this.model(), this.value) ? true : this.isIntermediate ? null : false;
 	});
 
 	protected constructor(
-		protected override readonly config?: DIStateControlConfig<TModel>,
+		protected override readonly config?: DIStateControlConfig<TModel, TValue>,
 	) {
 		super(config);
 
