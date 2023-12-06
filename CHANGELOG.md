@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/skoropadas/di-controls/compare/v3.0.1...v3.1.0) (2023-12-06)
+
+
+### Features
+
+* **state-control:** improve types of DIStateControls, now you can provide type for `value` input which will affect `compareFn` types ([527b4a4](https://github.com/skoropadas/di-controls/commit/527b4a4c071a550e01db68fe63e61eb1d7e92114))
+
 ## [3.0.1](https://github.com/skoropadas/di-controls/compare/v3.0.0...v3.0.1) (2023-12-05)
 
 
