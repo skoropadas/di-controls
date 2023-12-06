@@ -453,7 +453,21 @@
     "title": "provideCompareHost",
     "section": "provideCompareHost",
     "route": "/api/di-controls/functions/provideCompareHost",
-    "fragment": "providecomparehost"
+    "fragment": "providecomparehost",
+    "content": "Provides DICompareHost as a component that should be used to compare two values"
+  },
+  {
+    "breadcrumbs": [
+      "API",
+      "di-controls",
+      "provideCompareHost"
+    ],
+    "pageType": "api",
+    "title": "provideCompareHost",
+    "section": "Parameters",
+    "route": "/api/di-controls/functions/provideCompareHost",
+    "fragment": "parameters",
+    "content": "Existing class that implements DICompareHost"
   },
   {
     "breadcrumbs": [
