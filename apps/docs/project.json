@@ -13,9 +13,7 @@
       "options": {
         "outputPath": "dist/apps/docs",
         "index": "apps/docs/src/index.html",
-        "polyfills": [
-          "apps/docs/src/polyfills.ts"
-        ],
+				"polyfills": ["zone.js"],
         "tsConfig": "apps/docs/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "baseHref": "/di-controls/",
@@ -46,7 +44,12 @@
         "allowedCommonJsDependencies": [
           "@ng-doc/core"
         ],
-        "browser": "apps/docs/src/main.ts"
+        "browser": "apps/docs/src/main.ts",
+        "server": "apps/docs/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/docs/server.ts"
+        }
       },
       "configurations": {
         "production": {
