@@ -33,7 +33,7 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - name: Build Projects
-        run: npx nx run-many --all --target=build --configuration=ci --parallel
+        run: npx nx run-many --all --target=build --configuration=ci --parallel --verbose
 
       - name: Copy 404.html
         run: cp dist/apps/docs/browser/index.html dist/apps/docs/browser/404.html
