@@ -1,7 +1,7 @@
 import {
 	ChangeDetectorRef,
 	Directive,
-	ElementRef,
+	ElementRef, HostBinding,
 	inject,
 	Input,
 	Renderer2, Signal,
@@ -39,6 +39,7 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	/**
 	 * Returns true if the control is not empty.
 	 */
+	@HostBinding('attr.data-has-value')
 	get hasValue(): boolean {
 		return hasValue(this.model());
 	}
