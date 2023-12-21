@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/skoropadas/di-controls/compare/v3.1.1...v3.2.0) (2023-12-21)
+
+
+### Features
+
+* **controls:** add `data-has-value` attribute that indicates that model has a value ([3e45f01](https://github.com/skoropadas/di-controls/commit/3e45f015dd37f1c6a5c42d915a96f77abcbd5d03))
+
 ## [3.1.1](https://github.com/skoropadas/di-controls/compare/v3.1.0...v3.1.1) (2023-12-06)
 
 
