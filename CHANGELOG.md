@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/skoropadas/di-controls/compare/v3.2.0...v3.2.1) (2024-01-11)
+
+
+### Bug Fixes
+
+* **controls:** add `DI_HOST_CONTROL` token to exports ([974f1b6](https://github.com/skoropadas/di-controls/commit/974f1b6259b077c20e85e0141feb7b18fb565e33))
+
 # [3.2.0](https://github.com/skoropadas/di-controls/compare/v3.1.1...v3.2.0) (2023-12-21)
 
 
