@@ -62,90 +62,6 @@
   {
     "breadcrumbs": [
       "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "Date Range",
-    "route": "/examples/date-range",
-    "fragment": "date-range",
-    "content": "In this section, we will discuss creating a date range control using this library. To start, let's outline the list of requirements and necessary components."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "The date range should consist of the following components",
-    "route": "/examples/date-range",
-    "fragment": "the-date-range-should-consist-of-the-following-components",
-    "content": "⚙️ Input for the start date⚙️ Input for the end date"
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "List of requirements",
-    "route": "/examples/date-range",
-    "fragment": "list-of-requirements",
-    "content": "🚩 Date Range should return an object with the start and end date.🚩 Input for the start date should change the start date in the model.🚩 Input for the end date should change the end date in the model."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "Inputs",
-    "route": "/examples/date-range",
-    "fragment": "inputs",
-    "content": "To convert the entered date into a Date type, we will use the diInputDate directive that we created in the Inputs article. Its code looks as follows."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "Range directive",
-    "route": "/examples/date-range",
-    "fragment": "range-directive",
-    "content": "To ensure that the model is updated in a specific object field when the input value changes, we need to create an additional host directive. This directive should inherit from the DIProxyControl class. DIProxyControl allows us to modify the model received by child controls and the parent control using two functions, getValue and setValue. We will also add an input key for reusing the directive for both inputs."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "Date Range",
-    "route": "/examples/date-range",
-    "fragment": "date-range-1",
-    "content": "Now, we need to create a Date Range component that will combine our components. Since we can have only one model value, we need to inherit our component from the DIControl class and provide it as a host."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Inputs"
-    ],
-    "pageType": "guide",
-    "title": "Inputs",
-    "section": "Inputs",
-    "route": "/examples/inputs",
-    "fragment": "inputs",
-    "content": "You can implement inputs using directives, allowing you to provide your users with access to standard   tag attributes. You can create multiple directives for working with input fields that can convert a string into a number, date, or leave it as is."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
       "Combobox"
     ],
     "pageType": "guide",
@@ -226,6 +142,90 @@
     "route": "/examples/combobox",
     "fragment": "combobox-1",
     "content": "Since the list items are provided externally, you can replace them with any other state controls. For example, instead of using di-option, you can pass di-radio, and the combobox will continue to work correctly."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "Date Range",
+    "route": "/examples/date-range",
+    "fragment": "date-range",
+    "content": "In this section, we will discuss creating a date range control using this library. To start, let's outline the list of requirements and necessary components."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "The date range should consist of the following components",
+    "route": "/examples/date-range",
+    "fragment": "the-date-range-should-consist-of-the-following-components",
+    "content": "⚙️ Input for the start date⚙️ Input for the end date"
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "List of requirements",
+    "route": "/examples/date-range",
+    "fragment": "list-of-requirements",
+    "content": "🚩 Date Range should return an object with the start and end date.🚩 Input for the start date should change the start date in the model.🚩 Input for the end date should change the end date in the model."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "Inputs",
+    "route": "/examples/date-range",
+    "fragment": "inputs",
+    "content": "To convert the entered date into a Date type, we will use the diInputDate directive that we created in the Inputs article. Its code looks as follows."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "Range directive",
+    "route": "/examples/date-range",
+    "fragment": "range-directive",
+    "content": "To ensure that the model is updated in a specific object field when the input value changes, we need to create an additional host directive. This directive should inherit from the DIProxyControl class. DIProxyControl allows us to modify the model received by child controls and the parent control using two functions, getValue and setValue. We will also add an input key for reusing the directive for both inputs."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "Date Range",
+    "route": "/examples/date-range",
+    "fragment": "date-range-1",
+    "content": "Now, we need to create a Date Range component that will combine our components. Since we can have only one model value, we need to inherit our component from the DIControl class and provide it as a host."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Inputs"
+    ],
+    "pageType": "guide",
+    "title": "Inputs",
+    "section": "Inputs",
+    "route": "/examples/inputs",
+    "fragment": "inputs",
+    "content": "You can implement inputs using directives, allowing you to provide your users with access to standard   tag attributes. You can create multiple directives for working with input fields that can convert a string into a number, date, or leave it as is."
   },
   {
     "breadcrumbs": [
@@ -3703,6 +3703,18 @@
     "route": "/api/di-controls/functions/injectHostControl3",
     "fragment": "injecthostcontrol",
     "content": "Injects host control. You can use it in the constructor of your @Component or @Directive."
+  },
+  {
+    "breadcrumbs": [
+      "API",
+      "di-controls",
+      "DI_HOST_CONTROL"
+    ],
+    "pageType": "api",
+    "title": "DI_HOST_CONTROL",
+    "section": "DI_HOST_CONTROL",
+    "route": "/api/di-controls/variables/DI_HOST_CONTROL",
+    "fragment": "di_host_control"
   },
   {
     "breadcrumbs": [
