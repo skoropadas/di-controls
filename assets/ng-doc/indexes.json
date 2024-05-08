@@ -218,18 +218,6 @@
   {
     "breadcrumbs": [
       "Examples",
-      "Inputs"
-    ],
-    "pageType": "guide",
-    "title": "Inputs",
-    "section": "Inputs",
-    "route": "/examples/inputs",
-    "fragment": "inputs",
-    "content": "You can implement inputs using directives, allowing you to provide your users with access to standard   tag attributes. You can create multiple directives for working with input fields that can convert a string into a number, date, or leave it as is."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
       "Radio"
     ],
     "pageType": "guide",
@@ -286,6 +274,18 @@
     "route": "/examples/radio",
     "fragment": "radio-group",
     "content": "The radio group should contain only one value and update the state of child controls. To implement the group, we need to inherit our component class from the DIControl class. DIControl takes the model as is, which means that the new model value will replace the previous one. This way, only one radio button will always be selected. We also need to implement the DICompareHost interface and provide the group as a compare host so that child radio buttons have access to the compareFn and can correctly determine their state when working with immutable objects."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Inputs"
+    ],
+    "pageType": "guide",
+    "title": "Inputs",
+    "section": "Inputs",
+    "route": "/examples/inputs",
+    "fragment": "inputs",
+    "content": "You can implement inputs using directives, allowing you to provide your users with access to standard   tag attributes. You can create multiple directives for working with input fields that can convert a string into a number, date, or leave it as is."
   },
   {
     "breadcrumbs": [
@@ -726,19 +726,6 @@
     "section": "Properties",
     "route": "/api/di-controls/classes/DICollectionControl",
     "fragment": "properties",
-    "content": "List of children controls."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "properties",
     "content": "Function that will be used to compare values in the array. Useful when you want to compare objects by some property (e.g. id)."
   },
   {
@@ -752,33 +739,7 @@
     "section": "Properties",
     "route": "/api/di-controls/classes/DICollectionControl",
     "fragment": "properties",
-    "content": "Request host for update the current control. Host will update the current control based on its current state and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "properties",
     "content": "Function that should be used to make control touched."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "properties",
-    "content": "Control from which we have to update our model."
   },
   {
     "breadcrumbs": [
@@ -856,84 +817,6 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DICollectionControl",
     "fragment": "methods",
-    "content": "Registers provided control as a child of the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "control that will be registered."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "Method is called by the forms API."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "callback function to register on value change"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "Registers provided function as a callback that will be called when the current control changes. This function will be provided by the host control to update its model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "callback function."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
     "content": "Method is called by the forms API."
   },
   {
@@ -960,84 +843,6 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DICollectionControl",
     "fragment": "methods",
-    "content": "Registers provided function as a callback that can be called to request an update from the host control. After calling this function the host control will update the model of the current control based on the current state of the control and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "callback function."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "new value"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "Unregisters provided control from the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "control that will be unregistered."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
     "content": "Updates provided control with the provided value."
   },
   {
@@ -1052,32 +857,6 @@
     "route": "/api/di-controls/classes/DICollectionControl",
     "fragment": "methods",
     "content": "control that will be updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "Updates all child controls with the provided value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "methods",
-    "content": "new value."
   },
   {
     "breadcrumbs": [
@@ -1168,111 +947,7 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DIControlValueAccessor",
     "fragment": "methods",
-    "content": "Method is called by the forms API."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlValueAccessor"
-    ],
-    "pageType": "api",
-    "title": "DIControlValueAccessor",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlValueAccessor",
-    "fragment": "methods",
-    "content": "callback function to register on value change"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlValueAccessor"
-    ],
-    "pageType": "api",
-    "title": "DIControlValueAccessor",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlValueAccessor",
-    "fragment": "methods",
-    "content": "Method is called by the forms API."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlValueAccessor"
-    ],
-    "pageType": "api",
-    "title": "DIControlValueAccessor",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlValueAccessor",
-    "fragment": "methods",
-    "content": "callback function to register on touch"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlValueAccessor"
-    ],
-    "pageType": "api",
-    "title": "DIControlValueAccessor",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlValueAccessor",
-    "fragment": "methods",
-    "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlValueAccessor"
-    ],
-    "pageType": "api",
-    "title": "DIControlValueAccessor",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlValueAccessor",
-    "fragment": "methods",
-    "content": "new value"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlValueAccessor"
-    ],
-    "pageType": "api",
-    "title": "DIControlValueAccessor",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlValueAccessor",
-    "fragment": "methods",
     "content": "Updates the model. Use this method to update model from your Control"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlValueAccessor"
-    ],
-    "pageType": "api",
-    "title": "DIControlValueAccessor",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlValueAccessor",
-    "fragment": "methods",
-    "content": "new value"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlValueAccessor"
-    ],
-    "pageType": "api",
-    "title": "DIControlValueAccessor",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlValueAccessor",
-    "fragment": "methods",
-    "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
   },
   {
     "breadcrumbs": [
@@ -1454,46 +1129,7 @@
     "section": "Properties",
     "route": "/api/di-controls/classes/DIControl",
     "fragment": "properties",
-    "content": "List of children controls."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "properties",
-    "content": "Request host for update the current control. Host will update the current control based on its current state and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "properties",
     "content": "Function that should be used to make control touched."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "properties",
-    "content": "Control from which we have to update our model."
   },
   {
     "breadcrumbs": [
@@ -1532,123 +1168,6 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DIControl",
     "fragment": "methods",
-    "content": "Function catches updates from child controls and updates the current control model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "control that was updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "new value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Registers provided control as a child of the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "control that will be registered."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Method is called by the forms API."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "callback function to register on value change"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Registers provided function as a callback that will be called when the current control changes. This function will be provided by the host control to update its model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "callback function."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
     "content": "Method is called by the forms API."
   },
   {
@@ -1663,149 +1182,6 @@
     "route": "/api/di-controls/classes/DIControl",
     "fragment": "methods",
     "content": "callback function to register on touch"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Registers provided function as a callback that can be called to request an update from the host control. After calling this function the host control will update the model of the current control based on the current state of the control and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "callback function."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "new value"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Unregisters provided control from the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "control that will be unregistered."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Updates provided control with the provided value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "control that will be updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "new value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Updates all child controls with the provided value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "new value."
   },
   {
     "breadcrumbs": [
@@ -1845,32 +1221,6 @@
     "route": "/api/di-controls/classes/DIControl",
     "fragment": "methods",
     "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "Method is called by the host to update the value of the control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControl"
-    ],
-    "pageType": "api",
-    "title": "DIControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControl",
-    "fragment": "methods",
-    "content": "new value"
   },
   {
     "breadcrumbs": [
@@ -2117,46 +1467,7 @@
     "section": "Properties",
     "route": "/api/di-controls/classes/DIStateControl",
     "fragment": "properties",
-    "content": "List of children controls."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "properties",
-    "content": "Request host for update the current control. Host will update the current control based on its current state and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "properties",
     "content": "Function that should be used to make control touched."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "properties",
-    "content": "Control from which we have to update our model."
   },
   {
     "breadcrumbs": [
@@ -2221,124 +1532,7 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DIStateControl",
     "fragment": "methods",
-    "content": "Function catches updates from child controls and updates the current control model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "control that was updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "new value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
     "content": "Sets intermediate state"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "Registers provided control as a child of the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "control that will be registered."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "Method is called by the forms API."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "callback function to register on value change"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "Registers provided function as a callback that will be called when the current control changes. This function will be provided by the host control to update its model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "callback function."
   },
   {
     "breadcrumbs": [
@@ -2377,58 +1571,6 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DIStateControl",
     "fragment": "methods",
-    "content": "Registers provided function as a callback that can be called to request an update from the host control. After calling this function the host control will update the model of the current control based on the current state of the control and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "callback function."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "new value"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
     "content": "Toggles checked state"
   },
   {
@@ -2443,97 +1585,6 @@
     "route": "/api/di-controls/classes/DIStateControl",
     "fragment": "methods",
     "content": "Sets unchecked state"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "Unregisters provided control from the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "control that will be unregistered."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "Updates provided control with the provided value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "control that will be updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "new value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "Updates all child controls with the provided value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "new value."
   },
   {
     "breadcrumbs": [
@@ -2573,32 +1624,6 @@
     "route": "/api/di-controls/classes/DIStateControl",
     "fragment": "methods",
     "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "Method is called by the host to update the value of the control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIStateControl"
-    ],
-    "pageType": "api",
-    "title": "DIStateControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIStateControl",
-    "fragment": "methods",
-    "content": "new value"
   },
   {
     "breadcrumbs": [
@@ -2793,46 +1818,7 @@
     "section": "Properties",
     "route": "/api/di-controls/classes/DIProxyControl",
     "fragment": "properties",
-    "content": "List of children controls."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "properties",
-    "content": "Request host for update the current control. Host will update the current control based on its current state and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "properties",
     "content": "Function that should be used to make control touched."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "properties",
-    "content": "Control from which we have to update our model."
   },
   {
     "breadcrumbs": [
@@ -2859,45 +1845,6 @@
     "route": "/api/di-controls/classes/DIProxyControl",
     "fragment": "accessors",
     "content": "Returns true if the control is not empty."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "Function catches updates from child controls and updates the current control model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "control that was updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "new value."
   },
   {
     "breadcrumbs": [
@@ -2949,137 +1896,7 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DIProxyControl",
     "fragment": "methods",
-    "content": "callback function to register on value change"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "Registers provided function as a callback that will be called when the current control changes. This function will be provided by the host control to update its model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "callback function."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "Method is called by the forms API."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
     "content": "callback function to register on touch"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "Registers provided function as a callback that can be called to request an update from the host control. After calling this function the host control will update the model of the current control based on the current state of the control and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "callback function."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "new value"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "Unregisters provided control from the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "control that will be unregistered."
   },
   {
     "breadcrumbs": [
@@ -3106,32 +1923,6 @@
     "route": "/api/di-controls/classes/DIProxyControl",
     "fragment": "methods",
     "content": "control that will be updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "new value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "Updates all child controls with the provided value."
   },
   {
     "breadcrumbs": [
@@ -3189,32 +1980,6 @@
     "breadcrumbs": [
       "API",
       "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "Method is called by the host to update the value of the control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIProxyControl"
-    ],
-    "pageType": "api",
-    "title": "DIProxyControl",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIProxyControl",
-    "fragment": "methods",
-    "content": "new value"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
       "DIControlSilencerDirective"
     ],
     "pageType": "api",
@@ -3234,46 +1999,7 @@
     "section": "Properties",
     "route": "/api/di-controls/classes/DIControlSilencerDirective",
     "fragment": "properties",
-    "content": "List of children controls."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "properties",
-    "content": "Request host for update the current control. Host will update the current control based on its current state and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "properties",
     "content": "Function that should be used to make control touched."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "properties",
-    "content": "Control from which we have to update our model."
   },
   {
     "breadcrumbs": [
@@ -3312,98 +2038,7 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DIControlSilencerDirective",
     "fragment": "methods",
-    "content": "Function catches updates from child controls and updates the current control model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "control that was updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "new value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
     "content": "Registers provided control as a child of the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "Method is called by the forms API."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "callback function to register on value change"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "Registers provided function as a callback that will be called when the current control changes. This function will be provided by the host control to update its model."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "callback function."
   },
   {
     "breadcrumbs": [
@@ -3442,124 +2077,7 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DIControlSilencerDirective",
     "fragment": "methods",
-    "content": "Registers provided function as a callback that can be called to request an update from the host control. After calling this function the host control will update the model of the current control based on the current state of the control and host control logic."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "callback function."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "new value"
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
     "content": "Unregisters provided control from the current control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "Updates provided control with the provided value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "control that will be updated."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "new value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "Updates all child controls with the provided value."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "new value."
   },
   {
     "breadcrumbs": [
@@ -3599,32 +2117,6 @@
     "route": "/api/di-controls/classes/DIControlSilencerDirective",
     "fragment": "methods",
     "content": "Method is called by the forms API to write to the view when programmatic changes from model to view are requested."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "Method is called by the host to update the value of the control."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DIControlSilencerDirective"
-    ],
-    "pageType": "api",
-    "title": "DIControlSilencerDirective",
-    "section": "Methods",
-    "route": "/api/di-controls/classes/DIControlSilencerDirective",
-    "fragment": "methods",
-    "content": "new value"
   },
   {
     "breadcrumbs": [
