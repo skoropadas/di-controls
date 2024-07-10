@@ -15,12 +15,8 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@ng-doc/generated": [
-        "./ng-doc/docs/index.ts"
-      ],
-			"@ng-doc/generated/*": [
-        "./ng-doc/docs/*"
-      ],
+			"@ng-doc/generated": ["./ng-doc/docs/index.ts"],
+			"@ng-doc/generated/*": ["./ng-doc/docs/*"],
 			"di-controls": ["libs/di-controls/index.ts"],
 			"di-controls/*": ["libs/di-controls/*"]
 		}

@@ -9,7 +9,7 @@ import {
 	provideSearchEngine
 } from '@ng-doc/app';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {provideHttpClient} from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import {provideRouter, withInMemoryScrolling, withViewTransitions} from '@angular/router';
 import {provideClientHydration} from '@angular/platform-browser';
 
