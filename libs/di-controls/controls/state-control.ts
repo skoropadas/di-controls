@@ -1,8 +1,17 @@
-import {computed, Directive, effect, OnChanges, Signal, SimpleChanges} from '@angular/core';
+import {
+	computed,
+	Directive,
+	effect,
+	InputSignal,
+	OnChanges,
+	Signal,
+	SimpleChanges,
+} from '@angular/core';
 import {DICompareHost} from 'di-controls/classes';
 import {DI_DEFAULT_COMPARE} from 'di-controls/constants';
 import {DIControl, DIControlConfig} from './control';
 import {DICompareFunction} from 'di-controls/types';
+import {resolveValue} from 'di-controls/helpers';
 
 /**
  * Configuration for the `DIStateControl`.
@@ -219,15 +228,15 @@ export abstract class DIStateControl<TModel, TValue extends TModel = TModel>
 	 * Value that will be used for the checked state.
 	 * You can override it to transform it to `@Input` or to set value by default.
 	 */
-	abstract value: TValue;
+	abstract value: TValue | InputSignal<TValue>;
 
 	checked: Signal<boolean | null> = computed(() => {
 		const compareFn: DICompareFunction<TModel | null, TValue> =
 			typeof this.config?.compare === 'function'
 				? this.config.compare
-				: this.config?.compare?.compareFn ?? DI_DEFAULT_COMPARE;
+				: resolveValue<DICompareFunction<TModel | null, TValue>>(this.config?.compare?.compareFn ?? DI_DEFAULT_COMPARE);
 
-		return compareFn(this.model(), this.value) ? true : this.isIntermediate ? null : false;
+		return compareFn(this.model(), resolveValue(this.value)) ? true : this.isIntermediate ? null : false;
 	});
 
 	protected constructor(
@@ -256,7 +265,7 @@ export abstract class DIStateControl<TModel, TValue extends TModel = TModel>
 
 	/** Sets checked state */
 	check(): void {
-		this.updateModel(this.value);
+		this.updateModel(resolveValue(this.value));
 	}
 
 	/** Sets unchecked state */

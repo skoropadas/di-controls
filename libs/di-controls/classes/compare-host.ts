@@ -1,10 +1,10 @@
 import {DICompareFunction} from 'di-controls/types';
-import {Provider, Type} from '@angular/core';
+import {InputSignal, Provider, Type} from '@angular/core';
 
 /** Uses to implement host with compare function */
 export abstract class DICompareHost<TModel, TValue extends TModel = TModel> {
 	/** Uses to compare two values (useful to compare two objects, for example by id) */
-	abstract compareFn: DICompareFunction<TModel, TValue>;
+	abstract compareFn: DICompareFunction<TModel, TValue> | InputSignal<DICompareFunction<TModel, TValue>>;
 }
 
 /**
