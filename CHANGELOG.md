@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/skoropadas/di-controls/compare/v3.2.1...v3.3.0) (2024-07-10)
+
+
+### Features
+
+* add signals support for `value` and `compare` inputs ([f18661b](https://github.com/skoropadas/di-controls/commit/f18661b3de80a7ce04bc7afe74bf87d5630dda09))
+
 ## [3.2.1](https://github.com/skoropadas/di-controls/compare/v3.2.0...v3.2.1) (2024-01-11)
 
 
