@@ -62,6 +62,90 @@
   {
     "breadcrumbs": [
       "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "Combobox",
+    "route": "/examples/combobox",
+    "fragment": "combobox",
+    "content": "In this section, we will discuss creating a combobox using this library. To start, let's outline the list of requirements and necessary components."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "The combobox should consist of the following components",
+    "route": "/examples/combobox",
+    "fragment": "the-combobox-should-consist-of-the-following-components",
+    "content": "⚙️ Input field⚙️ Dropdown⚙️ List of items provided from external sources using ng-content that will be displayed in the dropdown"
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "List of requirements",
+    "route": "/examples/combobox",
+    "fragment": "list-of-requirements",
+    "content": "🚩 List items should be provided via ng-content.🚩 When an item from the list is selected, its value should be set in the input field.🚩 When the input field gains focus, the dropdown should automatically open.🚩 When an item from the list is selected, the dropdown should close.🚩 If the user changes the text in the input field while an item is selected, the model's value should be reset.🚩 The combobox should support working with immutable objects."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "Option",
+    "route": "/examples/combobox",
+    "fragment": "option",
+    "content": "Let's start by creating a component that will represent the list item. We will call it Option. Option should be a state control, which mean that it can be selected and deselected. To do this, we will inherit from the DIStateControl class. DIStateControl is a base class for all state controls, it provides all the necessary methods for working with the state of the control. We will highlight the item upon clicking on it, so we need to subscribe to click events and call the check method provided by DIStateControl. We will also use aria-checked='true' property in our styles to highlight the selected item."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "Input field",
+    "route": "/examples/combobox",
+    "fragment": "input-field",
+    "content": "For the input field, we will reuse the diInputString that we created in the Inputs page. We will also create a directive that will be responsible for resetting the value of the combobox if the user changes the input value. We will call it ComboboxInputDirective. This directive will inherit from the DIProxyControl class, because it allows you to modify the behavior of the child control, we also need to implement this directive as a host to turn it into a kind of middleware between the diInputString directive and our future combobox. Since our combobox needs to support working with objects, we will need an additional stringifyFn function that we will be used to convert an object to a string."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "Combobox component",
+    "route": "/examples/combobox",
+    "fragment": "combobox-component",
+    "content": "Now let's create the main component, which will be responsible for the combobox. We will call it ComboboxComponent. To keep it simple for creating the dropdown we use position: absolute. This component will consolidate all child components found in the template or passed through ng-content, meaning they will share one model. The first thing to do is to provide the component as a host so that all child components can register within it. Additionally, we need to implement the DICompareHost interface and provide the component as a compare host. This is necessary for our option component to access the compareFn of our combobox and use it to determine its state (checked or not). Without this function, you may encounter issues with determining the state for immutable objects. To close the dropdown when an item in the list is selected, we can utilize the onChildControlChange hook. It is called every time the model of the current control is changed by a child control."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Combobox"
+    ],
+    "pageType": "guide",
+    "title": "Combobox",
+    "section": "Combobox Combobox with objects Combobox with radio buttons",
+    "route": "/examples/combobox",
+    "fragment": "combobox-1",
+    "content": "Since the list items are provided externally, you can replace them with any other state controls. For example, instead of using di-option, you can pass di-radio, and the combobox will continue to work correctly."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
       "Date Range"
     ],
     "pageType": "guide",
@@ -361,90 +445,6 @@
   },
   {
     "breadcrumbs": [
-      "Examples",
-      "Combobox"
-    ],
-    "pageType": "guide",
-    "title": "Combobox",
-    "section": "Combobox",
-    "route": "/examples/combobox",
-    "fragment": "combobox",
-    "content": "In this section, we will discuss creating a combobox using this library. To start, let's outline the list of requirements and necessary components."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Combobox"
-    ],
-    "pageType": "guide",
-    "title": "Combobox",
-    "section": "The combobox should consist of the following components",
-    "route": "/examples/combobox",
-    "fragment": "the-combobox-should-consist-of-the-following-components",
-    "content": "⚙️ Input field⚙️ Dropdown⚙️ List of items provided from external sources using ng-content that will be displayed in the dropdown"
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Combobox"
-    ],
-    "pageType": "guide",
-    "title": "Combobox",
-    "section": "List of requirements",
-    "route": "/examples/combobox",
-    "fragment": "list-of-requirements",
-    "content": "🚩 List items should be provided via ng-content.🚩 When an item from the list is selected, its value should be set in the input field.🚩 When the input field gains focus, the dropdown should automatically open.🚩 When an item from the list is selected, the dropdown should close.🚩 If the user changes the text in the input field while an item is selected, the model's value should be reset.🚩 The combobox should support working with immutable objects."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Combobox"
-    ],
-    "pageType": "guide",
-    "title": "Combobox",
-    "section": "Option",
-    "route": "/examples/combobox",
-    "fragment": "option",
-    "content": "Let's start by creating a component that will represent the list item. We will call it Option. Option should be a state control, which mean that it can be selected and deselected. To do this, we will inherit from the DIStateControl class. DIStateControl is a base class for all state controls, it provides all the necessary methods for working with the state of the control. We will highlight the item upon clicking on it, so we need to subscribe to click events and call the check method provided by DIStateControl. We will also use aria-checked='true' property in our styles to highlight the selected item."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Combobox"
-    ],
-    "pageType": "guide",
-    "title": "Combobox",
-    "section": "Input field",
-    "route": "/examples/combobox",
-    "fragment": "input-field",
-    "content": "For the input field, we will reuse the diInputString that we created in the Inputs page. We will also create a directive that will be responsible for resetting the value of the combobox if the user changes the input value. We will call it ComboboxInputDirective. This directive will inherit from the DIProxyControl class, because it allows you to modify the behavior of the child control, we also need to implement this directive as a host to turn it into a kind of middleware between the diInputString directive and our future combobox. Since our combobox needs to support working with objects, we will need an additional stringifyFn function that we will be used to convert an object to a string."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Combobox"
-    ],
-    "pageType": "guide",
-    "title": "Combobox",
-    "section": "Combobox component",
-    "route": "/examples/combobox",
-    "fragment": "combobox-component",
-    "content": "Now let's create the main component, which will be responsible for the combobox. We will call it ComboboxComponent. To keep it simple for creating the dropdown we use position: absolute. This component will consolidate all child components found in the template or passed through ng-content, meaning they will share one model. The first thing to do is to provide the component as a host so that all child components can register within it. Additionally, we need to implement the DICompareHost interface and provide the component as a compare host. This is necessary for our option component to access the compareFn of our combobox and use it to determine its state (checked or not). Without this function, you may encounter issues with determining the state for immutable objects. To close the dropdown when an item in the list is selected, we can utilize the onChildControlChange hook. It is called every time the model of the current control is changed by a child control."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Combobox"
-    ],
-    "pageType": "guide",
-    "title": "Combobox",
-    "section": "Combobox Combobox with objects Combobox with radio buttons",
-    "route": "/examples/combobox",
-    "fragment": "combobox-1",
-    "content": "Since the list items are provided externally, you can replace them with any other state controls. For example, instead of using di-option, you can pass di-radio, and the combobox will continue to work correctly."
-  },
-  {
-    "breadcrumbs": [
       "API",
       "di-controls",
       "provideCompareHost"
@@ -688,45 +688,6 @@
     "route": "/api/di-controls/classes/DICollectionControl",
     "fragment": "catching-updates",
     "content": "Sometimes you may need to catch updates from different sources. For example, to update the value of the native input element. To do this, you can provide the onIncomingUpdate hook."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Comparing values",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "comparing-values",
-    "content": "By default DICollectionControl uses === operator to compare values. It may be not enough for some cases, for example, when you want to compare immutable objects. To solve this problem you can provide compareFn function and provide your control as a DICompareHost. It will be used to compare values in the array."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Comparing values",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "comparing-values",
-    "content": "This function will be used by DIStateControl to compare values, to set checked state. Don't forget to inject DICompareHost in your DIStateControl to make it work."
-  },
-  {
-    "breadcrumbs": [
-      "API",
-      "di-controls",
-      "DICollectionControl"
-    ],
-    "pageType": "api",
-    "title": "DICollectionControl",
-    "section": "Properties",
-    "route": "/api/di-controls/classes/DICollectionControl",
-    "fragment": "properties",
-    "content": "Function that will be used to compare values in the array. Useful when you want to compare objects by some property (e.g. id)."
   },
   {
     "breadcrumbs": [
