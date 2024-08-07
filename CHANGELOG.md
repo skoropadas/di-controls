@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/skoropadas/di-controls/compare/v4.0.0...v4.0.1) (2024-08-07)
+
+
+### Bug Fixes
+
+* **collection-control:** DiCollectionControl doesn't support signal `value` from `DIStateControl` ([55b1be3](https://github.com/skoropadas/di-controls/commit/55b1be37a25d0508d41a267a5ed6a5de078a96d4))
+
 # [4.0.0](https://github.com/skoropadas/di-controls/compare/v3.3.0...v4.0.0) (2024-08-07)
 
 
