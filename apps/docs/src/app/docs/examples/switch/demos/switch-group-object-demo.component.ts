@@ -15,7 +15,7 @@ import {CheckboxGroupComponent} from '../../checkbox/components/checkbox-group.c
   template: `
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
-      <di-checkbox-group [formControl]="control" [compareFn]="compareFruits">
+      <di-checkbox-group [formControl]="control">
         <di-switch *ngFor="let item of items" [value]="item">{{ item.name }}</di-switch>
       </di-checkbox-group>
       <!-- snippet -->
@@ -33,8 +33,4 @@ import {CheckboxGroupComponent} from '../../checkbox/components/checkbox-group.c
 export class SwitchGroupObjectDemoComponent {
   control: FormControl<Fruit[] | null> = new FormControl<Fruit[]>([{ id: 1, name: 'Apple' }]);
   items: Fruit[] = FRUITS;
-
-  compareFruits(a: Fruit | null, b: Fruit | null): boolean {
-    return a?.id === b?.id;
-  }
 }

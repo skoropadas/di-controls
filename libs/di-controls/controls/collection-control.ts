@@ -1,9 +1,10 @@
-import {Directive, Input} from '@angular/core';
+import {Directive} from '@angular/core';
 import {DICompareHost, SetCompare} from 'di-controls/classes';
-import {DI_DEFAULT_COMPARE} from 'di-controls/constants';
 import {DICompareFunction} from 'di-controls/types';
 import {DIControl, DIControlConfig} from './control';
 import {DIStateControl} from './state-control';
+import {resolveValue} from 'di-controls/helpers';
+import {DI_DEFAULT_COMPARE} from 'di-controls/constants';
 
 /**
  * Configuration for the `DICollectionControl`.
@@ -13,7 +14,7 @@ export interface DICollectionControlConfig<TModel, TChildModel> extends DIContro
 	 * Function that will be used to compare values in the array.
 	 * Useful when you want to compare objects by some property.
 	 */
-	compareHost?: DICompareHost<TModel> | null;
+	compare?: DICompareHost<TModel | null> | DICompareFunction<TModel | null> | null;
 }
 
 /**
@@ -125,59 +126,36 @@ export interface DICollectionControlConfig<TModel, TChildModel> extends DIContro
  *   }
  * }
  * ```
- *
- * ## Comparing values
- * By default `DICollectionControl` uses `===` operator to compare values. It may be not enough for some cases,
- * for example, when you want to compare immutable objects. To solve this problem you can provide `compareFn`
- * function and provide your control as a `DICompareHost`. It will be used to compare values in the array.
- *
- * > **Warning**
- * > This function will be used by `DIStateControl` to compare values, to set checked state.
- * > Don't forget to inject `DICompareHost` in your `DIStateControl` to make it work.
- *
- * ```ts {2} fileName="custom-control.component.ts"
- * @Component({
- *   providers: [provideCompareHost(CustomControlComponent)],
- * })
- * export class CustomControlComponent extends DICollectionControl<string> {
- *  constructor() {
- *    super()
- *  }
- * }
  * ```
  */
 @Directive()
-export abstract class DICollectionControl<TModel>
-	extends DIControl<TModel[], TModel | TModel[]>
-	implements DICompareHost<TModel>
-{
-	/**
-	 * Function that will be used to compare values in the array.
-	 * Useful when you want to compare objects by some property (e.g. `id`).
-	 */
-	@Input()
-	compareFn: DICompareFunction<TModel> = DI_DEFAULT_COMPARE;
-
+export abstract class DICollectionControl<TModel> extends DIControl<TModel[], TModel | TModel[]> {
 	private proxyModel: SetCompare<TModel> = new SetCompare<TModel>();
 
 	protected constructor(protected override config?: DICollectionControlConfig<TModel, TModel | TModel[]>) {
 		super(config);
 	}
 
+	private getCompareFn(): DICompareFunction<TModel> {
+		return typeof this.config?.compare === 'function'
+			? this.config.compare
+			: resolveValue<DICompareFunction<TModel | null>>(this.config?.compare?.compareFn ?? DI_DEFAULT_COMPARE);
+	}
+
 	override updateModel(obj: TModel[] | null): void {
-		this.proxyModel = new SetCompare(this.compareFn, obj);
+		this.proxyModel = new SetCompare(this.getCompareFn(), obj);
 
 		super.updateModel(obj);
 	}
 
 	override writeValue(value: TModel[] | null) {
-		this.proxyModel = new SetCompare(this.compareFn, value);
+		this.proxyModel = new SetCompare(this.getCompareFn(), value);
 
 		super.writeValue(value);
 	}
 
 	override writeValueFromHost(obj: TModel[] | null) {
-		this.proxyModel = new SetCompare(this.compareFn, obj);
+		this.proxyModel = new SetCompare(this.getCompareFn(), obj);
 
 		super.writeValueFromHost(obj);
 	}
@@ -200,9 +178,9 @@ export abstract class DICollectionControl<TModel>
 				? this.proxyModel.add(control.value)
 				: this.proxyModel.delete(control.value);
 		} else if (Array.isArray(updates)) {
-			this.proxyModel = new SetCompare<TModel>(this.compareFn, updates);
+			this.proxyModel = new SetCompare<TModel>(this.getCompareFn(), updates);
 		} else {
-			this.proxyModel = new SetCompare<TModel>(this.compareFn);
+			this.proxyModel = new SetCompare<TModel>(this.getCompareFn());
 
 			return null;
 		}

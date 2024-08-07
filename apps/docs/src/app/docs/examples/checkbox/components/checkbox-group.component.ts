@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DICollectionControl, provideCompareHost, provideHostControl } from 'di-controls';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DICollectionControl, DICompareHost, provideHostControl} from 'di-controls';
 
 @Component({
   selector: 'di-checkbox-group',
@@ -19,13 +19,14 @@ import { DICollectionControl, provideCompareHost, provideHostControl } from 'di-
   providers: [
     // Provide this component as a host for all children
     provideHostControl(CheckboxGroupComponent),
-    // Provide this component as a compare host for all children to get access to its compare function
-    provideCompareHost(CheckboxGroupComponent),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxGroupComponent<T = unknown> extends DICollectionControl<T> {
+
   constructor() {
-    super();
+    super({
+      compare: inject(DICompareHost, { optional: true }),
+    });
   }
 }

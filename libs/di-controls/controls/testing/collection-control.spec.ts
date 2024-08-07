@@ -109,16 +109,22 @@ describe('DICollectionControl', () => {
 		}
 
 		@Directive({
+			standalone: true,
+			providers: [provideCompareHost(CompareByIdDirective)],
+		})
+		class CompareByIdDirective implements DICompareHost<TestObject> {
+			compareFn = (a: TestObject | null, b: TestObject | null) => a?.id === b?.id;
+		}
+
+		@Directive({
 			selector: '[diCollectionControl]',
 			standalone: true,
 			providers: [
 				provideHostControl(forwardRef(() => ArrayControlDirective)),
-				provideCompareHost(forwardRef(() => ArrayControlDirective)),
 			],
+			hostDirectives: [CompareByIdDirective],
 		})
 		class ArrayControlDirective extends BaseArrayControlDirective<TestObject> {
-			override compareFn = (a: TestObject | null, b: TestObject | null) => a?.id === b?.id;
-
 			constructor() {
 				super();
 			}
