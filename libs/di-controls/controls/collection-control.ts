@@ -175,8 +175,8 @@ export abstract class DICollectionControl<TModel> extends DIControl<TModel[], TM
 	): TModel[] | null {
 		if (control instanceof DIStateControl) {
 			control.checked()
-				? this.proxyModel.add(control.value)
-				: this.proxyModel.delete(control.value);
+				? this.proxyModel.add(resolveValue(control.value))
+				: this.proxyModel.delete(resolveValue(control.value));
 		} else if (Array.isArray(updates)) {
 			this.proxyModel = new SetCompare<TModel>(this.getCompareFn(), updates);
 		} else {
@@ -192,7 +192,7 @@ export abstract class DICollectionControl<TModel> extends DIControl<TModel[], TM
 		if (control instanceof DIStateControl) {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-expect-error
-			control.writeValueFromHost(this.proxyModel.has(control.value) ? control.value : control.config.uncheckValue);
+			control.writeValueFromHost(this.proxyModel.has(resolveValue(control.value)) ? resolveValue(control.value) : control.config.uncheckValue);
 		} else {
 			control.writeValueFromHost(this.model());
 		}
