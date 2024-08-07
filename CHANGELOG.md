@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/skoropadas/di-controls/compare/v3.3.0...v4.0.0) (2024-08-07)
+
+
+### Bug Fixes
+
+* **collection-control:** DiCollectionControl doesn't implement DICompareHost interface ([a7e68a4](https://github.com/skoropadas/di-controls/commit/a7e68a4812b26724b2d85e4ebabecd17955085ba))
+
+
+### BREAKING CHANGES
+
+* **collection-control:** The implementation of the `DICompareHost` interface inside `DICollectionControl` caused confusion and limited some possible implementations. This has been removed, and instead `DICollectionControl` now has a `compare` property in the configuration that corresponds to the same property in `DIStateControl`.
+
 # [3.3.0](https://github.com/skoropadas/di-controls/compare/v3.2.1...v3.3.0) (2024-07-10)
 
 
