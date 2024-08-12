@@ -22,6 +22,9 @@ import {DICompareHost, DIStateControl, injectHostControl} from 'di-controls';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.aria-checked]': 'checked()',
+  }
 })
 export class OptionComponent<T> extends DIStateControl<T> {
   @Input({required: true})

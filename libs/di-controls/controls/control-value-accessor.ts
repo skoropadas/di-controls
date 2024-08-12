@@ -1,16 +1,31 @@
 import {
 	ChangeDetectorRef,
-	Directive,
-	ElementRef, HostBinding,
+	Directive, effect, ElementRef,
 	inject,
-	Input,
-	Renderer2, Signal,
+	model, Renderer2,
+	Signal,
 	signal,
-	WritableSignal
+	WritableSignal,
 } from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION} from 'di-controls/constants';
 import {hasValue} from 'di-controls/helpers';
+
+export interface DIControlValueAccessorConfig<T> {
+	/**
+	 * Function that will be called when the current control receives an update from the host control or from the
+	 * Forms API.
+	 *
+	 * @param value - new value.
+	 */
+	onIncomingUpdate?: (value: T | null) => void;
+
+	/**
+	 * Add support for native element. Which means that the control will
+	 * update the native element attributes like `disabled`.
+	 */
+	withNativeElementSupport: boolean;
+}
 
 /**
  * Base implementation of ControlValueAccessor
@@ -19,41 +34,37 @@ import {hasValue} from 'di-controls/helpers';
 export abstract class DIControlValueAccessor<T> implements ControlValueAccessor {
 	protected readonly model: Signal<T | null> = signal(null);
 	protected readonly ngControl: NgControl | null;
-	protected readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef);
 	protected readonly changeDetectorRef: ChangeDetectorRef;
-	protected readonly renderer: Renderer2 = inject(Renderer2);
-	protected readonly disabledValue: WritableSignal<boolean> = signal(false);
+	readonly disabled = model(false);
 
 	protected touch: () => void = EMPTY_FUNCTION;
 	protected change: (value: T | null) => void = EMPTY_FUNCTION;
 
-	protected constructor(protected readonly incomingUpdate?: (value: T | null) => void) {
-		this.ngControl = inject(NgControl, { optional: true, self: true });
+	protected constructor(protected readonly config?: DIControlValueAccessorConfig<T>) {
+		this.ngControl = inject(NgControl, {optional: true, self: true});
 		this.changeDetectorRef = inject(ChangeDetectorRef);
 
 		if (this.ngControl) {
 			this.ngControl.valueAccessor = this;
+		}
+
+		if (this.config?.withNativeElementSupport) {
+			const elementRef = inject(ElementRef);
+			const renderer = inject(Renderer2);
+
+			effect(() => {
+				this.disabled()
+					? renderer.setAttribute(elementRef, 'disabled', 'true')
+					: renderer.removeAttribute(elementRef, 'disabled');
+			});
 		}
 	}
 
 	/**
 	 * Returns true if the control is not empty.
 	 */
-	@HostBinding('attr.data-has-value')
 	get hasValue(): boolean {
 		return hasValue(this.model());
-	}
-
-	/**
-	 * Returns true if the control is disabled.
-	 */
-	@Input()
-	get disabled(): boolean {
-		return this.disabledValue();
-	}
-
-	set disabled(isDisabled: boolean) {
-		this.setDisabledState(isDisabled);
 	}
 
 	/**
@@ -106,21 +117,12 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	 * @internal
 	 */
 	setDisabledState(isDisabled: boolean): void {
-		this.disabledValue.set(isDisabled);
-
-		this.disabledValue()
-			? this.renderer.setAttribute(this.elementRef.nativeElement, 'disabled', 'true')
-			: this.renderer.removeAttribute(this.elementRef.nativeElement, 'disabled');
-		this.renderer.setAttribute(
-			this.elementRef.nativeElement,
-			'aria-disabled',
-			`${this.disabledValue()}`,
-		);
+		this.disabled.set(isDisabled);
 	}
 
 	private update(value: T | null): void {
 		(this.model as WritableSignal<T | null>).set(value);
-		this.incomingUpdate && this.incomingUpdate(value);
+		this.config?.onIncomingUpdate && this.config.onIncomingUpdate(value);
 		this.changeDetectorRef.markForCheck();
 	}
 }

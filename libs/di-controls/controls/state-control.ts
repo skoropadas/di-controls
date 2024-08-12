@@ -1,12 +1,4 @@
-import {
-	computed,
-	Directive,
-	effect,
-	InputSignal,
-	OnChanges,
-	Signal,
-	SimpleChanges,
-} from '@angular/core';
+import {computed, Directive, InputSignal, OnChanges, Signal, SimpleChanges} from '@angular/core';
 import {DICompareHost} from 'di-controls/classes';
 import {DI_DEFAULT_COMPARE} from 'di-controls/constants';
 import {DIControl, DIControlConfig} from './control';
@@ -141,39 +133,6 @@ export interface DIStateControlConfig<TModel, TValue extends TModel = TModel> ex
  * }
  * ```
  *
- * ## Changing styles based on the state
- * `DIStateControl` binds `aria-checked` attribute to the host element.
- * You can use it to change styles of your child elements.
- *
- * ```ts {7,12,17} fileName="custom-control.component.ts"
- * @Component({
- *   selector: 'custom-control',
- *   template: ``,
- *   styles: [`
- *     :host {
- *       // checked
- *       &[aria-checked="true"] {
- *         color: green;
- *       }
- *
- *       // unchecked
- *       &[aria-checked="false"] {
- *         color: red;
- *       }
- *
- *       // intermediate
- *       &[aria-checked="mixed"] {
- *         color: blue;
- *       }
- *   `],
- *   changeDetection: ChangeDetectionStrategy.OnPush,
- *  })
- *  export class CustomControlComponent<T = boolean> extends DIStateControl<T>  {
- *    constructor() {
- *      super();
- *    }
- *  }
- *  ```
  *
  *  ## Using with DICollectionControl
  *  Using `DIStateControl` together with `DICollectionControl` will result in
@@ -243,13 +202,6 @@ export abstract class DIStateControl<TModel, TValue extends TModel = TModel>
 		protected override readonly config?: DIStateControlConfig<TModel, TValue>,
 	) {
 		super(config);
-
-		// Setting aria attributes
-		effect(() => {
-			const ariaChecked = this.checked() === null ? 'mixed' : this.checked();
-
-			this.renderer.setAttribute(this.elementRef.nativeElement, 'aria-checked', `${ariaChecked}`);
-		});
 	}
 
 	ngOnChanges({ value }: SimpleChanges): void {

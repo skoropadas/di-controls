@@ -1,5 +1,5 @@
-import { Directive, ElementRef, HostListener, inject } from '@angular/core';
-import { DIControl, injectHostControl } from 'di-controls';
+import {Directive, ElementRef, HostListener, inject} from '@angular/core';
+import {DIControl, injectHostControl} from 'di-controls';
 
 @Directive({
   selector: 'input[diInputString]',

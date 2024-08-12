@@ -1,22 +1,15 @@
 import { DestroyRef, Directive, inject, OnInit } from '@angular/core';
-import { DIControlValueAccessor } from './control-value-accessor';
+import {DIControlValueAccessor, DIControlValueAccessorConfig} from './control-value-accessor';
 import { EMPTY_FUNCTION } from 'di-controls/constants';
 
 /**
  * Configuration for the `DIControl`.
  */
-export interface DIControlConfig<TModel, TChildModel> {
+export interface DIControlConfig<TModel, TChildModel> extends DIControlValueAccessorConfig<TModel> {
   /**
    * Host control for the current control. It can be injected using `DI_HOST_CONTROL` token.
    */
   host?: DIControl<any, TModel> | null;
-  /**
-   * Function that will be called when the current control receives an update from the host control or from the
-   * Forms API.
-   *
-   * @param value - new value.
-   */
-  onIncomingUpdate?: (value: TModel | null) => void;
   /**
    * Function that will be called when the current control receives an update from the child control.
    *
@@ -165,8 +158,8 @@ export abstract class DIControl<TModel, TChildModel = TModel>
   private onControlChangeFn: (value: TModel | null) => void = EMPTY_FUNCTION;
   private destroyRef: DestroyRef = inject(DestroyRef);
 
-  protected constructor(protected readonly config?: DIControlConfig<TModel, TChildModel>) {
-    super(config?.onIncomingUpdate);
+  protected constructor(protected override readonly config?: DIControlConfig<TModel, TChildModel>) {
+    super(config);
 
     this.destroyRef.onDestroy(() => this.config?.host?.unregisterControl(this));
   }
@@ -323,7 +316,7 @@ export abstract class DIControl<TModel, TChildModel = TModel>
     if (this.model() !== value) {
       this.updateFrom = control;
       this.updateModel(value);
-      this.incomingUpdate && this.incomingUpdate(value);
+      this.config?.onIncomingUpdate && this.config.onIncomingUpdate(value);
     }
   }
 }

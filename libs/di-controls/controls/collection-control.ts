@@ -166,7 +166,7 @@ export abstract class DICollectionControl<TModel> extends DIControl<TModel[], TM
 	) {
 		this.updateFrom = control;
 		this.updateModel(this.getNewModel(control, value));
-		this.incomingUpdate && this.incomingUpdate(this.model());
+		this.config?.onIncomingUpdate && this.config.onIncomingUpdate(this.model());
 	}
 
 	private getNewModel(
