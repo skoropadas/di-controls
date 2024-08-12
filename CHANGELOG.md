@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/skoropadas/di-controls/compare/v5.0.0...v5.0.1) (2024-08-12)
+
+
+### Bug Fixes
+
+* **project:** fix `disabled` type ([5a56d1a](https://github.com/skoropadas/di-controls/commit/5a56d1a029269c2499bef2fa93917691c4a7c426))
+
 # [5.0.0](https://github.com/skoropadas/di-controls/compare/v4.0.1...v5.0.0) (2024-08-12)
 
 
