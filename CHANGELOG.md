@@ -1,3 +1,16 @@
+# [5.0.0](https://github.com/skoropadas/di-controls/compare/v4.0.1...v5.0.0) (2024-08-12)
+
+
+### Bug Fixes
+
+* **controls:** controls no longer set attributes like `aria-checked` on elements ([e25ff31](https://github.com/skoropadas/di-controls/commit/e25ff31fd05032327fd011ba61f37eeebdf09ea5))
+* **project:** build ([2930ee5](https://github.com/skoropadas/di-controls/commit/2930ee58977fdb944afa6e9147b01fee30c716be))
+
+
+### BREAKING CHANGES
+
+* **controls:** Controls no longer set attributes like `aria-checked` on elements. This functionality required the use of `ElementRef` and `Renderer`, making it impossible to use `DIControl` for structural directives. Additionally, to support the `disabled` attribute for native elements, you must specify `withNativeElementSupport: true`.
+
 ## [4.0.1](https://github.com/skoropadas/di-controls/compare/v4.0.0...v4.0.1) (2024-08-07)
 
 
