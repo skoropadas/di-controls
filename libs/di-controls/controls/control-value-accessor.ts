@@ -2,7 +2,7 @@ import {
 	ChangeDetectorRef,
 	Directive, effect, ElementRef,
 	inject,
-	model, Renderer2,
+	model, ModelSignal, Renderer2,
 	Signal,
 	signal,
 	WritableSignal,
@@ -35,7 +35,7 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	protected readonly model: Signal<T | null> = signal(null);
 	protected readonly ngControl: NgControl | null;
 	protected readonly changeDetectorRef: ChangeDetectorRef;
-	readonly disabled = model(false);
+	readonly disabled: ModelSignal<boolean> = model(false);
 
 	protected touch: () => void = EMPTY_FUNCTION;
 	protected change: (value: T | null) => void = EMPTY_FUNCTION;
