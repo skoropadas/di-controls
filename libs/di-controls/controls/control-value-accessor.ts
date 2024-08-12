@@ -24,7 +24,7 @@ export interface DIControlValueAccessorConfig<T> {
 	 * Add support for native element. Which means that the control will
 	 * update the native element attributes like `disabled`.
 	 */
-	withNativeElementSupport: boolean;
+	withNativeElementSupport?: boolean;
 }
 
 /**

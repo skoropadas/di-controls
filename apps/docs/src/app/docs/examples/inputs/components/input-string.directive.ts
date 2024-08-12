@@ -14,6 +14,7 @@ export class InputStringDirective<T = unknown> extends DIControl<T> {
       onIncomingUpdate: (value: T | null) => {
         this.inputElement.value = String(value ?? '');
       },
+      withNativeElementSupport: true,
     });
   }
 

@@ -18,6 +18,7 @@ export class InputDateDirective extends DIControl<Date> {
       onIncomingUpdate: (value: Date | null) => {
         this.inputElement.value = value ? format(value, this.format) : '';
       },
+      withNativeElementSupport: true,
     });
   }
 

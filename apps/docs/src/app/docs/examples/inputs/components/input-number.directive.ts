@@ -14,6 +14,7 @@ export class InputNumberDirective extends DIControl<number> {
       onIncomingUpdate: (value: number | null) => {
         this.inputElement.value = String(value ?? '');
       },
+      withNativeElementSupport: true,
     });
   }
 
