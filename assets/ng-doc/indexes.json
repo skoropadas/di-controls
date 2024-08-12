@@ -2,90 +2,6 @@
   {
     "breadcrumbs": [
       "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "Date Range",
-    "route": "/examples/date-range",
-    "fragment": "date-range",
-    "content": "In this section, we will discuss creating a date range control using this library. To start, let's outline the list of requirements and necessary components."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "The date range should consist of the following components",
-    "route": "/examples/date-range",
-    "fragment": "the-date-range-should-consist-of-the-following-components",
-    "content": "⚙️ Input for the start date⚙️ Input for the end date"
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "List of requirements",
-    "route": "/examples/date-range",
-    "fragment": "list-of-requirements",
-    "content": "🚩 Date Range should return an object with the start and end date.🚩 Input for the start date should change the start date in the model.🚩 Input for the end date should change the end date in the model."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "Inputs",
-    "route": "/examples/date-range",
-    "fragment": "inputs",
-    "content": "To convert the entered date into a Date type, we will use the diInputDate directive that we created in the Inputs article. Its code looks as follows."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "Range directive",
-    "route": "/examples/date-range",
-    "fragment": "range-directive",
-    "content": "To ensure that the model is updated in a specific object field when the input value changes, we need to create an additional host directive. This directive should inherit from the DIProxyControl class. DIProxyControl allows us to modify the model received by child controls and the parent control using two functions, getValue and setValue. We will also add an input key for reusing the directive for both inputs."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Date Range"
-    ],
-    "pageType": "guide",
-    "title": "Date Range",
-    "section": "Date Range",
-    "route": "/examples/date-range",
-    "fragment": "date-range-1",
-    "content": "Now, we need to create a Date Range component that will combine our components. Since we can have only one model value, we need to inherit our component from the DIControl class and provide it as a host."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Inputs"
-    ],
-    "pageType": "guide",
-    "title": "Inputs",
-    "section": "Inputs",
-    "route": "/examples/inputs",
-    "fragment": "inputs",
-    "content": "You can implement inputs using directives, allowing you to provide your users with access to standard   tag attributes. You can create multiple directives for working with input fields that can convert a string into a number, date, or leave it as is."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
       "Checkbox"
     ],
     "pageType": "guide",
@@ -142,114 +58,6 @@
     "route": "/examples/checkbox",
     "fragment": "checkbox-group",
     "content": "The checkbox group should contain a list of all selected values and update the state of child controls. To implement the group, we need to inherit our component class from the DICollectionControl class. DICollectionControl has additional integration with DIStateControl and by default implements the DICompareHost interface. Therefore, all we need to do is provide it as a host control and as a DICompareHost."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Radio"
-    ],
-    "pageType": "guide",
-    "title": "Radio",
-    "section": "Radio",
-    "route": "/examples/radio",
-    "fragment": "radio",
-    "content": "In this section, we will discuss creating a radio and radio group using this library. To start, let's outline the list of requirements and necessary components."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Radio"
-    ],
-    "pageType": "guide",
-    "title": "Radio",
-    "section": "The radio should consist of the following components",
-    "route": "/examples/radio",
-    "fragment": "the-radio-should-consist-of-the-following-components",
-    "content": "⚙️ Radio group⚙️ Radio"
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Radio"
-    ],
-    "pageType": "guide",
-    "title": "Radio",
-    "section": "List of requirements",
-    "route": "/examples/radio",
-    "fragment": "list-of-requirements",
-    "content": "🚩 Radio should be provided via ng-content.🚩 Only one radio can be selected at a time.🚩 If radio group's model is changed, the radio should be selected or deselected.🚩 The radio should support working with immutable objects."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Radio"
-    ],
-    "pageType": "guide",
-    "title": "Radio",
-    "section": "Radio",
-    "route": "/examples/radio",
-    "fragment": "radio-1",
-    "content": "The radio is a state control, and the user should have the ability to check only one radio at a time. To implement the state control, we need to inherit it from DIStateControl, which will provide us with all the necessary functionality. Internally, we will also use a native input type=\"radio\" to maintain the native behavior. For example, when a radio is used inside a label tag, it should change its state when the label is clicked. We also need to inject DICompareHost to access the compareFn from the radio group in the future. This function will help us compare immutable objects."
-  },
-  {
-    "breadcrumbs": [
-      "Examples",
-      "Radio"
-    ],
-    "pageType": "guide",
-    "title": "Radio",
-    "section": "Radio Group",
-    "route": "/examples/radio",
-    "fragment": "radio-group",
-    "content": "The radio group should contain only one value and update the state of child controls. To implement the group, we need to inherit our component class from the DIControl class. DIControl takes the model as is, which means that the new model value will replace the previous one. This way, only one radio button will always be selected. We also need to implement the DICompareHost interface and provide the group as a compare host so that child radio buttons have access to the compareFn and can correctly determine their state when working with immutable objects."
-  },
-  {
-    "breadcrumbs": [
-      "Getting Started",
-      "Installation"
-    ],
-    "pageType": "guide",
-    "title": "Installation",
-    "section": "What is DIControls library?",
-    "route": "/getting-started/installation",
-    "fragment": "what-is-dicontrols-library",
-    "content": "DIControls is a library for creating reusable, flexible UI controls using a declarative approach. Each component you create depends only on its own model, allowing for its reuse in many other places. It also enables users of your controls to modify them, replace existing components in your library, or extend your components by adding their own. Additionally, this library minimizes the implementation of ControlValueAccessor, so all you need to do is inherit from a specific class and trigger updates using the this.updateModel(newModel) method, update the touched state using this.touched(), or process updates in the onIncomingUpdate hook if necessary."
-  },
-  {
-    "breadcrumbs": [
-      "Getting Started",
-      "Installation"
-    ],
-    "pageType": "guide",
-    "title": "Installation",
-    "section": "Installation",
-    "route": "/getting-started/installation",
-    "fragment": "installation-1",
-    "content": "This library works only with Angular 16+."
-  },
-  {
-    "breadcrumbs": [
-      "Getting Started",
-      "Installation"
-    ],
-    "pageType": "guide",
-    "title": "Installation",
-    "section": "Installation",
-    "route": "/getting-started/installation",
-    "fragment": "installation-1",
-    "content": "You don't need to import or add any module to your application in order to create the controls. You just need to install the package via the following command:"
-  },
-  {
-    "breadcrumbs": [
-      "Getting Started",
-      "Installation"
-    ],
-    "pageType": "guide",
-    "title": "Installation",
-    "section": "Next Steps",
-    "route": "/getting-started/installation",
-    "fragment": "next-steps",
-    "content": "To learn more about the concept and how to use the library, please visit the How to use it? page;"
   },
   {
     "breadcrumbs": [
@@ -334,6 +142,150 @@
     "route": "/examples/combobox",
     "fragment": "combobox-1",
     "content": "Since the list items are provided externally, you can replace them with any other state controls. For example, instead of using di-option, you can pass di-radio, and the combobox will continue to work correctly."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "Date Range",
+    "route": "/examples/date-range",
+    "fragment": "date-range",
+    "content": "In this section, we will discuss creating a date range control using this library. To start, let's outline the list of requirements and necessary components."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "The date range should consist of the following components",
+    "route": "/examples/date-range",
+    "fragment": "the-date-range-should-consist-of-the-following-components",
+    "content": "⚙️ Input for the start date⚙️ Input for the end date"
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "List of requirements",
+    "route": "/examples/date-range",
+    "fragment": "list-of-requirements",
+    "content": "🚩 Date Range should return an object with the start and end date.🚩 Input for the start date should change the start date in the model.🚩 Input for the end date should change the end date in the model."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "Inputs",
+    "route": "/examples/date-range",
+    "fragment": "inputs",
+    "content": "To convert the entered date into a Date type, we will use the diInputDate directive that we created in the Inputs article. Its code looks as follows."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "Range directive",
+    "route": "/examples/date-range",
+    "fragment": "range-directive",
+    "content": "To ensure that the model is updated in a specific object field when the input value changes, we need to create an additional host directive. This directive should inherit from the DIProxyControl class. DIProxyControl allows us to modify the model received by child controls and the parent control using two functions, getValue and setValue. We will also add an input key for reusing the directive for both inputs."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Date Range"
+    ],
+    "pageType": "guide",
+    "title": "Date Range",
+    "section": "Date Range",
+    "route": "/examples/date-range",
+    "fragment": "date-range-1",
+    "content": "Now, we need to create a Date Range component that will combine our components. Since we can have only one model value, we need to inherit our component from the DIControl class and provide it as a host."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Inputs"
+    ],
+    "pageType": "guide",
+    "title": "Inputs",
+    "section": "Inputs",
+    "route": "/examples/inputs",
+    "fragment": "inputs",
+    "content": "You can implement inputs using directives, allowing you to provide your users with access to standard   tag attributes. You can create multiple directives for working with input fields that can convert a string into a number, date, or leave it as is."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Radio"
+    ],
+    "pageType": "guide",
+    "title": "Radio",
+    "section": "Radio",
+    "route": "/examples/radio",
+    "fragment": "radio",
+    "content": "In this section, we will discuss creating a radio and radio group using this library. To start, let's outline the list of requirements and necessary components."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Radio"
+    ],
+    "pageType": "guide",
+    "title": "Radio",
+    "section": "The radio should consist of the following components",
+    "route": "/examples/radio",
+    "fragment": "the-radio-should-consist-of-the-following-components",
+    "content": "⚙️ Radio group⚙️ Radio"
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Radio"
+    ],
+    "pageType": "guide",
+    "title": "Radio",
+    "section": "List of requirements",
+    "route": "/examples/radio",
+    "fragment": "list-of-requirements",
+    "content": "🚩 Radio should be provided via ng-content.🚩 Only one radio can be selected at a time.🚩 If radio group's model is changed, the radio should be selected or deselected.🚩 The radio should support working with immutable objects."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Radio"
+    ],
+    "pageType": "guide",
+    "title": "Radio",
+    "section": "Radio",
+    "route": "/examples/radio",
+    "fragment": "radio-1",
+    "content": "The radio is a state control, and the user should have the ability to check only one radio at a time. To implement the state control, we need to inherit it from DIStateControl, which will provide us with all the necessary functionality. Internally, we will also use a native input type=\"radio\" to maintain the native behavior. For example, when a radio is used inside a label tag, it should change its state when the label is clicked. We also need to inject DICompareHost to access the compareFn from the radio group in the future. This function will help us compare immutable objects."
+  },
+  {
+    "breadcrumbs": [
+      "Examples",
+      "Radio"
+    ],
+    "pageType": "guide",
+    "title": "Radio",
+    "section": "Radio Group",
+    "route": "/examples/radio",
+    "fragment": "radio-group",
+    "content": "The radio group should contain only one value and update the state of child controls. To implement the group, we need to inherit our component class from the DIControl class. DIControl takes the model as is, which means that the new model value will replace the previous one. This way, only one radio button will always be selected. We also need to implement the DICompareHost interface and provide the group as a compare host so that child radio buttons have access to the compareFn and can correctly determine their state when working with immutable objects."
   },
   {
     "breadcrumbs": [
@@ -442,6 +394,54 @@
     "route": "/getting-started/how-to-use-it",
     "fragment": "diproxycontrol",
     "content": "DIProxyControl is very situational, it can be used to bind the model of a child control to a specific field of its parent's object or to modify the model before providing it to the child control and vice versa. API: DIProxyControlExamples: Date Range, Combobox"
+  },
+  {
+    "breadcrumbs": [
+      "Getting Started",
+      "Installation"
+    ],
+    "pageType": "guide",
+    "title": "Installation",
+    "section": "What is DIControls library?",
+    "route": "/getting-started/installation",
+    "fragment": "what-is-dicontrols-library",
+    "content": "DIControls is a library for creating reusable, flexible UI controls using a declarative approach. Each component you create depends only on its own model, allowing for its reuse in many other places. It also enables users of your controls to modify them, replace existing components in your library, or extend your components by adding their own. Additionally, this library minimizes the implementation of ControlValueAccessor, so all you need to do is inherit from a specific class and trigger updates using the this.updateModel(newModel) method, update the touched state using this.touched(), or process updates in the onIncomingUpdate hook if necessary."
+  },
+  {
+    "breadcrumbs": [
+      "Getting Started",
+      "Installation"
+    ],
+    "pageType": "guide",
+    "title": "Installation",
+    "section": "Installation",
+    "route": "/getting-started/installation",
+    "fragment": "installation-1",
+    "content": "This library works only with Angular 16+."
+  },
+  {
+    "breadcrumbs": [
+      "Getting Started",
+      "Installation"
+    ],
+    "pageType": "guide",
+    "title": "Installation",
+    "section": "Installation",
+    "route": "/getting-started/installation",
+    "fragment": "installation-1",
+    "content": "You don't need to import or add any module to your application in order to create the controls. You just need to install the package via the following command:"
+  },
+  {
+    "breadcrumbs": [
+      "Getting Started",
+      "Installation"
+    ],
+    "pageType": "guide",
+    "title": "Installation",
+    "section": "Next Steps",
+    "route": "/getting-started/installation",
+    "fragment": "next-steps",
+    "content": "To learn more about the concept and how to use the library, please visit the How to use it? page;"
   },
   {
     "breadcrumbs": [
