@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/skoropadas/di-controls/compare/v5.0.1...v5.0.2) (2024-08-14)
+
+
+### Bug Fixes
+
+* **project:** `updateModel` method doesn't update control that was changed last ([166e94a](https://github.com/skoropadas/di-controls/commit/166e94a69b184b49e4cfe17d9bf77303d6ef6f43))
+
 ## [5.0.1](https://github.com/skoropadas/di-controls/compare/v5.0.0...v5.0.1) (2024-08-12)
 
 
