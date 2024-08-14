@@ -250,6 +250,7 @@ export abstract class DIControl<TModel, TChildModel = TModel>
    */
   override updateModel(value: TModel | null): void {
     super.updateModel(value);
+		this.updateFrom = null;
     this.onControlChangeFn(value);
     this.updateControls(this.model());
   }
