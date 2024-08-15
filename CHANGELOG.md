@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/skoropadas/di-controls/compare/v5.0.2...v5.0.3) (2024-08-15)
+
+
+### Bug Fixes
+
+* **project:** `withNativeElementSupport` option doesn't set `disabled` attribute ([1f06151](https://github.com/skoropadas/di-controls/commit/1f06151bc1e07cc87d3c0db46017210b6f609b24))
+
 ## [5.0.2](https://github.com/skoropadas/di-controls/compare/v5.0.1...v5.0.2) (2024-08-14)
 
 
