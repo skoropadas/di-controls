@@ -49,13 +49,13 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 		}
 
 		if (this.config?.withNativeElementSupport) {
-			const elementRef = inject(ElementRef);
+			const element = inject(ElementRef).nativeElement;
 			const renderer = inject(Renderer2);
 
 			effect(() => {
 				this.disabled()
-					? renderer.setAttribute(elementRef, 'disabled', 'true')
-					: renderer.removeAttribute(elementRef, 'disabled');
+					? renderer.setAttribute(element, 'disabled', 'true')
+					: renderer.removeAttribute(element, 'disabled');
 			});
 		}
 	}
