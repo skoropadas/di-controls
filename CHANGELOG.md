@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/skoropadas/di-controls/compare/v5.0.3...v5.0.4) (2024-08-16)
+
+
+### Bug Fixes
+
+* **project:** host control update child control that was just updated ([3398ea8](https://github.com/skoropadas/di-controls/commit/3398ea870325be2976a5f58eaf6a4ae535008c43))
+
 ## [5.0.3](https://github.com/skoropadas/di-controls/compare/v5.0.2...v5.0.3) (2024-08-15)
 
 
