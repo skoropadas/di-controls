@@ -778,6 +778,19 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DICollectionControl",
     "fragment": "methods",
+    "content": "Updates the model of the current control. Don't use this method directly, use updateModel instead."
+  },
+  {
+    "breadcrumbs": [
+      "API",
+      "di-controls",
+      "DICollectionControl"
+    ],
+    "pageType": "api",
+    "title": "DICollectionControl",
+    "section": "Methods",
+    "route": "/api/di-controls/classes/DICollectionControl",
+    "fragment": "methods",
     "content": "Method is called by the forms API."
   },
   {
@@ -831,6 +844,19 @@
     "route": "/api/di-controls/classes/DICollectionControl",
     "fragment": "methods",
     "content": "Updates the model of the current control. This is the main method that should be used to update the model."
+  },
+  {
+    "breadcrumbs": [
+      "API",
+      "di-controls",
+      "DICollectionControl"
+    ],
+    "pageType": "api",
+    "title": "DICollectionControl",
+    "section": "Methods",
+    "route": "/api/di-controls/classes/DICollectionControl",
+    "fragment": "methods",
+    "content": "new value."
   },
   {
     "breadcrumbs": [
@@ -933,7 +959,7 @@
     "section": "Methods",
     "route": "/api/di-controls/classes/DIControlValueAccessor",
     "fragment": "methods",
-    "content": "Updates the model. Use this method to update model from your Control"
+    "content": "Updates the model."
   },
   {
     "breadcrumbs": [
