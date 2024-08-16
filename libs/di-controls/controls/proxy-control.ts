@@ -157,13 +157,15 @@ export abstract class DIProxyControl<TModel, TChildModel> extends DIControl<TMod
 		 */
 		Promise.resolve().then(() => control.writeValueFromHost(this.config.getValue(this.model())));
 
-		control.registerOnControlChange((value: TChildModel | null) => {
-			this.updateFrom = control;
-			this.updateModel(this.config.setValue(this.model(), value));
+		control.registerOnControlChange((value: unknown | null) => {
+			value = this.config.setValue(this.model(), value as TChildModel | null);
+
+			this.childControlChange(control, value as TModel | null);
+			this.config?.onChildControlChange?.(control, value as TModel | null);
 		});
 
 		control.registerRequestForUpdate(() => {
-			control.writeValueFromHost(this.config.getValue(this.model()));
+			this.updateControl(control, this.config.getValue(this.model()) as TModel | null);
 		});
 	}
 

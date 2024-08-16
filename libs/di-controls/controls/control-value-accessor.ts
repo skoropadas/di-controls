@@ -100,11 +100,11 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	}
 
 	/**
-	 * Updates the model. Use this method to update model from your Control
+	 * Updates the model.
 	 *
 	 * @param value - new value
 	 */
-	updateModel(value: T | null): void {
+	internalUpdateModel(value: T | null): void {
 		(this.model as WritableSignal<T | null>).set(value);
 		this.change(this.model());
 		this.changeDetectorRef.markForCheck();

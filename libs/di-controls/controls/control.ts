@@ -248,12 +248,23 @@ export abstract class DIControl<TModel, TChildModel = TModel>
    *
    * @param value - new value.
    */
-  override updateModel(value: TModel | null): void {
-    super.updateModel(value);
+	updateModel(value: TModel | null): void {
 		this.updateFrom = null;
-    this.onControlChangeFn(value);
-    this.updateControls(this.model());
+    this.internalUpdateModel(value);
   }
+
+	/**
+	 * Updates the model of the current control.
+	 * Don't use this method directly, use `updateModel` instead.
+	 *
+	 * @param value - new value.
+	 * @internal
+	 */
+	override internalUpdateModel(value: TModel | null): void {
+		super.internalUpdateModel(value);
+		this.onControlChangeFn(value);
+		this.updateControls(this.model());
+	}
 
   override writeValue(value: TModel | null): void {
     if (this.model() !== value) {
@@ -316,7 +327,7 @@ export abstract class DIControl<TModel, TChildModel = TModel>
   protected childControlChange(control: DIControl<TChildModel>, value: TModel | null): void {
     if (this.model() !== value) {
       this.updateFrom = control;
-      this.updateModel(value);
+      this.internalUpdateModel(value);
       this.config?.onIncomingUpdate && this.config.onIncomingUpdate(value);
     }
   }

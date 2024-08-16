@@ -142,10 +142,10 @@ export abstract class DICollectionControl<TModel> extends DIControl<TModel[], TM
 			: resolveValue<DICompareFunction<TModel | null>>(this.config?.compare?.compareFn ?? DI_DEFAULT_COMPARE);
 	}
 
-	override updateModel(obj: TModel[] | null): void {
+	override internalUpdateModel(obj: TModel[] | null): void {
 		this.proxyModel = new SetCompare(this.getCompareFn(), obj);
 
-		super.updateModel(obj);
+		super.internalUpdateModel(obj);
 	}
 
 	override writeValue(value: TModel[] | null) {
