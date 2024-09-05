@@ -1,3 +1,10 @@
+## [5.0.5](https://github.com/skoropadas/di-controls/compare/v5.0.4...v5.0.5) (2024-09-05)
+
+
+### Bug Fixes
+
+* **project:** collection control can't unselect values with "0" ([88ae70b](https://github.com/skoropadas/di-controls/commit/88ae70b1d3eb49401e0b12d1ce0660328117f636))
+
 ## [5.0.4](https://github.com/skoropadas/di-controls/compare/v5.0.3...v5.0.4) (2024-08-16)
 
 
