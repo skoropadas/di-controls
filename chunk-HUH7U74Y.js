@@ -1,1 +1,0 @@
-import"./chunk-JPKLQMV2.js";var t=[{path:"",redirectTo:"how-to-use-it",pathMatch:"full"},{path:"",title:"Getting Started",children:[{path:"how-to-use-it",loadChildren:()=>import("./chunk-SWSTCK6Z.js")},{path:"installation",loadChildren:()=>import("./chunk-E7ACOY72.js")}]}],e=t;export{e as default};

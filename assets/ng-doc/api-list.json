@@ -1,0 +1,122 @@
+[
+  {
+    "title": "di-controls",
+    "items": [
+      {
+        "route": "/api/functions/di-controls/provideCompareHost",
+        "type": "Function",
+        "name": "provideCompareHost"
+      },
+      {
+        "route": "/api/classes/di-controls/DICompareHost",
+        "type": "Class",
+        "name": "DICompareHost"
+      },
+      {
+        "route": "/api/classes/di-controls/SetCompare",
+        "type": "Class",
+        "name": "SetCompare"
+      },
+      {
+        "route": "/api/interfaces/di-controls/DICollectionControlConfig",
+        "type": "Interface",
+        "name": "DICollectionControlConfig"
+      },
+      {
+        "route": "/api/classes/di-controls/DICollectionControl",
+        "type": "Directive",
+        "name": "DICollectionControl"
+      },
+      {
+        "route": "/api/interfaces/di-controls/DIControlValueAccessorConfig",
+        "type": "Interface",
+        "name": "DIControlValueAccessorConfig"
+      },
+      {
+        "route": "/api/classes/di-controls/DIControlValueAccessor",
+        "type": "Directive",
+        "name": "DIControlValueAccessor"
+      },
+      {
+        "route": "/api/interfaces/di-controls/DIControlConfig",
+        "type": "Interface",
+        "name": "DIControlConfig"
+      },
+      {
+        "route": "/api/classes/di-controls/DIControl",
+        "type": "Directive",
+        "name": "DIControl"
+      },
+      {
+        "route": "/api/interfaces/di-controls/DIStateControlConfig",
+        "type": "Interface",
+        "name": "DIStateControlConfig"
+      },
+      {
+        "route": "/api/classes/di-controls/DIStateControl",
+        "type": "Directive",
+        "name": "DIStateControl"
+      },
+      {
+        "route": "/api/interfaces/di-controls/DIProxyControlConfig",
+        "type": "Interface",
+        "name": "DIProxyControlConfig"
+      },
+      {
+        "route": "/api/classes/di-controls/DIProxyControl",
+        "type": "Directive",
+        "name": "DIProxyControl"
+      },
+      {
+        "route": "/api/classes/di-controls/DIControlSilencerDirective",
+        "type": "Directive",
+        "name": "DIControlSilencerDirective"
+      },
+      {
+        "route": "/api/functions/di-controls/provideHostControl",
+        "type": "Function",
+        "name": "provideHostControl"
+      },
+      {
+        "route": "/api/functions/di-controls/injectHostControl",
+        "type": "Function",
+        "name": "injectHostControl"
+      },
+      {
+        "route": "/api/variables/di-controls/DI_HOST_CONTROL",
+        "type": "Variable",
+        "name": "DI_HOST_CONTROL"
+      },
+      {
+        "route": "/api/type-aliases/di-controls/DICompareFunction",
+        "type": "TypeAlias",
+        "name": "DICompareFunction"
+      },
+      {
+        "route": "/api/interfaces/di-controls/ComponentType",
+        "type": "Interface",
+        "name": "ComponentType"
+      },
+      {
+        "route": "/api/type-aliases/di-controls/DIProxyControlGetValue",
+        "type": "TypeAlias",
+        "name": "DIProxyControlGetValue"
+      },
+      {
+        "route": "/api/type-aliases/di-controls/DIProxyControlSetValue",
+        "type": "TypeAlias",
+        "name": "DIProxyControlSetValue"
+      },
+      {
+        "route": "/api/type-aliases/di-controls/AbstractConstructor",
+        "type": "TypeAlias",
+        "name": "AbstractConstructor"
+      },
+      {
+        "route": "/api/type-aliases/di-controls/Constructor",
+        "type": "TypeAlias",
+        "name": "Constructor"
+      }
+    ]
+  }
+]
