@@ -22,12 +22,12 @@ export class SetCompare<T> implements Iterable<T> {
 
 	add(value: T): void {
 		const item: T | null = this.find(value);
-		!item && this.values.add(value);
+		item === null && this.values.add(value);
 	}
 
 	delete(value: T): void {
 		const item: T | null = this.find(value);
-		item && this.values.delete(item);
+		item !== null && this.values.delete(item);
 	}
 
 	has(value: T): boolean {
