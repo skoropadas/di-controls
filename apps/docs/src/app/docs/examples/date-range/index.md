@@ -1,14 +1,17 @@
-# {{ NgDocPage.title }}
+---
+keyword: 'DateRangePage'
+---
+
 
 In this section, we will discuss creating a date range control using this library. To
 start, let's outline the list of requirements and necessary components.
 
-### The date range should consist of the following components
+## The date range should consist of the following components
 
 - ⚙️ Input for the start date
 - ⚙️ Input for the end date
 
-### List of requirements
+## List of requirements
 
 - 🚩 Date Range should return an object with the start and end date.
 - 🚩 Input for the start date should change the start date in the model.

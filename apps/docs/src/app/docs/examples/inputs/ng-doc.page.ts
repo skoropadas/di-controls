@@ -8,8 +8,7 @@ const InputsPage: NgDocPage = {
   title: `Inputs`,
   mdFile: './index.md',
   category: ExamplesCategory,
-  demos: { InputStringDemoComponent, InputNumberDemoComponent, InputDateDemoComponent },
-  keyword: 'InputsPage',
+  demos: { InputStringDemoComponent, InputNumberDemoComponent, InputDateDemoComponent }
 };
 
 export default InputsPage;

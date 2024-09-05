@@ -1,4 +1,7 @@
-# {{ NgDocPage.title }}
+---
+keyword: 'SwitchPage'
+---
+
 
 ## Switch
 

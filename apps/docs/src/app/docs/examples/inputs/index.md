@@ -1,4 +1,7 @@
-# {{ NgDocPage.title }}
+---
+keyword: 'InputsPage'
+---
+
 
 You can implement inputs using directives, allowing you to provide your users with access to
 standard `<input>` tag attributes.

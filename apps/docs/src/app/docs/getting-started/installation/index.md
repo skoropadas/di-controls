@@ -1,4 +1,4 @@
-# {{ NgDocPage.title }}
+
 
 ## What is DIControls library?
 

@@ -1,4 +1,7 @@
-# {{ NgDocPage.title }}
+---
+keyword: 'SliderPage'
+---
+
 
 ## Slider
 

@@ -16,8 +16,7 @@ const SwitchPage: NgDocPage = {
     SwitchObjectDemoComponent,
     SwitchGroupObjectDemoComponent,
     SwitchRadioGroupDemoComponent
-  },
-  keyword: 'SwitchPage',
+  }
 };
 
 export default SwitchPage;

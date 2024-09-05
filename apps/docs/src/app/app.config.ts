@@ -3,13 +3,14 @@ import {NG_DOC_ROUTING, provideNgDocContext} from '@ng-doc/generated';
 import {
 	NG_DOC_DEFAULT_PAGE_PROCESSORS,
 	NG_DOC_DEFAULT_PAGE_SKELETON,
-	NG_DOC_NIGHT_THEME,
-	NgDocDefaultSearchEngine, provideMainPageProcessor,
-	provideNgDocApp, providePageSkeleton,
-	provideSearchEngine
+	NgDocDefaultSearchEngine,
+	provideMainPageProcessor,
+	provideNgDocApp,
+	providePageSkeleton,
+	provideSearchEngine,
 } from '@ng-doc/app';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import { provideHttpClient } from '@angular/common/http';
+import {provideHttpClient} from '@angular/common/http';
 import {provideRouter, withInMemoryScrolling, withViewTransitions} from '@angular/router';
 import {provideClientHydration} from '@angular/platform-browser';
 
@@ -17,7 +18,7 @@ import {provideClientHydration} from '@angular/platform-browser';
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideNgDocContext(),
-		provideNgDocApp({defaultThemeId: NG_DOC_NIGHT_THEME.id}),
+		provideNgDocApp(),
 		provideSearchEngine(NgDocDefaultSearchEngine),
 		providePageSkeleton(NG_DOC_DEFAULT_PAGE_SKELETON),
 		provideMainPageProcessor(NG_DOC_DEFAULT_PAGE_PROCESSORS),

@@ -8,8 +8,7 @@ const ComboboxPage: NgDocPage = {
   title: `Combobox`,
   mdFile: './index.md',
   category: ExamplesCategory,
-  demos: { ComboboxDemoComponent, ComboboxRadioDemoComponent, ComboboxObjectDemoComponent },
-  keyword: 'ComboboxPage',
+  demos: { ComboboxDemoComponent, ComboboxRadioDemoComponent, ComboboxObjectDemoComponent }
 };
 
 export default ComboboxPage;

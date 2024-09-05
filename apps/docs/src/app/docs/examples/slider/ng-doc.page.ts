@@ -8,8 +8,7 @@ const SliderPage: NgDocPage = {
   category: ExamplesCategory,
   demos: {
     SliderDemoComponent,
-  },
-  keyword: 'SliderPage'
+  }
 };
 
 export default SliderPage;

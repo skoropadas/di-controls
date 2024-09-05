@@ -14,8 +14,7 @@ const CheckboxPage: NgDocPage = {
     CheckboxObjectComponent,
     CheckboxGroupDemoComponent,
     CheckboxGroupObjectComponent,
-  },
-  keyword: 'CheckboxPage',
+  }
 };
 
 export default CheckboxPage;

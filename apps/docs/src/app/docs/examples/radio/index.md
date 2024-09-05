@@ -1,14 +1,17 @@
-# {{ NgDocPage.title }}
+---
+keyword: 'RadioPage'
+---
+
 
 In this section, we will discuss creating a radio and radio group using this library. To
 start, let's outline the list of requirements and necessary components.
 
-### The radio should consist of the following components
+## The radio should consist of the following components
 
 - ⚙️ Radio group
 - ⚙️ Radio
 
-### List of requirements
+## List of requirements
 
 - 🚩 Radio should be provided via `ng-content`.
 - 🚩 Only one radio can be selected at a time.

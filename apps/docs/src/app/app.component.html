@@ -1,18 +1,18 @@
 <ng-doc-root>
-	<ng-doc-navbar [leftContent]="leftContent" [rightContent]="rightContent">
-		<ng-template #leftContent>
+	<ng-doc-navbar>
+		<ng-container ngDocNavbarLeft>
 			<h3 style="margin: 0">DIControls</h3>
-		</ng-template>
-		<ng-template #rightContent>
-				<a
-					href="https://github.com/skoropadas/di-controls"
-					ng-doc-button-icon
-					ngDocTooltip="Repository on GitHub"
-					size="large"
-					target="_blank">
-					<ng-doc-icon [size]="24" customIcon="github"></ng-doc-icon>
-				</a>
-		</ng-template>
+		</ng-container>
+		<ng-container ngDocNavbarRight>
+			<a
+				href="https://github.com/skoropadas/di-controls"
+				ng-doc-button-icon
+				ngDocTooltip="Repository on GitHub"
+				size="large"
+				target="_blank">
+				<ng-doc-icon [size]="24" customIcon="github"></ng-doc-icon>
+			</a>
+		</ng-container>
 	</ng-doc-navbar>
 	<ng-doc-sidebar></ng-doc-sidebar>
 	<router-outlet></router-outlet>

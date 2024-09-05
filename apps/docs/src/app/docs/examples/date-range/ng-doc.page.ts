@@ -6,8 +6,7 @@ const DateRangePage: NgDocPage = {
   title: `Date Range`,
   mdFile: './index.md',
   category: ExamplesCategory,
-  demos: { DateRangeDemoComponent },
-  keyword: 'DateRangePage',
+  demos: { DateRangeDemoComponent }
 };
 
 export default DateRangePage;

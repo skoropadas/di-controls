@@ -1,14 +1,17 @@
-# {{ NgDocPage.title }}
+---
+keyword: 'CheckboxPage'
+---
+
 
 In this section, we will discuss creating a checkbox and checkbox group using this library. To
 start, let's outline the list of requirements and necessary components.
 
-### The checkbox should consist of the following components
+## The checkbox should consist of the following components
 
 - ⚙️ Checkbox group
 - ⚙️ Checkbox provided from external sources using `ng-content`
 
-### List of requirements
+## List of requirements
 
 - 🚩 Checkbox should be provided via `ng-content`.
 - 🚩 When an item from the list is selected, its value should be added to the checkbox group's model.
