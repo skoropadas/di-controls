@@ -10,6 +10,7 @@ import {
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION} from 'di-controls/constants';
 import {hasValue} from 'di-controls/helpers';
+import {toObservable} from '@angular/core/rxjs-interop';
 
 export interface DIControlValueAccessorConfig<T> {
 	/**
@@ -40,6 +41,9 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	protected touch: () => void = EMPTY_FUNCTION;
 	protected change: (value: T | null) => void = EMPTY_FUNCTION;
 
+	#element = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+	#renderer = inject(Renderer2);
+
 	protected constructor(protected readonly config?: DIControlValueAccessorConfig<T>) {
 		this.ngControl = inject(NgControl, {optional: true, self: true});
 		this.changeDetectorRef = inject(ChangeDetectorRef);
@@ -49,14 +53,8 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 		}
 
 		if (this.config?.withNativeElementSupport) {
-			const element = inject(ElementRef).nativeElement;
-			const renderer = inject(Renderer2);
-
-			effect(() => {
-				this.disabled()
-					? renderer.setAttribute(element, 'disabled', 'true')
-					: renderer.removeAttribute(element, 'disabled');
-			});
+			toObservable(this.disabled)
+				.subscribe((isDisabled) => this.addDisabledAttribute(isDisabled))
 		}
 	}
 
@@ -118,12 +116,20 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	 */
 	setDisabledState(isDisabled: boolean): void {
 		this.disabled.set(isDisabled);
-		this.changeDetectorRef.detectChanges();
+		this.addDisabledAttribute(isDisabled);
 	}
 
 	private update(value: T | null): void {
 		(this.model as WritableSignal<T | null>).set(value);
 		this.config?.onIncomingUpdate && this.config.onIncomingUpdate(value);
 		this.changeDetectorRef.markForCheck();
+	}
+
+	private addDisabledAttribute(isDisabled: boolean): void {
+		if (this.config?.withNativeElementSupport) {
+				isDisabled
+					? this.#renderer.setAttribute(this.#element, 'disabled', 'true')
+					: this.#renderer.removeAttribute(this.#element, 'disabled');
+		}
 	}
 }
