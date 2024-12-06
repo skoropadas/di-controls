@@ -118,6 +118,7 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	 */
 	setDisabledState(isDisabled: boolean): void {
 		this.disabled.set(isDisabled);
+		this.changeDetectorRef.detectChanges();
 	}
 
 	private update(value: T | null): void {
