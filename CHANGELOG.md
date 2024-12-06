@@ -1,3 +1,10 @@
+## [5.0.7](https://github.com/skoropadas/di-controls/compare/v5.0.6...v5.0.7) (2024-12-06)
+
+
+### Bug Fixes
+
+* **project:** disabled state requires addition change detection run in tests ([519661c](https://github.com/skoropadas/di-controls/commit/519661c1323c2e4918d6cf54192ea9d8209c3d5f))
+
 ## [5.0.6](https://github.com/skoropadas/di-controls/compare/v5.0.5...v5.0.6) (2024-12-06)
 
 
