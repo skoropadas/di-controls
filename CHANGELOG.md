@@ -1,3 +1,10 @@
+## [5.0.6](https://github.com/skoropadas/di-controls/compare/v5.0.5...v5.0.6) (2024-12-06)
+
+
+### Bug Fixes
+
+* **project:** disabled state requires addition change detection run in tests in Angular 19 ([d0fe5a7](https://github.com/skoropadas/di-controls/commit/d0fe5a7c8067cf7186ef1d70f0f73df6388cbe57))
+
 ## [5.0.5](https://github.com/skoropadas/di-controls/compare/v5.0.4...v5.0.5) (2024-09-05)
 
 
