@@ -178,7 +178,9 @@ export interface DIStateControlConfig<TModel, TValue extends TModel = TModel> ex
  * }
  * ```
  */
-@Directive({})
+@Directive({
+    standalone: false
+})
 export abstract class DIStateControl<TModel, TValue extends TModel = TModel>
 	extends DIControl<TModel>
 	implements OnChanges

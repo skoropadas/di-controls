@@ -77,21 +77,20 @@ export async function createFixture<
 	const firstNestedControl = nestedControls[0]?.control ?? control;
 
 	@Component({
-		template: `
+    template: `
 			<div ${selector} ${mapInputs(inputs)} [formControl]="formControl">
 				${nestControlsTemplate}
 			</div>
 			<di-cdr-test [model]="formControl.value" #cdrTest></di-cdr-test>
 		`,
-		imports: [
-			control,
-			CdrTestComponent,
-			ReactiveFormsModule,
-			...nestedControls.map(({ control }) => control),
-		],
-		standalone: true,
-		changeDetection: ChangeDetectionStrategy.OnPush,
-	})
+    imports: [
+        control,
+        CdrTestComponent,
+        ReactiveFormsModule,
+        ...nestedControls.map(({ control }) => control),
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
 	class TestComponent implements ITestComponent<TValue, THost, TChildren> {
 		formControl: FormControl = new FormControl<TValue>(config.defaultValue);
 

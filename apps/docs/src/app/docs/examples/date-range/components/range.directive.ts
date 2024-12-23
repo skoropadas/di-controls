@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import {Directive, forwardRef, Input} from '@angular/core';
 import { DIProxyControl, injectHostControl, provideHostControl } from 'di-controls';
 import { DateRange } from './date-range.component';
 
@@ -7,7 +7,7 @@ import { DateRange } from './date-range.component';
   standalone: true,
   providers: [
     // Provide this component as a host for all children
-    provideHostControl(RangeDirective)
+    provideHostControl(forwardRef(() => RangeDirective))
   ],
 })
 export class RangeDirective extends DIProxyControl<DateRange, Date> {

@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, forwardRef} from '@angular/core';
 import {DICompareHost, provideCompareHost} from 'di-controls';
 
 interface WithId {
@@ -8,7 +8,7 @@ interface WithId {
 @Directive({
   selector: '[diCompareById]',
   standalone: true,
-  providers: [provideCompareHost(CompareByIdDirective)],
+  providers: [provideCompareHost(forwardRef(() => CompareByIdDirective))],
 })
 export class CompareByIdDirective<T extends WithId> implements DICompareHost<T> {
   compareFn = (a: T | null, b: T | null) => a?.id === b?.id;

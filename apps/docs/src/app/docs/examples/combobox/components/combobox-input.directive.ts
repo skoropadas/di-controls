@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import {Directive, forwardRef, Input} from '@angular/core';
 import {DIProxyControl, injectHostControl, provideHostControl} from 'di-controls';
 
 @Directive({
@@ -6,7 +6,7 @@ import {DIProxyControl, injectHostControl, provideHostControl} from 'di-controls
   standalone: true,
   providers: [
     // Provide this directive as a host to make it a host for the input
-    provideHostControl(ComboboxInputDirective),
+    provideHostControl(forwardRef(() => ComboboxInputDirective)),
   ],
 })
 export class ComboboxInputDirective<T> extends DIProxyControl<T, string> {

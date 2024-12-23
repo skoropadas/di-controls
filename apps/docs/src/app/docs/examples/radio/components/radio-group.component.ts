@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   DICompareFunction,
@@ -24,9 +24,9 @@ import {
   ],
   providers: [
     // Provide this component as a host for all children
-    provideHostControl(RadioGroupComponent),
+    provideHostControl(forwardRef(() => RadioGroupComponent)),
     // Provide this component as a compare host for all children to get access to its compare function
-    provideCompareHost(RadioGroupComponent),
+    provideCompareHost(forwardRef(() => RadioGroupComponent)),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

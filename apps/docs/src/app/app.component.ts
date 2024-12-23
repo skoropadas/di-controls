@@ -4,19 +4,18 @@ import { RouterOutlet } from '@angular/router';
 import {NgDocButtonIconComponent, NgDocIconComponent, NgDocTooltipDirective} from '@ng-doc/ui-kit';
 
 @Component({
-	selector: 'di-controls-root',
-	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss'],
-	standalone: true,
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [
-		NgDocRootComponent,
-		RouterOutlet,
-		NgDocNavbarComponent,
-		NgDocSidebarComponent,
-		NgDocButtonIconComponent,
-		NgDocTooltipDirective,
-		NgDocIconComponent,
-	],
+    selector: 'di-controls-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgDocRootComponent,
+        RouterOutlet,
+        NgDocNavbarComponent,
+        NgDocSidebarComponent,
+        NgDocButtonIconComponent,
+        NgDocTooltipDirective,
+        NgDocIconComponent,
+    ]
 })
 export class AppComponent {}

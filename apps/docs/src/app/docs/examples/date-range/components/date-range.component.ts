@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DIControl, provideHostControl } from 'di-controls';
 
@@ -14,7 +14,7 @@ export interface DateRange {
   template: `<ng-content></ng-content>`,
   providers: [
     // Provide this component as a host for all children
-    provideHostControl(DateRangeComponent)
+    provideHostControl(forwardRef(() => DateRangeComponent))
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

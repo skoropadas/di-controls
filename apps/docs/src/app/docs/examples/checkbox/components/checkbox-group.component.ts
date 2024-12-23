@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DICollectionControl, DICompareHost, provideHostControl} from 'di-controls';
 
@@ -18,7 +18,7 @@ import {DICollectionControl, DICompareHost, provideHostControl} from 'di-control
   ],
   providers: [
     // Provide this component as a host for all children
-    provideHostControl(CheckboxGroupComponent),
+    provideHostControl(forwardRef(() => CheckboxGroupComponent)),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,11 +1,11 @@
-import { Directive } from '@angular/core';
+import {Directive, forwardRef} from '@angular/core';
 import { provideHostControl } from 'di-controls/tokens';
 import { DIControl } from 'di-controls/controls';
 
 @Directive({
 	selector: '[diControlSilencer]',
 	standalone: true,
-	providers: [provideHostControl(DIControlSilencerDirective)],
+	providers: [provideHostControl(forwardRef(() => DIControlSilencerDirective))],
 })
 export class DIControlSilencerDirective extends DIControl<unknown> {
 	constructor() {
