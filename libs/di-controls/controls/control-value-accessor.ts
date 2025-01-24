@@ -7,7 +7,7 @@ import {
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import {ControlValueAccessor, NgControl} from '@angular/forms';
+import {ControlValueAccessor, DefaultValueAccessor, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION} from 'di-controls/constants';
 import {hasValue} from 'di-controls/helpers';
 import {toObservable} from '@angular/core/rxjs-interop';
@@ -48,7 +48,7 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 		this.ngControl = inject(NgControl, {optional: true, self: true});
 		this.changeDetectorRef = inject(ChangeDetectorRef);
 
-		if (this.ngControl && !this.ngControl.valueAccessor) {
+		if (this.ngControl && (!this.ngControl.valueAccessor || this.ngControl.valueAccessor instanceof DefaultValueAccessor)) {
 			this.ngControl.valueAccessor = this;
 		}
 
