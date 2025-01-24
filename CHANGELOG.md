@@ -1,3 +1,10 @@
+## [5.0.8](https://github.com/skoropadas/di-controls/compare/v5.0.7...v5.0.8) (2025-01-24)
+
+
+### Bug Fixes
+
+* **controls:** di-control overrides `valueAccessor` of the `NgControl` ([96b5e8a](https://github.com/skoropadas/di-controls/commit/96b5e8a9d54be32533a03d93808bc3b3f2b62377))
+
 ## [5.0.7](https://github.com/skoropadas/di-controls/compare/v5.0.6...v5.0.7) (2024-12-06)
 
 
