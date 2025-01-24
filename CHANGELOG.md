@@ -1,3 +1,10 @@
+## [5.0.9](https://github.com/skoropadas/di-controls/compare/v5.0.8...v5.0.9) (2025-01-24)
+
+
+### Bug Fixes
+
+* **controls:** allow DefaultValueAccessor override ([302cbdc](https://github.com/skoropadas/di-controls/commit/302cbdc6be9c10ada40a0f8d8e3a0d4c5718d7cf))
+
 ## [5.0.8](https://github.com/skoropadas/di-controls/compare/v5.0.7...v5.0.8) (2025-01-24)
 
 
