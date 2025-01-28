@@ -1,4 +1,8 @@
 module.exports = {
+	branches: [
+		'master',
+		{ name: 'beta', channel: 'beta', prerelease: true },
+	],
 	plugins: [
 		'@semantic-release/commit-analyzer',
 		'@semantic-release/release-notes-generator',
