@@ -48,7 +48,7 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 		this.ngControl = inject(NgControl, {optional: true, self: true});
 		this.changeDetectorRef = inject(ChangeDetectorRef);
 
-		if (this.ngControl && !this.ngControl.valueAccessor) {
+		if (this.ngControl) {
 			this.ngControl.valueAccessor = this;
 		}
 
