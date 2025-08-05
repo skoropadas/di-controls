@@ -42,7 +42,7 @@ jobs:
         run: tar -cvf docs.tar dist/apps/docs/browser
 
       - name: Uploading Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: artifacts
           path: docs.tar
