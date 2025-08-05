@@ -1,3 +1,16 @@
+## [5.0.10](https://github.com/skoropadas/di-controls/compare/v5.0.9...v5.0.10) (2025-08-05)
+
+
+### Bug Fixes
+
+* **controls:** ngControl now can be overridden ([f2c8410](https://github.com/skoropadas/di-controls/commit/f2c84101626bfde094274997fe3734b1f21e5f48))
+
+
+### Reverts
+
+* Revert "fix(controls): di-control overrides `valueAccessor` of the `NgControl`" ([da5f333](https://github.com/skoropadas/di-controls/commit/da5f3337ff8e409bbfca44efecaf06a141e24a6e))
+* Revert "fix(controls): allow DefaultValueAccessor override" ([f7b2001](https://github.com/skoropadas/di-controls/commit/f7b20010d7187bd7200bac6540b5e1c2527dbd98))
+
 ## [5.0.9](https://github.com/skoropadas/di-controls/compare/v5.0.8...v5.0.9) (2025-01-24)
 
 
