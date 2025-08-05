@@ -1,3 +1,10 @@
+## [5.0.11](https://github.com/skoropadas/di-controls/compare/v5.0.10...v5.0.11) (2025-08-05)
+
+
+### Bug Fixes
+
+* **controls:** clean up imports and remove unused ngControl injection ([ba2d7b7](https://github.com/skoropadas/di-controls/commit/ba2d7b7226398274244f66bd705c56ba0656cf07))
+
 ## [5.0.10](https://github.com/skoropadas/di-controls/compare/v5.0.9...v5.0.10) (2025-08-05)
 
 
