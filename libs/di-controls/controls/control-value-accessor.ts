@@ -1,8 +1,11 @@
 import {
 	ChangeDetectorRef,
-	Directive, effect, ElementRef,
+	Directive,
+	ElementRef,
 	inject,
-	model, ModelSignal, Renderer2,
+	model,
+	ModelSignal,
+	Renderer2,
 	Signal,
 	signal,
 	WritableSignal,
@@ -45,7 +48,6 @@ export abstract class DIControlValueAccessor<T> implements ControlValueAccessor 
 	#renderer = inject(Renderer2);
 
 	protected constructor(protected readonly config?: DIControlValueAccessorConfig<T>) {
-		this.ngControl = inject(NgControl, {optional: true, self: true});
 		this.changeDetectorRef = inject(ChangeDetectorRef);
 
 		if (this.ngControl) {
