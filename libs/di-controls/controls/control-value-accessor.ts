@@ -34,7 +34,7 @@ export interface DIControlValueAccessorConfig<T> {
 @Directive()
 export abstract class DIControlValueAccessor<T> implements ControlValueAccessor {
 	protected readonly model: Signal<T | null> = signal(null);
-	protected readonly ngControl: NgControl | null;
+	protected readonly ngControl: NgControl | null = inject(NgControl, {optional: true, self: true});
 	protected readonly changeDetectorRef: ChangeDetectorRef;
 	readonly disabled: ModelSignal<boolean> = model(false);
 
