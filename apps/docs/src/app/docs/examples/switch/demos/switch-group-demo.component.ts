@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {SwitchComponent} from '../components/switch.component';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -16,14 +16,15 @@ import {CheckboxGroupComponent} from '../../checkbox/components/checkbox-group.c
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
       <di-checkbox-group [formControl]="control">
-        <di-switch *ngFor="let item of items" [value]="item">{{ item }}</di-switch>
+        @for (item of items; track item) {
+          <di-switch [value]="item">{{ item }}</di-switch>
+        }
       </di-checkbox-group>
       <!-- snippet -->
     </di-model-info>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     SwitchComponent,
     ReactiveFormsModule,
     ModelInfoComponent,

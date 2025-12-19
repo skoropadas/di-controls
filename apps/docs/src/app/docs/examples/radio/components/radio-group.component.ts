@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   DICompareFunction,
   DICompareHost,
@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'di-radio-group',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `<ng-content></ng-content>`,
   styles: [
     `

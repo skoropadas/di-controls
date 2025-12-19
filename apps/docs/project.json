@@ -101,7 +101,8 @@
 			"executor": "@nx/jest:jest",
 			"outputs": ["{workspaceRoot}/coverage/apps/docs"],
 			"options": {
-				"jestConfig": "apps/docs/jest.config.ts"
+				"jestConfig": "apps/docs/jest.config.ts",
+				"tsConfig": "apps/docs/tsconfig.spec.json"
 			}
 		}
 	}

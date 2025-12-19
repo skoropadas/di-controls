@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {DICollectionControl, DICompareHost, provideHostControl} from 'di-controls';
 
 @Component({
   selector: 'di-checkbox-group',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `<ng-content></ng-content>`,
   styles: [
     `

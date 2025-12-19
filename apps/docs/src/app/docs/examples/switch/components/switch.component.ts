@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
+
+import {DICompareHost, DIStateControl, injectHostControl} from 'di-controls';
 
 @Component({
   standalone: true,
@@ -50,7 +50,7 @@ import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule],
+  imports: [],
 })
 export class SwitchComponent<T> extends DIStateControl<T | boolean> {
   @Input()

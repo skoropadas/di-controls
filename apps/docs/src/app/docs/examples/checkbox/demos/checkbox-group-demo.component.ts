@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {CheckboxComponent} from '../components/checkbox.component';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -13,7 +13,6 @@ import {FRUIT_NAMES} from '../../../../constants/fruits';
   selector: 'di-checkbox-group-demo',
   standalone: true,
   imports: [
-    CommonModule,
     CheckboxComponent,
     ModelInfoComponent,
     ReactiveFormsModule,
@@ -23,11 +22,13 @@ import {FRUIT_NAMES} from '../../../../constants/fruits';
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
       <di-checkbox-group [formControl]="control">
-        <di-checkbox *ngFor="let item of items" [value]="item">{{ item }}</di-checkbox>
+        @for (item of items; track item) {
+          <di-checkbox [value]="item">{{ item }}</di-checkbox>
+        }
       </di-checkbox-group>
       <!-- snippet -->
     </di-model-info>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxGroupDemoComponent {

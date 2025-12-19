@@ -10,15 +10,14 @@
 			"executor": "@nx/angular:package",
 			"outputs": ["{workspaceRoot}/dist/libs/di-controls"],
 			"options": {
-				"project": "libs/di-controls/ng-package.json"
+				"project": "libs/di-controls/ng-package.json",
+				"tsConfig": "libs/di-controls/tsconfig.lib.json"
 			},
 			"configurations": {
 				"production": {
 					"tsConfig": "libs/di-controls/tsconfig.lib.prod.json"
 				},
-				"development": {
-					"tsConfig": "libs/di-controls/tsconfig.lib.json"
-				}
+				"development": {}
 			},
 			"defaultConfiguration": "production"
 		},
@@ -26,7 +25,8 @@
 			"executor": "@nx/jest:jest",
 			"outputs": ["{workspaceRoot}/coverage/libs/di-controls"],
 			"options": {
-				"jestConfig": "libs/di-controls/jest.config.ts"
+				"jestConfig": "libs/di-controls/jest.config.ts",
+				"tsConfig": "libs/di-controls/tsconfig.spec.json"
 			}
 		},
 		"lint": {

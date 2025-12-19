@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   DICompareFunction,
   DICompareHost,
@@ -8,20 +8,22 @@ import {
   provideCompareHost,
   provideHostControl,
 } from 'di-controls';
-import { InputStringDirective } from '../../inputs/components/input-string.directive';
-import { ComboboxInputDirective } from './combobox-input.directive';
+import {InputStringDirective} from '../../inputs/components/input-string.directive';
+import {ComboboxInputDirective} from './combobox-input.directive';
 
 @Component({
   selector: 'di-combobox',
   standalone: true,
-  imports: [CommonModule, InputStringDirective, ComboboxInputDirective],
+  imports: [InputStringDirective, ComboboxInputDirective],
   template: `
     <input diInputString [diComboboxInput]="stringifyFn" (focus)="open()" (blur)="touch()" />
 
-    <div class="dropdown" *ngIf="opened">
-      <ng-content></ng-content>
-    </div>
-  `,
+    @if (opened) {
+      <div class="dropdown">
+        <ng-content></ng-content>
+      </div>
+    }
+    `,
   styles: [
     `
       :host {

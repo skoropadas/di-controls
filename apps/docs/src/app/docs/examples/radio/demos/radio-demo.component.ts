@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {RadioComponent} from '../components/radio.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
@@ -13,7 +13,6 @@ import {RadioGroupComponent} from '../components/radio-group.component';
   selector: 'di-radio-demo',
   standalone: true,
   imports: [
-    CommonModule,
     RadioComponent,
     ModelInfoComponent,
     ReactiveFormsModule,
@@ -23,11 +22,13 @@ import {RadioGroupComponent} from '../components/radio-group.component';
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
       <di-radio-group [formControl]="control">
-        <di-radio *ngFor="let item of items" [value]="item">{{ item }}</di-radio>
+        @for (item of items; track item) {
+          <di-radio [value]="item">{{ item }}</di-radio>
+        }
       </di-radio-group>
       <!-- snippet -->
     </di-model-info>
-  `,
+    `,
 })
 export class RadioDemoComponent {
   control: FormControl<string | null> = new FormControl<string | null>(FRUIT_NAMES[2]);

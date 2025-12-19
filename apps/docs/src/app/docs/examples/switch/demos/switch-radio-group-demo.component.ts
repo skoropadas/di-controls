@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {CheckboxGroupComponent} from '../../checkbox/components/checkbox-group.component';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {SwitchComponent} from '../components/switch.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -14,7 +12,6 @@ import {RadioGroupComponent} from '../../radio/components/radio-group.component'
   selector: 'di-switch-radio-group-demo',
   standalone: true,
   imports: [
-    CommonModule,
     RadioGroupComponent,
     ModelInfoComponent,
     SwitchComponent,
@@ -24,11 +21,13 @@ import {RadioGroupComponent} from '../../radio/components/radio-group.component'
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
       <di-radio-group [formControl]="control">
-        <di-switch *ngFor="let item of items" [value]="item">{{ item }}</di-switch>
+        @for (item of items; track item) {
+          <di-switch [value]="item">{{ item }}</di-switch>
+        }
       </di-radio-group>
       <!-- snippet -->
     </di-model-info>
-  `,
+    `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

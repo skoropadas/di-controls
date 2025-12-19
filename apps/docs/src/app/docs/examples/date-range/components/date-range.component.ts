@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DIControl, provideHostControl } from 'di-controls';
+
+import {DIControl, provideHostControl} from 'di-controls';
 
 export interface DateRange {
   start: Date | null;
@@ -10,7 +10,7 @@ export interface DateRange {
 @Component({
   selector: 'di-date-range',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `<ng-content></ng-content>`,
   providers: [
     // Provide this component as a host for all children

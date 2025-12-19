@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {RadioComponent} from '../components/radio.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
@@ -13,7 +13,6 @@ import {RadioGroupComponent} from '../components/radio-group.component';
   selector: 'di-radio-object-demo',
   standalone: true,
   imports: [
-    CommonModule,
     RadioComponent,
     ModelInfoComponent,
     ReactiveFormsModule,
@@ -23,11 +22,13 @@ import {RadioGroupComponent} from '../components/radio-group.component';
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
       <di-radio-group [formControl]="control" [compareFn]="compareFruits">
-        <di-radio *ngFor="let item of items" [value]="item">{{ item.name }}</di-radio>
+        @for (item of items; track item) {
+          <di-radio [value]="item">{{ item.name }}</di-radio>
+        }
       </di-radio-group>
       <!-- snippet -->
     </di-model-info>
-  `,
+    `,
 })
 export class RadioObjectDemoComponent {
   control: FormControl<Fruit | null> = new FormControl<Fruit | null>(FRUITS[2]);

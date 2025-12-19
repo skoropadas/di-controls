@@ -4,14 +4,15 @@
 		"allowSyntheticDefaultImports": true,
 		"outDir": "../../dist/out-tsc",
 		"types": [
-      "node"
-    ]
+			"node"
+		],
+		"moduleResolution": "bundler"
 	},
 	"files": [
-    "src/main.ts",
-    "src/main.server.ts",
-    "server.ts"
-  ],
+		"src/main.ts",
+		"src/main.server.ts",
+		"server.ts"
+	],
 	"include": [
 		"src/**/*.d.ts"
 	],

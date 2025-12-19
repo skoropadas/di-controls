@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {InputNumberDirective} from '../components/input-number.directive';
@@ -10,7 +10,6 @@ import {InputNumberDirective} from '../components/input-number.directive';
   selector: 'di-input-number-demo',
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     ModelInfoComponent,
     InputNumberDirective,

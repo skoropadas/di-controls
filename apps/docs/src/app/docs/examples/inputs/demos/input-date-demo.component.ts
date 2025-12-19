@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {InputDateDirective} from '../components/input-date.directive';
@@ -9,7 +9,7 @@ import {InputDateDirective} from '../components/input-date.directive';
 @Component({
   selector: 'di-input-date-demo',
   standalone: true,
-  imports: [CommonModule, ModelInfoComponent, ReactiveFormsModule, InputDateDirective],
+  imports: [ModelInfoComponent, ReactiveFormsModule, InputDateDirective],
   template: `
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->

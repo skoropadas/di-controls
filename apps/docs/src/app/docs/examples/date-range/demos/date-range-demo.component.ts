@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {InputDateDirective} from '../../inputs/components/input-date.directive';
@@ -14,7 +14,6 @@ import {RangeDirective} from '../components/range.directive';
   selector: 'di-date-range-demo',
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     ModelInfoComponent,
     InputDateDirective,

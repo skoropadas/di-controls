@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputStringDirective} from '../components/input-string.directive';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
@@ -10,7 +10,6 @@ import {ModelInfoComponent} from '../../../../components/model-info.component';
   selector: 'di-input-string-demo',
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     InputStringDirective,
     ModelInfoComponent,

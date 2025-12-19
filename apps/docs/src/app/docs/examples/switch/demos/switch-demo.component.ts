@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {SwitchComponent} from '../components/switch.component';
 import {ModelInfoComponent} from '../../../../components/model-info.component';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -17,7 +17,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
     </di-model-info>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, SwitchComponent, ReactiveFormsModule, ModelInfoComponent],
+  imports: [SwitchComponent, ReactiveFormsModule, ModelInfoComponent],
 })
 export class SwitchDemoComponent {
   control: FormControl<boolean | null> = new FormControl<boolean | null>(false);

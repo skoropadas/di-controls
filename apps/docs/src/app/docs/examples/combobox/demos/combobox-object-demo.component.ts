@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Fruit, FRUITS} from '../../../../constants/fruits';
 import {ComboboxComponent} from '../components/combobox.component';
@@ -15,7 +15,6 @@ import {OptionComponent} from '../components/option.component';
   selector: 'di-combobox-object-demo',
   standalone: true,
   imports: [
-    CommonModule,
     ComboboxComponent,
     ModelInfoComponent,
     OptionComponent,
@@ -25,11 +24,13 @@ import {OptionComponent} from '../components/option.component';
     <di-model-info [control]="control">
       <!-- snippet "Usage" opened -->
       <di-combobox [formControl]="control" [compareFn]="compareFruits" [stringifyFn]="displayFruit">
-        <di-option *ngFor="let item of items" [value]="item">{{ item.name }}</di-option>
+        @for (item of items; track item) {
+          <di-option [value]="item">{{ item.name }}</di-option>
+        }
       </di-combobox>
       <!-- snippet -->
     </di-model-info>
-  `,
+    `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DIControl, injectHostControl } from 'di-controls';
-import { FormsModule } from '@angular/forms';
+import {ChangeDetectionStrategy, Component, ElementRef, HostListener, inject} from '@angular/core';
+
+import {DIControl, injectHostControl} from 'di-controls';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   standalone: true,
@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
       (ngModelChange)="updateModel($event); touch()">
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, FormsModule]
+  imports: [FormsModule],
 })
 export class SliderComponent extends DIControl<number> {
   protected readonly inputElement: HTMLInputElement = inject(ElementRef).nativeElement;

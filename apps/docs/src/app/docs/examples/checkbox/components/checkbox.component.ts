@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DICompareHost, DIStateControl, injectHostControl } from 'di-controls';
-import { FormsModule } from '@angular/forms';
+
+import {DICompareHost, DIStateControl, injectHostControl} from 'di-controls';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'di-checkbox',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   template: `
     <label>
       <input
