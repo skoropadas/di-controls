@@ -5,3 +5,4 @@ export * from 'di-controls/directives';
 export * from 'di-controls/helpers';
 export * from 'di-controls/tokens';
 export * from 'di-controls/types';
+export * from 'di-controls/signals';
